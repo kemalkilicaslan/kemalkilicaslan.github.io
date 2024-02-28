@@ -1,0 +1,193 @@
+/* Common styles */
+body {
+  background-image: url("assets/icons/Artificial Neural Networks.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+body a {
+  color: #000000;
+  text-decoration: none;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  margin-bottom: 0;
+  width: 100%;
+  top: 0;
+  background-color: #000000;
+  color: #ffffff;
+  z-index: 999;
+}
+  
+.navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.border-around {
+  background: linear-gradient(to bottom, #000000 0%, #bababa 100%);
+  padding: 10px;
+  margin-top: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.border-around img {
+  max-width: 100%;
+  padding-top: 50px;
+}
+
+.border-around h1,
+.border-around h2 {
+  margin: 10px 0;
+}
+
+/* Icons */
+.tech-skills img {
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  padding: auto;
+}
+
+.socials img {
+  margin-right: 1%;
+  margin-left: 1%;
+  padding: auto;
+}
+
+/* Box */
+.whoamI,
+.education,
+.personal-initiatives,
+.resume,
+.tech-skills {
+  background-color: #bababa;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.KaprekarConstantwithPythonProgramming,
+.FaceDetection,
+.RoadLaneLinesDetection,
+.GarbageClassificationwithConvolutionalNeuralNetwork,
+.ObjectDetectionandSegmentation,
+.VehicleRecognitionwithSegmentationTrainingonaCustomDataset,
+.PoseTrainedonMSCOCOData,
+.FacialExpressionRecognition,
+.VehicleSpeedEstimation {
+  background-color: #bababa;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.col-md-6 {
+  background-color: #bababa;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  width: 49%;
+}
+
+.col-md-4 {
+  background-color: #bababa;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  width: 33%;
+}
+
+/* YouTube video */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+/* footer */
+footer {
+  background: linear-gradient(to bottom, #bababa 0%, #ffffff 100%);
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Responsive Structure */
+/* for tablet */
+@media screen and (max-width: 768px) {
+  .whoamI,
+  .education,
+  .personal-initiatives,
+  .resume,
+  .tech-skills,
+  .KaprekarConstantwithPythonProgramming,
+  .FaceDetection,
+  .RoadLaneLinesDetection,
+  .GarbageClassificationwithConvolutionalNeuralNetwork,
+  .ObjectDetectionandSegmentation,
+  .VehicleRecognitionwithSegmentationTrainingonaCustomDataset,
+  .PoseTrainedonMSCOCOData,
+  .FacialExpressionRecognition,
+  .VehicleSpeedEstimation,
+  .col-md-6,
+  .col-md-4 {
+    width: 90%;
+  }
+}
+
+/* for mobile phone */
+@media screen and (max-width: 480px) {
+  .whoamI,
+  .education,
+  .personal-initiatives,
+  .resume,
+  .tech-skills,
+  .KaprekarConstantwithPythonProgramming,
+  .FaceDetection,
+  .RoadLaneLinesDetection,
+  .GarbageClassificationwithConvolutionalNeuralNetwork,
+  .ObjectDetectionandSegmentation,
+  .VehicleRecognitionwithSegmentationTrainingonaCustomDataset,
+  .PoseTrainedonMSCOCOData,
+  .FacialExpressionRecognition,
+  .VehicleSpeedEstimation,
+  .col-md-6,
+  .col-md-4 {
+    width: 100%;
+  }
+}
