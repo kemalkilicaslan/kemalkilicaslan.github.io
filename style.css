@@ -1,0 +1,2122 @@
+/* ==================== BASE STYLES ==================== */
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+div ul li h6 {
+    text-align: left
+}
+
+hr{
+    border: none;
+    height: 1px;
+    margin: 20px 0;
+    background-color: #21262d;
+}
+
+/* ==================== NAVIGATION ==================== */
+.navbar {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li:first-child {
+    margin-left: 0;
+}
+
+.navbar ul li a {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after {
+    width: 100%;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #c9d1d9;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-icon {
+    margin-left: 5px;
+}
+
+/* ==================== DROPDOWN ==================== */
+.dropdown-toggle {
+    color: inherit;
+    text-decoration: none;
+    border: #30363d;
+}
+
+.dropdown-toggle::after {
+    content: none;
+    display: none;
+}
+
+.dropdown-menu {
+    transform: translateX(-25%);
+    padding: 0;
+    min-width: auto;
+    width: auto;
+    border: none;
+}
+
+.dropdown-menu .dropdown-item {
+    text-align: center;
+    font-size: 16px;
+}
+
+/* ==================== BUTTONS ==================== */
+#theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+#theme-toggle svg {
+    display: block;
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus,
+#theme-toggle:active {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* ==================== VIDEO CONTAINERS ==================== */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==================== PROJECT CONTAINERS ==================== */
+.Kaprekar-Constant-with-Python-Programming,
+.Face-Detection-and-Person-Recognition-System,
+.Road-Lane-Lines-Detection-System,
+.Garbage-Classification-with-Convolutional-Neural-Network-CNN,
+.Object-Detection-and-Segmentation-with-YOLOv8,
+.Vehicle-Recognition-with-Segmentation-Training-on-a-Custom-Dataset,
+.Pose-Detection-with-YOLOv8-using-Wolfram-Mathematica,
+.Facial-Expression-Recognition-System,
+.Vehicle-Speed-Estimation-System,
+.Data-Visualization-of-Turkey-Population-with-Plotly,
+.Traffic-Signs-Recognition-Vehicle-Plate-and-Person-Blurring-System,
+.Safety-Lane-Violation-Detection-System,
+.Vehicle-Distance-Measurement-System,
+.Video-to-Audio-Converter {
+    padding: 25px;
+    margin: auto;
+    width: 100%;
+}
+
+/* ==================== BOX & LAYOUT STYLES ==================== */
+.box {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+footer .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .col-3,
+footer .col-6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .col-3 {
+    justify-content: flex-start;
+}
+
+footer .col-6 {
+    justify-content: center;
+}
+
+footer .col-3:last-child {
+    justify-content: flex-end;
+}
+
+/* Footer link colors  */
+footer a {
+    color: #c9d1d9;
+    margin: 0 5px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Light Theme Footer */
+body.light-theme footer {
+    color: #24292f;
+}
+
+body.light-theme footer a {
+    color: #24292f;
+}
+
+body.light-theme footer a:hover {
+    color: #000000;
+}
+
+/* Dark Theme Footer */
+body.dark-theme footer {
+    color: #c9d1d9;
+}
+
+body.dark-theme footer a {
+    color: #c9d1d9;
+}
+
+body.dark-theme footer a:hover {
+    color: #ffffff;
+}
+
+/* ==================== THEME STYLES ==================== */
+/* Light Theme */
+body.light-theme {
+    background-color: #ffffff;
+    color: #24292f;
+}
+
+body.light-theme a {
+    color: #24292f;
+}
+
+body.light-theme .navbar {
+    background-color: #ffffff;
+    color: #24292f;
+}
+
+body.light-theme .navbar .nav-link {
+    color: #24292f;
+}
+
+body.light-theme .navbar ul li a::after {
+    background-color: #24292f;
+}
+
+body.light-theme .btn-outline-dark {
+    border-color: #24292f;
+    color: #24292f;
+}
+
+body.light-theme .btn-outline-dark:hover {
+    background-color: #24292f;
+    color: #ffffff;
+}
+
+body.light-theme .dropdown-menu {
+    background-color: #ffffff;
+    color: inherit;
+}
+
+body.light-theme .dropdown-item {
+    background-color: #ffffff;
+    color: #24292f;
+}
+
+body.light-theme .dropdown-item:hover {
+    background-color: #f6f8fa;
+}
+
+body.light-theme .box {
+    background-color: #ffffff;
+}
+
+body.light-theme .box:hover {
+    border-color: #cfd5db;
+    background-color: #f0f3f6;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+body.light-theme footer {
+    color: #24292f;
+}
+
+body.light-theme hr {
+    background-color: #afb8c1;
+}
+
+body.light-theme .readme-section,
+body.light-theme .about-section,
+body.light-theme .sidebar .techskills,
+body.light-theme .packages-section,
+body.light-theme .languages-section {
+    border-color: #afb8c1;
+    background-color: #ffffff;
+}
+
+body.light-theme .readme-content h1,
+body.light-theme .readme-content h2 {
+    border-bottom-color: #afb8c1;
+}
+
+body.light-theme .readme-content pre {
+    background-color: #f6f8fa;
+    border-color: #afb8c1;
+}
+
+body.light-theme .readme-content table th,
+body.light-theme .readme-content table td {
+    border-color: #afb8c1;
+}
+
+body.light-theme .readme-content table thead {
+    background-color: #f6f8fa;
+}
+
+body.light-theme .language-bar {
+    background-color: #e1e4e8;
+}
+
+body.light-theme .about-description,
+body.light-theme .no-packages {
+    color: #57606a;
+}
+
+.light-theme .readme-content a,
+.light-theme .readme-content code {
+    color: #0969da;
+}
+
+.light-theme .readme-content pre code {
+    color: #24292f;
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+body.dark-theme a {
+    color: #c9d1d9;
+}
+
+body.dark-theme .navbar {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+body.dark-theme .navbar .nav-link {
+    color: #c9d1d9;
+}
+
+body.dark-theme .navbar ul li a::after {
+    background-color: #c9d1d9;
+}
+
+body.dark-theme .btn-outline-dark {
+    border-color: #c9d1d9;
+    color: #c9d1d9;
+}
+
+body.dark-theme .btn-outline-dark:hover {
+    background-color: #c9d1d9;
+    color: #0d1117;
+}
+
+body.dark-theme .dropdown-menu {
+    background-color: #161b22;
+    color: inherit;
+}
+
+body.dark-theme .dropdown-item {
+    background-color: #161b22;
+    color: #c9d1d9;
+}
+
+body.dark-theme .dropdown-item:hover {
+    background-color: #21262d;
+}
+
+body.dark-theme .box {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+body.dark-theme .box:hover {
+    border-color: #30363d;
+    background-color: #161b22;
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+body.dark-theme footer {
+    color: #c9d1d9;
+}
+
+body.dark-theme hr {
+    background-color: #30363d;
+}
+
+body.dark-theme .readme-section,
+body.dark-theme .about-section,
+body.dark-theme .sidebar .techskills,
+body.dark-theme .packages-section,
+body.dark-theme .languages-section {
+    border-color: #30363d;
+    background-color: #0d1117;
+}
+
+body.dark-theme .readme-content h1,
+body.dark-theme .readme-content h2 {
+    border-bottom-color: #30363d;
+}
+
+body.dark-theme .readme-content pre {
+    background-color: #161b22;
+    border-color: #30363d;
+}
+
+body.dark-theme .readme-content table th,
+body.dark-theme .readme-content table td {
+    border-color: #30363d;
+}
+
+body.dark-theme .readme-content table thead {
+    background-color: #161b22;
+}
+
+body.dark-theme .language-bar {
+    background-color: #21262d;
+}
+
+body.dark-theme .about-description,
+body.dark-theme .no-packages {
+    color: #8b949e;
+}
+
+.dark-theme .readme-content a, 
+.dark-theme .readme-content code {
+    color: #58a6ff;
+}
+
+.dark-theme .readme-content pre code {
+    color: #c9d1d9;
+    background-color: transparent;
+    padding: 0;
+}
+
+/* ==================== GITHUB GRID LAYOUT ==================== */
+.container {
+    max-width: 1280px;
+    padding: 0 16px;
+    width: 100%;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 296px;
+    gap: 24px;
+    margin: 24px 0;
+}
+
+/* ==================== MAIN CONTENT AREA ==================== */
+.main-content {
+    min-width: 0;
+}
+
+/* README Section */
+.readme-section {
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    background-color: #0d1117;
+    overflow: hidden;
+}
+
+.license-badge {
+    background-color: #1f6feb;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.readme-content {
+    padding: 32px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.readme-content h1 {
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #21262d;
+}
+
+.readme-content h2 {
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #21262d;
+}
+
+.readme-content h3 {
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.readme-content h4 {
+    font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+.readme-content p {
+    margin-bottom: 16px;
+}
+
+.readme-content ul,
+.readme-content ol {
+    margin-bottom: 16px;
+    padding-left: 32px;
+}
+
+.readme-content li {
+    margin-bottom: 8px;
+}
+
+.readme-content pre {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.readme-content code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    background-color: rgba(110, 118, 129, 0.4);
+    padding: 3px 6px;
+    border-radius: 6px;
+}
+
+.readme-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.readme-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    display: block;
+    overflow-x: auto;
+}
+
+.readme-content table thead {
+    background-color: #161b22;
+}
+
+.readme-content table th,
+.readme-content table td {
+    padding: 6px 13px;
+    border: 1px solid #30363d;
+    text-align: left;
+}
+
+.readme-content table th {
+    font-weight: 600;
+}
+
+.readme-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 16px 0;
+}
+
+.readme-content a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+.readme-content strong {
+    font-weight: 600;
+}
+
+.readme-content em {
+    font-style: italic;
+}
+
+/* ==================== SIDEBAR ==================== */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar .techskills {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 0;
+    flex-wrap: wrap; 
+}
+
+.sidebar .techskills img {
+    margin: 5px 5px 5px 0;
+    display: block;
+    object-fit: contain;
+}
+
+.about-section,
+.sidebar .techskills,
+.packages-section,
+.languages-section {
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    background-color: #0d1117;
+    padding: 16px;
+}
+
+.about-header h3,
+.packages-section h3,
+.languages-section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.sidebar .techskills h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: left;
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.about-description {
+    color: #8b949e;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.about-links {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.about-section .about-links a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+.packages-section ul li {
+    text-align: left;
+}
+
+/* Languages Section */
+.language-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #21262d;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.language-segment {
+    height: 100%;
+    float: left;
+}
+
+.language-segment.python {
+    background-color: #3572a5;
+}
+
+.language-segment.swift {
+    background-color: #f04c33;
+}
+
+.language-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.python-dot {
+    background-color: #3572a5;
+}
+
+.swift-dot {
+    background-color: #f04c33;
+}
+/* ==================== COPY BUTTON FOR CODE BLOCKS ==================== */
+.readme-content pre {
+    position: relative;
+}
+
+.copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(110, 118, 129, 0.4);
+    border: 1px solid rgba(110, 118, 129, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    color: #c9d1d9;
+    white-space: nowrap;
+}
+
+.readme-content pre:hover .copy-button {
+    opacity: 1;
+}
+
+.copy-button:hover {
+    background-color: rgba(110, 118, 129, 0.6);
+    border-color: rgba(110, 118, 129, 0.5);
+}
+
+.copy-button:active {
+    background-color: rgba(110, 118, 129, 0.8);
+}
+
+.copy-button.copied {
+    background-color: rgba(46, 160, 67, 0.9);
+    border-color: rgba(46, 160, 67, 1);
+    color: #ffffff;
+    opacity: 1;
+}
+
+.copy-button svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.copy-button span {
+    font-size: 12px;
+    line-height: 1;
+}
+
+/* Light Theme copy button */
+body.light-theme .copy-button {
+    background-color: rgba(175, 184, 193, 0.4);
+    border-color: rgba(175, 184, 193, 0.3);
+    color: #24292f;
+}
+
+body.light-theme .copy-button:hover {
+    background-color: rgba(175, 184, 193, 0.6);
+    border-color: rgba(175, 184, 193, 0.5);
+}
+
+body.light-theme .copy-button:active {
+    background-color: rgba(175, 184, 193, 0.8);
+}
+
+body.light-theme .copy-button.copied {
+    background-color: rgba(46, 160, 67, 0.9);
+    border-color: rgba(46, 160, 67, 1);
+    color: #ffffff;
+}
+
+/* ==================== RESPONSIVE STYLES ==================== */
+
+/* Mobile Devices - Small Phones (max-width: 374px) */
+@media (max-width: 374px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 5px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-3%);
+    }
+    
+    .dropdown-item {
+        font-size: 6px !important;
+    }
+    
+    .techskills img, 
+    .sidebar .techskills img {
+        width: 22px;
+        margin: 2px;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 5% 20px 5%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 4px;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: center;
+    }
+    
+    footer a svg {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .about-description {
+        font-size: 10px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 12px;
+        font-size: 10px;
+    }
+    
+    .readme-content pre {
+        padding: 6px;
+    }
+    
+    .readme-content code {
+        padding: 2px 3px;
+    }
+    
+    .readme-content table {
+        font-size: 10px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 2px 4px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 16px;
+    }
+    
+    .copy-button {
+        top: 3px;
+        right: 3px;
+        padding: 2px 4px;
+        gap: 2px;
+        border-radius: 3px;
+    }
+    
+    .copy-button svg {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .copy-button span {
+        font-size: 7px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 5%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Standard Phones (375px - 413px) */
+@media (min-width: 375px) and (max-width: 413px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 6px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-6%);
+    }
+    
+    .dropdown-item {
+        font-size: 7px !important;
+    }
+    
+    .techskills img,
+    .sidebar .techskills img {
+        width: 24px;
+        margin: 2px;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 6% 20px 6%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 5px;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: center;
+    }
+    
+    footer a svg {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .about-description {
+        font-size: 11px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 14px;
+        font-size: 11px;
+    }
+    
+    .readme-content pre {
+        padding: 7px;
+    }
+    
+    .readme-content code {
+        padding: 2px 4px;
+    }
+    
+    .readme-content table {
+        font-size: 11px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 3px 5px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 18px;
+    }
+    
+    .copy-button {
+        top: 4px;
+        right: 4px;
+        padding: 3px 5px;
+        gap: 3px;
+        border-radius: 4px;
+    }
+    
+    .copy-button svg {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .copy-button span {
+        font-size: 8px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 6%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Large Phones (414px - 479px) */
+@media (min-width: 414px) and (max-width: 479px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 7px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-10%);
+    }
+    
+    .dropdown-item {
+        font-size: 8px !important;
+    }
+    
+    .techskills img,
+    .sidebar .techskills img {
+        width: 26px;
+        margin: 2px;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 7% 20px 7%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 6px;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: center;
+    }
+    
+    footer a svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .about-description {
+        font-size: 12px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 16px;
+        font-size: 12px;
+    }
+    
+    .readme-content pre {
+        padding: 8px;
+    }
+    
+    .readme-content code {
+        padding: 2px 4px;
+    }
+    
+    .readme-content table {
+        font-size: 12px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 3px 6px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 20px;
+    }
+    
+    .copy-button {
+        top: 4px;
+        right: 4px;
+        padding: 3px 6px;
+        gap: 3px;
+        border-radius: 4px;
+    }
+    
+    .copy-button svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .copy-button span {
+        font-size: 9px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Small Tablets / Large Phones Landscape (480px - 599px) */
+@media (min-width: 480px) and (max-width: 599px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 9px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-14%);
+    }
+    
+    .dropdown-item {
+        font-size: 9px !important;
+    }
+    
+    .techskills img {
+        width: 32px;
+        margin: 4px;
+    }
+    
+    .sidebar .techskills img {
+        width: 32px;
+        margin: 2px;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 8% 20px 8%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 8px;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .about-description {
+        font-size: 12px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 18px;
+        font-size: 12px;
+    }
+    
+    .readme-content pre {
+        padding: 10px;
+    }
+    
+    .readme-content code {
+        padding: 2px 5px;
+    }
+    
+    .readme-content table {
+        font-size: 12px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 4px 7px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 24px;
+    }
+    
+    .copy-button {
+        top: 5px;
+        right: 5px;
+        padding: 4px 6px;
+        gap: 4px;
+        border-radius: 4px;
+    }
+    
+    .copy-button svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .copy-button span {
+        font-size: 9px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7.5%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Tablets Portrait (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 11px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-18%);
+    }
+    
+    .dropdown-item {
+        font-size: 10px !important;
+    }
+    
+    .techskills img,
+    .sidebar .techskills img {
+        width: 36px;
+        margin: 4px;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 10% 20px 10%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 10px;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .about-description {
+        font-size: 13px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 22px;
+        font-size: 13px;
+    }
+    
+    .readme-content pre {
+        padding: 12px;
+    }
+    
+    .readme-content code {
+        padding: 3px 5px;
+    }
+    
+    .readme-content table {
+        font-size: 13px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 5px 9px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 28px;
+    }
+    
+    .copy-button {
+        top: 6px;
+        right: 6px;
+        padding: 5px 7px;
+        gap: 4px;
+        border-radius: 5px;
+    }
+    
+    .copy-button svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .copy-button span {
+        font-size: 10px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7.5%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Tablets Landscape / Small Laptops (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 14px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-22%);
+    }
+    
+    .dropdown-item {
+        font-size: 13px !important;
+    }
+    
+    .techskills img,
+    .sidebar .techskills img {
+        width: 45px;
+        margin: 5px;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 10% 20px 10%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 14px;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .about-description {
+        font-size: 13px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 26px;
+        font-size: 13px;
+    }
+    
+    .readme-content pre {
+        padding: 14px;
+    }
+    
+    .readme-content code {
+        padding: 3px 6px;
+    }
+    
+    .readme-content table {
+        font-size: 13px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 5px 10px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 30px;
+    }
+    
+    .copy-button {
+        top: 7px;
+        right: 7px;
+        padding: 5px 8px;
+        gap: 5px;
+        border-radius: 5px;
+    }
+    
+    .copy-button svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .copy-button span {
+        font-size: 11px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7.5%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Large Tablets (992px - 1023px) */
+@media (min-width: 992px) and (max-width: 1023px) {
+    .content-grid {
+        grid-template-columns: minmax(0, 1fr) 280px;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 16px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-23%);
+    }
+    
+    .dropdown-item {
+        font-size: 14px !important;
+    }
+    
+    .techskills img,
+    .sidebar .techskills img {
+        width: 46px;
+        margin: 3px;
+    }
+    
+    .col-md-6 {
+        width: 50%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 10% 0 10%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 15px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .about-description {
+        font-size: 13px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 28px;
+        font-size: 13px;
+    }
+    
+    .readme-content pre {
+        padding: 15px;
+    }
+    
+    .readme-content code {
+        padding: 3px 6px;
+    }
+    
+    .readme-content table {
+        font-size: 13px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 6px 11px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 32px;
+    }
+    
+    .copy-button {
+        top: 7px;
+        right: 7px;
+        padding: 5px 9px;
+        gap: 5px;
+        border-radius: 6px;
+    }
+    
+    .copy-button svg {
+        width: 13px;
+        height: 13px;
+    }
+    
+    .copy-button span {
+        font-size: 11px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7.5%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Small Desktops (1024px - 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .content-grid {
+        grid-template-columns: minmax(0, 1fr) 296px;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 17px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-23%);
+    }
+    
+    .dropdown-item {
+        font-size: 14px !important;
+    }
+    
+    .techskills img,
+    .sidebar .techskills img {
+        width: 48px;
+        margin: 3px;
+    }
+    
+    .col-md-6 {
+        width: 50%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 10% 0 10%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 16px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .about-description {
+        font-size: 13px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 30px;
+        font-size: 13px;
+    }
+    
+    .readme-content pre {
+        padding: 16px;
+    }
+    
+    .readme-content code {
+        padding: 3px 6px;
+    }
+    
+    .readme-content table {
+        font-size: 13px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 6px 12px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 32px;
+    }
+    
+    .copy-button {
+        top: 8px;
+        right: 8px;
+        padding: 6px 10px;
+        gap: 6px;
+        border-radius: 6px;
+    }
+    
+    .copy-button svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .copy-button span {
+        font-size: 12px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7.5%;
+    }
+    
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Standard Desktops (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .navbar-nav .nav-link {
+        font-size: 18px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-23%);
+    }
+    
+    .dropdown-item {
+        font-size: 15px !important;
+    }
+    
+    .techskills img,
+    .sidebar .techskills img {
+        width: 48px;
+        margin: 3px;
+    }
+    
+    .col-md-6 {
+        width: 50%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 10% 0 10%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 17px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .about-description {
+        font-size: 14px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 32px;
+        font-size: 14px;
+    }
+    
+    .readme-content pre {
+        padding: 16px;
+    }
+    
+    .readme-content code {
+        padding: 3px 6px;
+    }
+    
+    .readme-content table {
+        font-size: 14px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 6px 13px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 32px;
+    }
+    
+    .copy-button {
+        top: 8px;
+        right: 8px;
+        padding: 6px 10px;
+        gap: 6px;
+        border-radius: 6px;
+    }
+    
+    .copy-button svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .copy-button span {
+        font-size: 12px;
+    }
+    
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7.5%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Large Desktops (1400px - 1599px) */
+@media (min-width: 1400px) and (max-width: 1599px) {
+    .navbar-nav .nav-link {
+        font-size: 20px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-23%);
+    }
+    
+    .dropdown-item {
+        font-size: 16px !important;
+    }
+    
+    .techskills img {
+        width: 55px;
+        margin: 5px;
+    }
+
+    .sidebar .techskills img {
+        width: 48px;
+        margin: 4px;
+    }
+    
+    .col-md-6 {
+        width: 50%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 10% 0 10%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 18px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        height: 28px;
+    }
+    
+    .about-description {
+        font-size: 15px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 32px;
+        font-size: 15px;
+    }
+    
+    .readme-content pre {
+        padding: 16px;
+    }
+    
+    .readme-content code {
+        padding: 3px 6px;
+    }
+    
+    .readme-content table {
+        font-size: 15px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 6px 13px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 32px;
+    }
+    
+    .copy-button {
+        top: 8px;
+        right: 8px;
+        padding: 6px 10px;
+        gap: 6px;
+        border-radius: 6px;
+    }
+    
+    .copy-button svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .copy-button span {
+        font-size: 12px;
+    }
+
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 7.5%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}
+
+/* Extra Large Desktops (1600px+) */
+@media (min-width: 1600px) {
+    .navbar-nav .nav-link {
+        font-size: 22px;
+    }
+    
+    .dropdown-menu {
+        transform: translateX(-23%);
+    }
+    
+    .dropdown-item {
+        font-size: 17px !important;
+    }
+    
+    .techskills img {
+        width: 60px;
+        margin: 5px;
+    }
+
+    .sidebar .techskills img {
+        width: 48px;
+        margin: 4px;
+    }
+    
+    .col-md-6 {
+        width: 50%;
+        margin: 0 0 5% 0;
+    }
+    
+    .box {
+        margin: 0 10% 0 10%;
+    }
+    
+    footer .col-3,
+    footer .col-6 {
+        font-size: 20px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    footer .col-3:last-child {
+        justify-content: flex-end;
+    }
+    
+    footer a svg {
+        height: 28px;
+    }
+    
+    .about-description {
+        font-size: 15px;
+    }
+    
+    .readme-content,
+    .packages-section {
+        padding: 36px;
+        font-size: 15px;
+    }
+    
+    .readme-content pre {
+        padding: 18px;
+    }
+    
+    .readme-content code {
+        padding: 4px 7px;
+    }
+    
+    .readme-content table {
+        font-size: 15px;
+    }
+    
+    .readme-content table th,
+    .readme-content table td {
+        padding: 7px 14px;
+    }
+    
+    .readme-content ul,
+    .readme-content ol {
+        padding-left: 34px;
+    }
+    
+    .copy-button {
+        top: 9px;
+        right: 9px;
+        padding: 7px 11px;
+        gap: 6px;
+        border-radius: 6px;
+    }
+    
+    .copy-button svg {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .copy-button span {
+        font-size: 13px;
+    }
+
+    .kemalkilicaslan,
+    .education,
+    .personalinitiatives,
+    .walksandworkshops,
+    .experiences,
+    .mycertificates {
+        padding: 0 8%;
+    }
+
+    .personalinitiatives h3,
+    .walksandworkshops h3,
+    .experiences h3 {
+        padding-top: 10%;
+    }
+}

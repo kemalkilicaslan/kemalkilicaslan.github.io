@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>https://kemalkilicaslan.com/</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/index.html</loc>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Vehicle-Distance-Measurement-System.html</loc>
+  <priority>0.89</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Video-to-Audio-Converter.html</loc>
+  <priority>0.89</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Vehicle-Speed-Estimation-System.html</loc>
+  <priority>0.88</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Traffic-Signs-Recognition-Vehicle-Plate-and-Person-Blurring-System.html</loc>
+  <priority>0.88</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Safety-Lane-Violation-Detection-System.html</loc>
+  <priority>0.88</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Garbage-Classification-with-Convolutional-Neural-Network-CNN.html</loc>
+  <priority>0.87</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Face-Detection-and-Person-Recognition-System.html</loc>
+  <priority>0.86</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Object-Detection-and-Segmentation-with-YOLOv8.html</loc>
+  <priority>0.86</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Facial-Expression-Recognition-System.html</loc>
+  <priority>0.86</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Vehicle-Recognition-with-Segmentation-Training-on-a-Custom-Dataset.html</loc>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Road-Lane-Lines-Detection-System.html</loc>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Pose-Detection-with-YOLOv8-using-Wolfram-Mathematica.html</loc>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Data-Visualization-of-Turkey-Population-with-Plotly.html</loc>
+  <priority>0.84</priority>
+</url>
+<url>
+  <loc>https://kemalkilicaslan.com/Kaprekar-Constant-with-Python-Programming.html</loc>
+  <priority>0.84</priority>
+</url>
+
+<url>
+  <loc>https://kemalkilicaslan.com/assets/Kemal-Kilicaslan-Resume.pdf</loc>
+  <priority>0.80</priority>
+</url>
+</urlset>
