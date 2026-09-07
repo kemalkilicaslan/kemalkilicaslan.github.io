@@ -1,0 +1,37 @@
+# Kemal Kılıçaslan
+
+> Personal portfolio of Kemal Kılıçaslan — AI Developer and content creator based in Ankara, Turkey, specializing in computer vision, YOLO-based detection and segmentation systems, ADAS (Advanced Driver Assistance Systems), and applied deep learning.
+
+Kemal holds a mathematics degree from Kastamonu University (2022) and works as a freelance AI developer with an Ultralytics partnership. The site collects production-style computer vision projects (vehicle perception, road safety, industrial safety, face and pose analysis) alongside smaller deep learning, data visualization, and Python explorations. Each project page includes a project README with implementation details, the tech stack used (PyTorch, Ultralytics YOLO, OpenCV, TensorFlow, Plotly, Wolfram Mathematica, etc.), and demo media. Projects below follow the same categorization used on the homepage.
+
+## Algorithms & Programming
+
+- [Kaprekar Constant with Python Programming](https://kemalkilicaslan.com/Kaprekar-Constant-with-Python-Programming.html): Python implementation of D.R. Kaprekar's routine, showing how any four-digit number converges to the constant 6174 within at most seven iterations, plus the three-digit variant (495).
+
+## Data Analysis & Visualization
+
+- [Data Visualization of Turkey Population with Plotly](https://kemalkilicaslan.com/Data-Visualization-of-Turkey-Population-with-Plotly.html): Interactive visualization of Turkey's population from 1927 to 2023 across 81 provinces, using Plotly and Folium for choropleth maps, bar/stack/donut/pie/line charts, and gender-distribution analysis.
+
+## Deep Learning
+
+- [Garbage Classification with Convolutional Neural Network (CNN)](https://kemalkilicaslan.com/Garbage-Classification-with-Convolutional-Neural-Network-CNN.html): TensorFlow/Keras CNN classifying waste into six categories (cardboard, glass, metal, paper, plastic, trash) on the TrashNet dataset, reaching 62.2% accuracy for automated recycling use cases.
+- [Facial Expression Recognition System](https://kemalkilicaslan.com/Facial-Expression-Recognition-System.html): Convolutional model for classifying facial emotions (angry, disgust, fear, happy, sad, surprise, neutral) on cropped face regions.
+
+## Computer Vision
+
+- [Face Detection and Person Recognition System](https://kemalkilicaslan.com/Face-Detection-and-Person-Recognition-System.html): Face detection combined with identity recognition via embedding-based matching.
+- [Pose Detection with YOLOv8 using Wolfram Mathematica](https://kemalkilicaslan.com/Pose-Detection-with-YOLOv8-using-Wolfram-Mathematica.html): Keypoint-based human pose estimation implemented and visualized in Wolfram Mathematica using YOLOv8.
+- [Vehicle Speed Estimation System](https://kemalkilicaslan.com/Vehicle-Speed-Estimation-System.html): Real-time vehicle speed estimation pipeline using object tracking and pixel-to-meter calibration.
+- [Safety Lane Violation Detection System](https://kemalkilicaslan.com/Safety-Lane-Violation-Detection-System.html): Detects vehicles crossing lane boundaries on highway and urban footage.
+- [Road Lane Lines Detection System](https://kemalkilicaslan.com/Road-Lane-Lines-Detection-System.html): Lane detection pipeline for ADAS, using keypoint-based orientation and vanishing-point estimation.
+- [Traffic Signs Recognition, Vehicle Plate and Person Blurring System](https://kemalkilicaslan.com/Traffic-Signs-Recognition-Vehicle-Plate-and-Person-Blurring-System.html): Multi-task pipeline combining traffic sign recognition with privacy-preserving blurring of plates and faces.
+- [Vehicle Distance Measurement System](https://kemalkilicaslan.com/Vehicle-Distance-Measurement-System.html): YOLO-based vehicle detection with monocular distance estimation for forward-collision warning use cases.
+- [Road Surface Obstacle and Traffic Warning Object Segmentation System](https://kemalkilicaslan.com/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System.html): Semantic segmentation of road surface defects and warning objects (cones, barriers) for driving safety.
+- [Industrial Safety Gear Detection System](https://kemalkilicaslan.com/Industrial-Safety-Gear-Detection-System.html): PPE detection (helmet, vest, gloves) on construction and factory footage using YOLO.
+- [Vehicle and Pedestrian Traffic Analysis System](https://kemalkilicaslan.com/Vehicle-and-Pedestrian-Traffic-Analysis-System.html): Real-time, zone-aware vehicle and pedestrian tracking in native C++, combining a VisDrone-trained YOLO26x detector with a from-scratch BoT-SORT tracker for per-zone occupancy, dwell-time, and crosswalk safety analytics.
+- [Vehicle Plates Detection and Reading System](https://kemalkilicaslan.com/Vehicle-Plates-Detection-and-Reading-System.html): Real-time Turkish license-plate detection and reading, pairing a custom-trained RF-DETR detector with an ONNX-based Fast Plate OCR engine, using confidence-based filtering and IoU tracking that locks each plate's reading across frames for automatic license plate recognition (ALPR) use cases.
+
+## Optional
+
+- [Home](https://kemalkilicaslan.com/): Landing page with the full project grid, certificates, and links to LinkedIn, GitHub, YouTube, Kaggle, Medium, and Hugging Face profiles.
+- [Sitemap](https://kemalkilicaslan.com/sitemap.xml): XML sitemap listing all indexable pages.

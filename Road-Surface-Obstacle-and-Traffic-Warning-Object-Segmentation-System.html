@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(){var t=localStorage.getItem('theme');document.documentElement.classList.add(t==='dark'?'dark-theme':'light-theme');})()</script>
+    <title>Kemal Kılıçaslan | Road Surface Obstacle and Traffic Warning Object Segmentation System</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kemal Kilicaslan">
+    <meta name="description" content="Road surface obstacle and traffic warning segmentation using custom YOLO26x-seg. Detects potholes, cracks, traffic cones and barriers with colored masks for ADAS applications.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/icons/KEMAL-KILICASLAN.ico" type="image/x-icon">
+    <link rel="canonical" href="https://kemalkilicaslan.com/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="Kemal Kılıçaslan | Road Surface Obstacle and Traffic Warning Object Segmentation System">
+    <meta property="og:description" content="Road surface obstacle and traffic warning segmentation using custom YOLO26x-seg. Detects potholes, cracks, traffic cones and barriers with colored masks for ADAS applications.">
+    <meta property="og:url" content="https://kemalkilicaslan.com/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System.html">
+    <meta property="og:image" content="https://kemalkilicaslan.com/assets/icons/KEMAL-KILICASLAN.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kemal Kilicaslan Official Website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kemal Kılıçaslan | Road Surface Obstacle and Traffic Warning Object Segmentation System">
+    <meta name="twitter:description" content="Road surface obstacle and traffic warning segmentation using custom YOLO26x-seg. Detects potholes, cracks, traffic cones and barriers with colored masks for ADAS applications.">
+    <meta name="twitter:image" content="https://kemalkilicaslan.com/assets/icons/KEMAL-KILICASLAN.png">
+    <meta name="twitter:site" content="@iam_kilicaslan">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C3W7PCE61L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C3W7PCE61L');
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "Road Surface Obstacle and Traffic Warning Object Segmentation System",
+            "description": "Road surface obstacle and traffic warning segmentation using custom YOLO26x-seg. Detects potholes, cracks, traffic cones and barriers with colored masks for ADAS applications.",
+            "url": "https://kemalkilicaslan.com/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System.html",
+            "keywords": "Road Surface Segmentation, Pothole Detection, Traffic Warning, YOLO, Object Segmentation, ADAS, Computer Vision, Instance Segmentation, Road Safety",
+            "author": {
+                "@type": "Person",
+                "name": "Kemal Kılıçaslan",
+                "url": "https://kemalkilicaslan.com",
+                "jobTitle": "AI Developer",
+                "sameAs": [
+                    "https://www.linkedin.com/in/kemalkilicaslan",
+                    "https://github.com/kemalkilicaslan",
+                    "https://medium.com/@kemalkilicaslan",
+                    "https://www.kaggle.com/kemalkilicaslan",
+                    "https://huggingface.co/kemalkilicaslan",
+                    "https://www.youtube.com/@kemal_kilicaslan"
+                ]
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand">
+        <div class="container d-flex justify-content-between align-items-center">
+            <ul class="navbar-nav d-flex align-items-center">
+                <li>
+                    <a class="nav-link" href="index.html#index">KEMAL KILIÇASLAN</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="index.html#myprojects" data-key="projects">PROJECTS</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="index.html#mycertificates" data-key="certificates">CERTIFICATES</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav d-flex align-items-center">
+                <a href="https://github.com/kemalkilicaslan/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System" rel="noopener noreferrer" aria-label="GitHub" class="nav-link" target="_blank">
+                    <svg class="github-icon" viewBox="0 0 16 16" width="25" height="25" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle text-dark d-flex align-items-center" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedLang" class="me-2" style="font-size: 25px;">🇬🇧</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" data-key="English" data-lang="English" data-flag="🇬🇧">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Türkçe" data-lang="Türkçe" data-flag="🇹🇷">🇹🇷 Türkçe</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Deutsch" data-lang="Deutsch" data-flag="🇩🇪">🇩🇪 Deutsch</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Español" data-lang="Español" data-flag="🇪🇸">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Dutch" data-lang="Dutch" data-flag="🇳🇱">🇳🇱 Dutch</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Italiano" data-lang="Italiano" data-flag="🇮🇹">🇮🇹 Italiano</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Français" data-lang="Français" data-flag="🇫🇷">🇫🇷 Français</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Português" data-lang="Português" data-flag="🇧🇷">🇧🇷 Português</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Русский" data-lang="Русский" data-flag="🇷🇺">🇷🇺 Русский</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="日本語" data-lang="日本語" data-flag="🇯🇵">🇯🇵 日本語</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="العربية" data-lang="العربية" data-flag="🇸🇦">🇸🇦 العربية</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline-dark ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80" width="25" height="25">
+                            <circle r="39" />
+                            <path fill="#fff" d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38" />
+                            <circle r="5" cy="19" fill="#fff" />
+                            <circle r="5" cy="-19" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 id="road-surface-obstacle-and-traffic-warning-object-segmentation-system">Road Surface Obstacle and Traffic Warning Object Segmentation System</h1>
+        <div class="content-grid">
+            <div class="main-content">
+                <div class="readme-section">
+                    <div class="readme-content">
+
+                        <h2 id="1-introduction">1. Introduction</h2>
+
+                        <p>This project implements a real-time road surface obstacle and traffic warning object segmentation system using a custom-trained YOLO26x-seg segmentation model on the Ultralytics Platform. The system processes road footage to detect and segment five classes of road-level features — organized in two semantic groups — providing pixel-level masks for ADAS, autonomous driving, and road infrastructure monitoring applications.</p>
+
+                        <p>Road perception failures in autonomous vehicles often stem from elements the model wasn't trained to recognize. This system addresses that gap by unifying surface-level hazards (pothole, crack, patch) and traffic warning objects (traffic-cone, road-barrier) into a single segmentation pipeline, enabling holistic road scene understanding through one inference pass.</p>
+
+                        <p>The implementation demonstrates practical applications of instance segmentation for vehicle perception, processing video streams to produce per-class colored masks, anti-aliased contour outlines, and instance-level confidence labels.</p>
+
+                        <p><strong>Core Features:</strong></p>
+
+                        <ul>
+                            <li>Real-time multi-class instance segmentation of road surface and traffic warning objects</li>
+                            <li>5-class detection: pothole, traffic-cone, road-barrier, patch, crack</li>
+                            <li>Two-group taxonomy: Road Surface Obstacles (pothole, crack, patch) and Traffic Warning Objects (traffic-cone, road-barrier)</li>
+                            <li>Per-class colored mask blending with configurable transparency</li>
+                            <li>Largest-first paint order so smaller, closer instances remain visible on top</li>
+                            <li>Anti-aliased contour outlines and luma-aware label text contrast</li>
+                            <li>Annotated video recording with class + confidence labels per instance</li>
+                            <li>Custom-trained model: 91.0% mAP50, 67.8% mAP50-95, 86.3% Precision, 85.2% Recall</li>
+                        </ul>
+
+                        <h2 id="2-methodology-approach">2. Methodology / Approach</h2>
+
+                        <p>The system employs a custom-trained YOLO26x-seg segmentation model to produce pixel-level masks for each detected instance within every video frame. A two-stage rendering pipeline then composes the visualization: filled translucent masks are blended onto the frame in largest-first order, then anti-aliased contour outlines and labels are drawn on top.</p>
+
+                        <h3 id="2-1-system-architecture">2.1 System Architecture</h3>
+
+                        <p>The road surface obstacle and traffic warning object segmentation pipeline consists of:</p>
+
+                        <ol>
+                            <li><strong>YOLO Segmentation Inference:</strong> Detect all instances of <code>pothole</code>, <code>traffic-cone</code>, <code>road-barrier</code>, <code>patch</code>, and <code>crack</code> with binary masks, class IDs, and confidence scores</li>
+                            <li><strong>Mask Resize:</strong> Up-sample model output masks to original frame resolution using nearest-neighbour interpolation</li>
+                            <li><strong>Largest-First Mask Rendering:</strong> Paint per-class colored masks onto the frame so smaller instances remain visible on top of larger ones</li>
+                            <li><strong>Contour Outline:</strong> Extract external contours from each binary mask and draw anti-aliased outlines</li>
+                            <li><strong>Label Overlay:</strong> Place class + confidence labels at each instance's anchor point with luma-aware text color</li>
+                            <li><strong>Video Output:</strong> Annotated frames written to output video file</li>
+                        </ol>
+
+                        <h3 id="2-2-processing-pipeline">2.2 Processing Pipeline</h3>
+
+                        <pre><code>[Video Input]
+    ↓
+[YOLO Segmentation Inference] → [Masks + Classes + Confidences]
+    ↓
+[Mask Resize to Frame Resolution]
+    ↓
+[Largest-First Mask Rendering with Per-Class Colors]
+    ↓
+[Contour Outline + Class Label Overlay]
+    ↓
+[Video Output]</code></pre>
+
+                        <h3 id="2-3-implementation-strategy">2.3 Implementation Strategy</h3>
+
+                        <p>The implementation uses the Ultralytics YOLO framework for segmentation inference and OpenCV for video processing, mask rendering, contour drawing, and text overlay. The visualization is intentionally split into two passes: a fill pass that blends colored masks via alpha composition, and an outline pass that draws contours and labels on top of the blended frame. This ensures that contour edges remain crisp regardless of mask transparency, and that labels are never visually drowned out by the mask colors. Largest-first paint ordering prevents large surface defects (long cracks, wide patches) from occluding smaller, closer instances such as a single traffic-cone or distant pothole.</p>
+
+                        <h2 id="3-mathematical-framework">3. Mathematical Framework</h2>
+
+                        <h3 id="3-1-mask-iou-and-non-maximum-suppression">3.1 Mask IoU and Non-Maximum Suppression</h3>
+
+                        <p>During inference, YOLO applies Non-Maximum Suppression (NMS) using Intersection over Union to discard overlapping predictions:</p>
+
+                        <p>$$\text{IoU}(A, B) = \frac{|A \cap B|}{|A \cup B|}$$</p>
+
+                        <p>Predictions with IoU above the configured threshold (<code>IOU_THRESHOLD = 0.55</code>) are suppressed in favor of the higher-confidence detection. This filtering happens before the masks reach the rendering pipeline.</p>
+
+                        <h3 id="3-2-alpha-blended-mask-overlay">3.2 Alpha-Blended Mask Overlay</h3>
+
+                        <p>Per-class colored masks are blended onto the original frame via alpha compositing:</p>
+
+                        <p>$$I_{\text{out}} = (1 - \alpha) \cdot I_{\text{overlay}} + \alpha \cdot I_{\text{frame}}$$</p>
+
+                        <p>where $\alpha = 0.4$ is the configured <code>MASK_ALPHA</code>. The overlay image is constructed by painting each mask region with its class color in largest-first order:</p>
+
+                        <p>$$I_{\text{overlay}}(x, y) = C_{c}, \quad \forall (x, y) \in M_{i}, \quad c = \text{class}(i)$$</p>
+
+                        <h3 id="3-3-luma-based-adaptive-text-color">3.3 Luma-Based Adaptive Text Color</h3>
+
+                        <p>Label text color is chosen automatically to maximize legibility against each class's mask color, using the BT.601 luma approximation:</p>
+
+                        <p>$$Y = 0.299 R + 0.587 G + 0.114 B$$</p>
+
+                        <p>Text color is then selected by threshold on the perceived brightness:</p>
+
+                        <p>$$T(Y) = \begin{cases} \text{black} & \text{if } Y > 160 \\ \text{white} & \text{otherwise} \end{cases}$$</p>
+
+                        <h3 id="3-4-performance-metrics">3.4 Performance Metrics</h3>
+
+                        <p>Mask-level performance is reported via standard segmentation metrics:</p>
+
+                        <p>$$\text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}$$</p>
+
+                        <p>$$\text{mAP}_{50}^{(M)} = \frac{1}{N} \sum_{c=1}^{N} \text{AP}_{c}^{50, \text{mask}}, \quad \text{mAP}_{50:95}^{(M)} = \frac{1}{10} \sum_{t \in \{0.5, 0.55, ..., 0.95\}} \text{mAP}_{t}^{(M)}$$</p>
+
+                        <p>where $TP$, $FP$, $FN$ are evaluated using mask IoU at the corresponding threshold $t$, and the average is taken over $N = 5$ classes.</p>
+
+                        <h2 id="4-dataset">4. Dataset</h2>
+
+                        <p><strong>Dataset Name:</strong> <a href="https://platform.ultralytics.com/kemal-kilicaslan/datasets/road-surface-obstacle-and-traffic-warning-object-segmentation" target="_blank">Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation</a><br>
+                        <strong>Platform:</strong> Ultralytics Platform (Public)<br>
+                        <strong>License:</strong> CC BY-NC-ND 4.0<br>
+                        <strong>Total Images:</strong> 23<br>
+                        <strong>Total Annotations:</strong> 249<br>
+                        <strong>Image Format:</strong> WEBP (100%)<br>
+                        <strong>Mean Image Size:</strong> 1,784.8 × 1,050 px (Mean AR: 1.82)<br>
+                        <strong>Mean File Size:</strong> 188.9 KB<br>
+                        <strong>Total Dataset Size:</strong> 4.2 MB</p>
+
+                        <p><strong>Split Distribution:</strong></p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Split</th>
+                                    <th>Images</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Train</td>
+                                    <td>16</td>
+                                    <td>69.6%</td>
+                                </tr>
+                                <tr>
+                                    <td>Validation</td>
+                                    <td>7</td>
+                                    <td>30.4%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>Class Distribution:</strong></p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Index</th>
+                                    <th>Class</th>
+                                    <th>Annotations</th>
+                                    <th>Images</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0</td>
+                                    <td>pothole</td>
+                                    <td>67 (26.9%)</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>crack</td>
+                                    <td>67 (26.9%)</td>
+                                    <td>13</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>traffic-cone</td>
+                                    <td>59 (23.7%)</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>road-barrier</td>
+                                    <td>34 (13.7%)</td>
+                                    <td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>patch</td>
+                                    <td>22 (8.8%)</td>
+                                    <td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>—</td>
+                                    <td><strong>Total</strong></td>
+                                    <td><strong>249</strong></td>
+                                    <td><strong>23</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>Annotation Statistics:</strong></p>
+
+                        <ul>
+                            <li>Mean objects per image: 11.7</li>
+                            <li>Mean polygon vertices per instance: 36.4</li>
+                            <li>Total instances: 249</li>
+                        </ul>
+
+                        <h2 id="5-model">5. Model</h2>
+
+                        <p><strong>Model Name:</strong> <code>road-surface-obstacle-and-traffic-warning-object-segmentation.pt</code><br>
+                        <strong>Platform:</strong> Ultralytics Platform<br>
+                        <strong>License:</strong> AGPL-3.0<br>
+                        <strong>Architecture:</strong> YOLO26x-seg (Ultralytics)<br>
+                        <strong>Training Hardware:</strong> RTX PRO 6000 (cloud GPU)<br>
+                        <strong>Classes:</strong> 5 (pothole, traffic-cone, road-barrier, patch, crack)</p>
+
+                        <p><strong>Model Metrics (Mask):</strong></p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>mAP50 (M)</td>
+                                    <td><strong>96.9%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>mAP50-95 (M)</td>
+                                    <td><strong>80.3%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Precision (M)</td>
+                                    <td><strong>95.7%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Recall (M)</td>
+                                    <td><strong>92.6%</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>Training Notes:</strong></p>
+
+                        <ul>
+                            <li>End-to-end training, annotation, and export performed on the Ultralytics Platform</li>
+                            <li>Annotation accelerated via SAM 3 click-to-segment workflow</li>
+                            <li>Browser-based prediction tab used for inference testing without local GPU</li>
+                            <li>Steady convergence of <code>box_loss</code>, <code>cls_loss</code>, <code>dfl_loss</code>, and <code>seg_loss</code></li>
+                        </ul>
+
+                        <h2 id="6-requirements">6. Requirements</h2>
+
+                        <p><code>requirements.txt</code></p>
+
+                        <pre><code>opencv-python>=4.8.0
+numpy>=1.24.0
+ultralytics>=8.0.0</code></pre>
+
+                        <h2 id="7-installation-configuration">7. Installation &amp; Configuration</h2>
+
+                        <h3 id="7-1-environment-setup">7.1 Environment Setup</h3>
+
+                        <pre><code># Clone the repository
+git clone https://github.com/kemalkilicaslan/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System.git
+cd Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System
+
+# Install required packages
+pip install -r requirements.txt</code></pre>
+
+                        <h3 id="7-2-project-structure">7.2 Project Structure</h3>
+
+                        <pre><code>Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/
+├── Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System.py
+├── README.md
+├── requirements.txt
+└── LICENSE</code></pre>
+
+                        <h3 id="7-3-required-files">7.3 Required Files</h3>
+
+                        <ul>
+                            <li><strong>Custom YOLO Segmentation Model:</strong> <code>road-surface-obstacle-and-traffic-warning-object-segmentation.pt</code> (place in project directory)</li>
+                            <li><strong>Input Video:</strong> Road footage (MP4, MOV, AVI)</li>
+                        </ul>
+
+                        <h2 id="8-usage-how-to-run">8. Usage / How to Run</h2>
+
+                        <h3 id="8-1-basic-execution">8.1 Basic Execution</h3>
+
+                        <pre><code>python Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System.py</code></pre>
+
+                        <h3 id="8-2-configuration-parameters">8.2 Configuration Parameters</h3>
+
+                        <pre><code># Model and inference configuration
+MODEL_PATH           = "road-surface-obstacle-and-traffic-warning-object-segmentation.pt"
+CONFIDENCE_THRESHOLD = 0.6   # Minimum confidence for a detection to be kept
+IOU_THRESHOLD        = 0.9   # NMS IoU threshold during inference
+MASK_ALPHA           = 0.4    # Mask transparency: 0.0 = fully opaque, 1.0 = invisible
+
+# Visualization parameters
+CONTOUR_THICKNESS = 2
+LABEL_FONT        = cv2.FONT_HERSHEY_DUPLEX
+LABEL_SCALE       = 0.6
+LABEL_THICKNESS   = 1
+LABEL_PADDING     = 4</code></pre>
+
+                        <h3 id="8-3-input-output">8.3 Input / Output</h3>
+
+                        <pre><code># Update these lines in the script for your video
+video_capture = cv2.VideoCapture("Road-Surface-Obstacle-and-Traffic-Warning-Object.mp4")
+output_file   = "Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation.mp4"</code></pre>
+
+                        <h3 id="8-4-controls">8.4 Controls</h3>
+
+                        <ul>
+                            <li>Press <code>q</code> to quit the application during playback</li>
+                        </ul>
+
+                        <h3 id="8-5-class-color-coding">8.5 Class Color Coding</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Group</th>
+                                    <th>Class</th>
+                                    <th>BGR Color</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="3">Road Surface Obstacles</td>
+                                    <td>pothole</td>
+                                    <td><code>(0, 60, 255)</code></td>
+                                </tr>
+                                <tr>
+                                    <td>crack</td>
+                                    <td><code>(10, 35, 10)</code></td>
+                                </tr>
+                                <tr>
+                                    <td>patch</td>
+                                    <td><code>(170, 235, 35)</code></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">Traffic Warning Objects</td>
+                                    <td>traffic-cone</td>
+                                    <td><code>(220, 230, 20)</code></td>
+                                </tr>
+                                <tr>
+                                    <td>road-barrier</td>
+                                    <td><code>(235, 235, 235)</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2 id="9-application-results">9. Application / Results</h2>
+
+                        <h3 id="9-1-input-video">9.1 Input Video</h3>
+
+                        <p><strong>Road Surface Obstacle and Traffic Warning Object:</strong></p>
+
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/laKmMCNrfbU" frameborder="0" allowfullscreen></iframe>
+                        </div>
+
+                        <h3 id="9-2-output-video">9.2 Output Video</h3>
+
+                        <p><strong>Road Surface Obstacle and Traffic Warning Object Segmentation:</strong></p>
+
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/xm_EC6bmiPs" frameborder="0" allowfullscreen></iframe>
+                        </div>
+
+                        <h3 id="9-3-dataset-overview">9.3 Dataset Overview</h3>
+
+                        <p><strong>Dataset &amp; Charts:</strong></p>
+
+                        <p><img src="assets/projects/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-Dataset.webp" alt="Road Surface Obstacle and Traffic Warning Object Segmentation Dataset" loading="lazy"></p>
+
+                        <p><strong>Class Distribution:</strong></p>
+
+                        <p><img src="assets/projects/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-Classes.webp" alt="Road Surface Obstacle and Traffic Warning Object Segmentation Classes" loading="lazy"></p>
+
+                        <p><strong>Dataset Charts 1:</strong></p>
+
+                        <p><img src="assets/projects/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-Charts-1.webp" alt="Road Surface Obstacle and Traffic Warning Object Segmentation Charts 1" loading="lazy"></p>
+
+                        <p><strong>Dataset Charts 2:</strong></p>
+
+                        <p><img src="assets/projects/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-Charts-2.webp" alt="Road Surface Obstacle and Traffic Warning Object Segmentation Charts 2" loading="lazy"></p>
+
+                        <h3 id="9-4-model-metrics">9.4 Model Metrics</h3>
+
+                        <p><strong>Training Metrics &amp; Loss Curves:</strong></p>
+
+                        <p><img src="assets/projects/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-Model-Metrics.webp" alt="Road Surface Obstacle and Traffic Warning Object Segmentation Model Metrics" loading="lazy"></p>
+
+                        <p><em>mAP50: 96.9% | mAP50-95: 80.3% | Precision: 95.7% | Recall: 92.6%</em></p>
+
+                        <h2 id="10-tech-stack">10. Tech Stack</h2>
+
+                        <h3 id="10-1-core-technologies">10.1 Core Technologies</h3>
+
+                        <ul>
+                            <li><strong>Programming Language:</strong> Python 3.8+</li>
+                            <li><strong>Computer Vision:</strong> OpenCV 4.8+</li>
+                            <li><strong>Deep Learning Framework:</strong> Ultralytics YOLO 8.0+</li>
+                            <li><strong>Numerical Computing:</strong> NumPy 1.24+</li>
+                            <li><strong>Training Platform:</strong> Ultralytics Platform</li>
+                        </ul>
+
+                        <h3 id="10-2-libraries-dependencies">10.2 Libraries &amp; Dependencies</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Library</th>
+                                    <th>Version</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>opencv-python</td>
+                                    <td>4.8+</td>
+                                    <td>Video I/O, mask blending, contour drawing, label overlay</td>
+                                </tr>
+                                <tr>
+                                    <td>ultralytics</td>
+                                    <td>8.0+</td>
+                                    <td>YOLO segmentation model inference</td>
+                                </tr>
+                                <tr>
+                                    <td>numpy</td>
+                                    <td>1.24+</td>
+                                    <td>Mask array operations, ordering, resizing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="10-3-algorithm-components">10.3 Algorithm Components</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>Method</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Instance Segmentation</td>
+                                    <td>Custom YOLO26x-seg</td>
+                                    <td>Detect and mask 5 road-level classes</td>
+                                </tr>
+                                <tr>
+                                    <td>Mask Resize</td>
+                                    <td>Nearest-neighbour interpolation</td>
+                                    <td>Match mask resolution to original frame</td>
+                                </tr>
+                                <tr>
+                                    <td>Mask Blending</td>
+                                    <td>Alpha composition (cv2.addWeighted)</td>
+                                    <td>Translucent per-class colored overlay</td>
+                                </tr>
+                                <tr>
+                                    <td>Contour Extraction</td>
+                                    <td>cv2.findContours (RETR_EXTERNAL)</td>
+                                    <td>Anti-aliased mask outlines</td>
+                                </tr>
+                                <tr>
+                                    <td>Label Contrast</td>
+                                    <td>BT.601 luma threshold</td>
+                                    <td>Auto black/white text per background</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="10-4-detection-parameters">10.4 Detection Parameters</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Confidence Threshold</td>
+                                    <td>0.6</td>
+                                    <td>Minimum YOLO inference confidence</td>
+                                </tr>
+                                <tr>
+                                    <td>IoU Threshold</td>
+                                    <td>0.9</td>
+                                    <td>NMS IoU threshold</td>
+                                </tr>
+                                <tr>
+                                    <td>Mask Alpha</td>
+                                    <td>0.4</td>
+                                    <td>Mask transparency for blending</td>
+                                </tr>
+                                <tr>
+                                    <td>Contour Thickness</td>
+                                    <td>2 px</td>
+                                    <td>Width of mask outline</td>
+                                </tr>
+                                <tr>
+                                    <td>Label Scale</td>
+                                    <td>0.6</td>
+                                    <td>Class label font scale</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2 id="11-license">11. License</h2>
+
+                        <p>This project is licensed under the <a href="https://github.com/kemalkilicaslan/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/blob/main/LICENSE" target="_blank">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)</a>.</p>
+
+                        <h2 id="12-references">12. References</h2>
+
+                        <ol>
+                            <li><a href="https://docs.ultralytics.com/platform/" target="_blank">Ultralytics Platform Documentation</a> — Model training, inference, and deployment.</li>
+                            <li>Ultralytics Platform <a href="https://platform.ultralytics.com/kemal-kilicaslan/road-surface-obstacle-and-traffic-warning-object-segmentation/road-surface-obstacle-and-traffic-warning-object-segmentation" target="_blank">Road Surface Obstacle and Traffic Warning Object Segmentation System</a> — Dataset annotation, training, and export.</li>
+                            <li>OpenCV <a href="https://docs.opencv.org/4.x/" target="_blank">Video I/O and Drawing Functions</a> Documentation.</li>
+                        </ol>
+
+                        <hr>
+
+                        <h3 id="acknowledgments">Acknowledgments</h3>
+
+                        <p>Special thanks to the Ultralytics team for the YOLO framework and Ultralytics Platform, which was used for dataset annotation, segmentation model training, and export. Thanks to the OpenCV community for providing excellent real-time video processing tools.</p>
+
+                        <hr>
+
+                        <p><strong>Note:</strong> This system is designed for research, educational, and authorized ADAS prototyping purposes. Detection accuracy may vary depending on camera angle, occlusion, lighting conditions, and domain shift between training and deployment environments. For production autonomous driving applications, additional validation with site-specific data, sensor fusion, and uncertainty signaling are required.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="about-section">
+                    <div class="about-header">
+                        <h3>About</h3>
+                    </div>
+                    <p class="about-description">
+                        This project implements a real-time Road Surface Obstacle and Traffic Warning Object Segmentation System using instance segmentation techniques. Detects and segments road hazards, obstacles, and traffic warning signs with pixel-level precision for enhanced situational awareness in autonomous driving and ADAS applications.
+                    </p>
+
+                    <div class="about-links">
+                        <a href="https://github.com/kemalkilicaslan/Road-Surface-Obstacle-and-Traffic-Warning-Object-Segmentation-System/blob/main/LICENSE" target="_blank">CC BY-NC-ND 4.0</a>
+                    </div>
+                </div>
+
+                <div class="techskills">
+                    <h3>Tech Stack</h3>
+                    <img src="assets/icons/Python-icon.webp" alt="Python">
+                    <img src="assets/icons/NumPy-icon.webp" alt="NumPy">
+                    <img src="assets/icons/OpenCV-icon.webp" alt="OpenCV">
+                    <img src="assets/icons/ultralytics-icon.webp" alt="ultralytics">
+                </div>
+
+                <div class="packages-section">
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>python>=3.8</li>
+                        <li>numpy>=1.24.0</li>
+                        <li>opencv-python>=4.8.0</li>
+                        <li>ultralytics>=8.0.0</li>
+                    </ul>
+                </div>
+
+                <div class="languages-section">
+                    <h3>Languages</h3>
+                    <div class="language-bar">
+                        <div class="language-segment python" style="width: 100%"></div>
+                    </div>
+                    <div class="language-item">
+                        <span class="color-dot python-dot"></span>
+                        <span>Python 100%</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container text-center">
+        <div class="cta-banner">
+            <h4><strong data-key="cta_project_title">Need a similar system for your business?</strong></h4>
+            <p data-key="cta_project_text">I design and build custom AI and computer vision solutions like this one, adapted to your data, hardware and goals.</p>
+            <div class="cta-actions">
+                <a class="cta-button" data-cta="project-quote" href="mailto:kemalkilicaslan@outlook.com?subject=Project%20Inquiry" data-key="cta_project_quote">Get a project quote</a>
+                <a class="cta-button cta-button-outline" data-cta="project-services" href="index.html#myservices" data-key="cta_project_services">Explore my services</a>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <footer class="bottom">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-3 text-left">
+                    <p>© 2026 Kemal Kılıçaslan</p>
+                </div>
+                <div class="col-6 text-center">
+                    <a href="mailto:kemalkilicaslan@outlook.com" data-key="contact"><strong>Contact</strong></a>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="https://www.linkedin.com/in/kemalkilicaslan" rel="noopener noreferrer" aria-label="LinkedIn" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 999.000000 1000.000000" preserveAspectRatio="xMidYMid meet" width="25" height="25"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1085 9983 c-414 -54 -767 -301 -950 -663 -53 -107 -88 -201 -111 -310 -18 -82 -19 -217 -19 -4015 0 -3798 1 -3933 19 -4015 106 -484 472 -850 956 -956 82 -18 217 -19 4015 -19 3798 0 3933 1 4015 19 484 106 850 472 956 956 18 82 19 217 19 4015 0 3798 -1 3933 -19 4015 -104 477 -453 832 -936 953 l-85 21 -3915 2 c-2153 1 -3928 -1 -3945 -3z m1114 -1154 c313 -50 584 -275 700 -581 40 -105 54 -183 54 -313 0 -134 -13 -208 -59 -328 -134 -350 -466 -577 -847 -577 -419 0 -773 276 -878 685 -35 137 -33 315 4 449 49 177 127 307 259 432 122 115 287 201 443 229 87 16 239 18 324 4z m4318 -2453 c434 -67 738 -209 969 -452 238 -250 375 -563 456 -1044 57 -335 60 -443 60 -2130 l0 -1530 -780 3 -780 2 0 1328 c0 790 -4 1396 -10 1497 -34 552 -203 836 -560 941 -88 27 -107 28 -265 28 -150 -1 -181 -4 -269 -27 -102 -27 -204 -70 -257 -107 -24 -18 -29 -29 -31 -68 l-1 -47 -6 45 -6 45 -61 -60 c-34 -33 -78 -87 -99 -119 -44 -70 -104 -196 -117 -246 -5 -19 -11 -44 -14 -55 -3 -11 -7 -31 -10 -45 -3 -14 -12 -47 -19 -75 -37 -127 -38 -197 -42 -1627 l-4 -1408 -779 -2 -780 -3 0 2528 0 2527 750 0 750 0 0 -192 c1 -106 1 -262 0 -345 -1 -119 2 -153 12 -152 7 0 42 46 78 101 110 169 279 334 460 446 41 25 78 51 82 57 4 5 8 7 8 2 0 -4 32 9 71 28 145 73 345 134 529 160 111 16 551 13 665 -4z m-4405 -2626 l0 -2525 -780 0 -780 0 0 2525 0 2525 780 0 780 0 0 -2525z"/> </g> </svg>
+                    </a>
+                    <a href="https://github.com/kemalkilicaslan" rel="noopener noreferrer" aria-label="GitHub" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg viewBox="0 0 16 16" width="25" height="25" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
