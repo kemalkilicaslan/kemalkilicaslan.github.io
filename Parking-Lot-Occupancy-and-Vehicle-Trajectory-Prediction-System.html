@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(){var t=localStorage.getItem('theme');document.documentElement.classList.add(t==='dark'?'dark-theme':'light-theme');})()</script>
+    <title>Kemal Kılıçaslan | Parking Lot Occupancy and Vehicle Trajectory Prediction System</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kemal Kilicaslan">
+    <meta name="description" content="Parking lot occupancy and vehicle trajectory prediction for drone footage. Finds 400 slots from painted lines, marks them occupied or empty and predicts where moving cars go.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/icons/brand/KEMAL-KILICASLAN.ico" type="image/x-icon">
+    <link rel="canonical" href="https://kemalkilicaslan.com/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="Kemal Kılıçaslan | Parking Lot Occupancy and Vehicle Trajectory Prediction System">
+    <meta property="og:description" content="Parking lot occupancy and vehicle trajectory prediction for drone footage. Finds 400 slots from painted lines, marks them occupied or empty and predicts where moving cars go.">
+    <meta property="og:url" content="https://kemalkilicaslan.com/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System.html">
+    <meta property="og:image" content="https://kemalkilicaslan.com/assets/icons/brand/KEMAL-KILICASLAN.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kemal Kilicaslan Official Website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kemal Kılıçaslan | Parking Lot Occupancy and Vehicle Trajectory Prediction System">
+    <meta name="twitter:description" content="Parking lot occupancy and vehicle trajectory prediction for drone footage. Finds 400 slots from painted lines, marks them occupied or empty and predicts where moving cars go.">
+    <meta name="twitter:image" content="https://kemalkilicaslan.com/assets/icons/brand/KEMAL-KILICASLAN.png">
+    <meta name="twitter:site" content="@iam_kilicaslan">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C3W7PCE61L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C3W7PCE61L');
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "Parking Lot Occupancy and Vehicle Trajectory Prediction System",
+            "description": "Parking lot occupancy and vehicle trajectory prediction for drone footage. Finds 400 slots from painted lines, marks them occupied or empty and predicts where moving cars go.",
+            "url": "https://kemalkilicaslan.com/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System.html",
+            "keywords": "Parking Lot Occupancy, Vehicle Trajectory Prediction, Multi-Object Tracking, OC-SORT, ByteTrack, Kalman Filter, Parking Slot Detection, Drone Footage, Aerial Imagery, YOLO, VisDrone, Video Stabilization, Homography, Computer Vision, OpenCV, Python",
+            "author": {
+                "@type": "Person",
+                "name": "Kemal Kılıçaslan",
+                "url": "https://kemalkilicaslan.com",
+                "jobTitle": "Super Intelligence Developer",
+                "sameAs": [
+                    "https://www.linkedin.com/in/kemalkilicaslan",
+                    "https://github.com/kemalkilicaslan",
+                    "https://medium.com/@kemalkilicaslan",
+                    "https://www.kaggle.com/kemalkilicaslan",
+                    "https://huggingface.co/kemalkilicaslan",
+                    "https://www.youtube.com/@kemal_kilicaslan"
+                ]
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand">
+        <div class="container d-flex justify-content-between align-items-center">
+            <ul class="navbar-nav d-flex align-items-center">
+                <li>
+                    <a class="nav-link" href="index.html#index">KEMAL KILIÇASLAN</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="index.html#myprojects" data-key="projects">PROJECTS</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="index.html#mycertificates" data-key="certificates">CERTIFICATES</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav d-flex align-items-center">
+                <a href="https://github.com/kemalkilicaslan/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System" rel="noopener noreferrer" aria-label="GitHub" class="nav-link" target="_blank">
+                    <svg class="github-icon" viewBox="0 0 16 16" width="25" height="25" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle text-dark d-flex align-items-center" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedLang" class="me-2" style="font-size: 25px;">🇬🇧</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" data-key="English" data-lang="English" data-flag="🇬🇧">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Türkçe" data-lang="Türkçe" data-flag="🇹🇷">🇹🇷 Türkçe</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Deutsch" data-lang="Deutsch" data-flag="🇩🇪">🇩🇪 Deutsch</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Español" data-lang="Español" data-flag="🇪🇸">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Dutch" data-lang="Dutch" data-flag="🇳🇱">🇳🇱 Dutch</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Italiano" data-lang="Italiano" data-flag="🇮🇹">🇮🇹 Italiano</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Français" data-lang="Français" data-flag="🇫🇷">🇫🇷 Français</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Português" data-lang="Português" data-flag="🇧🇷">🇧🇷 Português</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Русский" data-lang="Русский" data-flag="🇷🇺">🇷🇺 Русский</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="日本語" data-lang="日本語" data-flag="🇯🇵">🇯🇵 日本語</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="العربية" data-lang="العربية" data-flag="🇸🇦">🇸🇦 العربية</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline-dark ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80" width="25" height="25">
+                            <circle r="39" />
+                            <path fill="#fff" d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38" />
+                            <circle r="5" cy="19" fill="#fff" />
+                            <circle r="5" cy="-19" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 id="parking-lot-occupancy-and-vehicle-trajectory-prediction-system">Parking Lot Occupancy and Vehicle Trajectory Prediction System</h1>
+        <div class="content-grid">
+            <div class="main-content">
+                <div class="readme-section">
+                    <div class="readme-content">
+
+                        <h2 id="1-introduction">1. Introduction</h2>
+                        <p>This project implements parking lot occupancy analysis and vehicle trajectory prediction for aerial (drone) footage. It finds every parking slot from the painted lines on the ground, detects vehicles with a YOLO detector trained on VisDrone, and labels each slot as occupied or empty in every frame. Occupied slots are filled with transparent red and empty slots with transparent green. Thin slot borders (1 px, anti-aliased, half transparent, drawn at sub-pixel precision) separate them.</p>
+
+                        <p>The system also tracks the vehicles driving in the aisles and predicts where they are heading. For every moving vehicle outside the parking slots it draws the path it has driven and its predicted path for the next 2 seconds as a blue dotted line with an arrowhead. When the predicted path drives into an empty slot, that slot is outlined as the likely target.</p>
+
+                        <p>Parking guidance, smart city planning, retail footfall analysis and facility management all need to know how many spaces are free, where they are, and where the cars looking for them are going. Fixed ground sensors add a cost for every slot, while a single drone or rooftop camera can cover the whole lot. The slots are extracted automatically, so no one has to draw the parking spaces by hand.</p>
+
+                        <p>The test lot has 400 slots across 16 parking lanes. The drone drifts by about 9 px and changes perspective slightly during the 28-second video. The system cancels this motion with homography-based stabilization so the slots stay on the painted lines in every frame. Vehicles are tracked in the same stabilized coordinates, so parked cars stand still and only real movement is followed.</p>
+
+                        <p><strong>Core Features:</strong></p>
+                        <ul>
+                            <li>Automatic parking slot extraction from painted lines (no manual annotation)</li>
+                            <li>Sub-pixel slot borders aligned with the center of the painted divider lines</li>
+                            <li>Automatic deskew of the lot (-0.73° on the test video)</li>
+                            <li>Recovery of divider lines hidden under parked vehicles, trucks and trailers with a periodic grid</li>
+                            <li>Rejection of islands, hatched no-parking zones and painted loading bands</li>
+                            <li>Accessible slots between hatched access aisles and partly visible slots at the frame border</li>
+                            <li>Vehicle detection with a VisDrone-trained YOLO model (car, van, truck; trucks and trailers parked across the slots)</li>
+                            <li>Curb zones (islands, medians, loading bands and hatched blocks inside the parking rows) where no vehicle is ever detected</li>
+                            <li>Drone motion compensation with Lucas-Kanade optical flow and homography</li>
+                            <li>Occupancy decision with overlap ratio, temporal smoothing and hysteresis</li>
+                            <li>Multi-vehicle tracking in stabilized coordinates: OC-SORT style association with ByteTrack two-stage matching and track-aware initialization</li>
+                            <li>Moving / parked separation with speed and displacement hysteresis</li>
+                            <li>Heading and turn-rate estimation, with a 2-second predicted path (dotted line and arrowhead) for vehicles moving outside the parking slots</li>
+                            <li>Likely target slot: the empty slot that a predicted path drives into is outlined</li>
+                            <li>Live statistics panel (occupied, empty, total, occupancy rate)</li>
+                            <li>Automatic re-extraction of the slot map when the extraction code or its settings change</li>
+                            <li>H.264 output video, per-frame occupancy CSV, per-vehicle track CSV and JSON summary report</li>
+                        </ul>
+
+                        <h2 id="2-methodology-approach">2. Methodology / Approach</h2>
+                        <p>The system has two stages. Stage one runs once, on a reference frame: it reads the painted lines and builds a map of parking slot polygons. Stage two runs on every frame: it aligns the frame to the reference, detects vehicles, decides the occupancy of each slot, updates the vehicle tracks and predicts the path of every vehicle moving outside the slots.</p>
+
+                        <h3 id="2-1-system-architecture">2.1 System Architecture</h3>
+                        <p>The pipeline has eleven steps:</p>
+                        <ol>
+                            <li><strong>Line Extraction:</strong> A morphological top-hat on $\max(B, G, R)$ isolates thin bright paint; vehicle boxes are masked out so car edges are not read as lines</li>
+                            <li><strong>Deskew:</strong> The lot rotation is found from the sharpest row projection, then refined by fitting lines to divider segments</li>
+                            <li><strong>Lane Detection:</strong> Plateaus of the horizontal line histogram give the parking lanes; double rows are split at the painted center line</li>
+                            <li><strong>Divider Grid:</strong> Divider peaks are found with sub-pixel centroids; hidden dividers are filled in from the slot pitch (up to 6 slots under large vehicles), and row ends are extended next to islands and up to the frame border</li>
+                            <li><strong>Validation:</strong> Slots on islands (bright concrete), hatched zones (yellow diagonal stripes) or painted no-parking bands are rejected; slots between hatched access aisles are placed between the painted blocks</li>
+                            <li><strong>Stabilization:</strong> Reference corner points are tracked into each frame and a homography maps the slot map onto the frame</li>
+                            <li><strong>Vehicle Detection:</strong> The VisDrone YOLO model detects cars, vans and trucks (plus trucks/trailers parked across the slots) at 1280 px input size; detections on curb zones are dropped</li>
+                            <li><strong>Occupancy Decision:</strong> Vehicle/slot overlap, smoothed over time with hysteresis, decides occupied or empty</li>
+                            <li><strong>Vehicle Tracking:</strong> Detections mapped into reference coordinates are matched to tracks with a Kalman filter, box IoU and a direction consistency term</li>
+                            <li><strong>Trajectory Prediction:</strong> For moving vehicles outside the slots, heading and turn rate are estimated and the next 2 seconds are predicted with a constant turn rate and velocity model</li>
+                            <li><strong>Visualization:</strong> Transparent red/green slots, hairline borders, blue trajectories and a statistics panel are drawn on the output video</li>
+                        </ol>
+
+                        <h3 id="2-2-implementation-strategy">2.2 Implementation Strategy</h3>
+                        <p>Parking slots are measured from the image itself instead of being annotated by hand. On the test lot most divider lines are partly hidden by parked cars, so the system does not need a complete line: a divider counts when a small part of it is visible across the lane width. The distance between dividers (the pitch, 31.0 px here) is regular, so gaps of two or three slots are split evenly (up to six when trucks or trailers cover the gap), and empty or vehicle-filled slots at the end of a row are added up to the island or the frame border.</p>
+
+                        <p>Yellow paint is measured row by row in every lane. Rows covered by paint (hatched access aisles, loading bands) cannot hold a slot. Next to accessible spaces the slots are not on the regular grid: they are placed between the edges of the hatched aisles instead. A van parked across a loading band hides the paint in one row, so the band seen in the other row is carried over to it.</p>
+
+                        <p>Stabilization tracks points from the reference frame directly into each frame instead of from one frame to the next, so errors do not build up over the video. A forward-backward consistency check and RANSAC remove points on moving vehicles. On the test video a homography lowers the alignment error by 12% to 47% (more in the second half of the video) compared with a similarity transform, because the drone's perspective also changes.</p>
+
+                        <p>Vehicle boxes are mapped into reference coordinates, where the slot polygons are fixed. A slot is occupied when a vehicle covers at least 30% of its area. Trucks and trailers parked across the slots (box taller than 1.5× its width) cover only part of each slot they block, so 20% is enough for them. An exponential moving average with two thresholds stops a slot from flickering when a single detection is missed.</p>
+
+                        <p>Islands, medians, loading bands and hatched blocks inside the parking rows are curb zones, and nothing detected there counts as a vehicle. The curb mask is built once from the slot map and the reference frame. Lanes closer than one slot pitch form one parking row, and the gap between them is a median. Everything inside a row that is not a slot is curb. Past both ends of a row, the curb continues as long as the rows of the reference frame are bright concrete, so the islands are covered while the asphalt roads beyond them stay free. Strips narrower than 15 px are removed, so cars turning into a slot are not cut off at the row edge. A detection whose center falls on the curb mask is dropped before both the occupancy decision and the tracker.</p>
+
+                        <p>The detector runs once per frame. Boxes with a confidence of at least 0.30 drive the occupancy decision. The tracker uses its own thresholds: boxes of at least 0.25 start and update tracks, and boxes between 0.10 and 0.25 only keep existing tracks alive, so a car partly hidden by a tree or a light pole does not lose its track. Tracking also runs in reference coordinates. Seen from above, cars look much alike, so the tracker relies on motion and box overlap rather than appearance features.</p>
+
+                        <p>A track counts as moving when it is at least 8 frames old, its speed is above 0.5 px/frame (about 4 km/h) and it has moved more than 5 px in the last 15 frames. It drops back to parked below 0.25 px/frame. Per-frame velocity angles are too noisy for a heading (about 1 px of box jitter against about 1 px/frame of motion), so heading and turn rate come from a quadratic fit of the last 30 positions. Only vehicles whose center is outside every slot polygon get a trajectory, so a car that drives into a slot stops being drawn as soon as it enters.</p>
+
+                        <h2 id="3-mathematical-framework">3. Mathematical Framework</h2>
+                        <h3 id="3-1-painted-line-extraction">3.1 Painted Line Extraction</h3>
+                        <p>Painted lines are thin and brighter than the asphalt around them. The white top-hat transform keeps structures smaller than the structuring element $B$:</p>
+                        <p>$$T(I) = I - (I \circ B)$$</p>
+
+                        <p>where $I = \max(B, G, R)$ is the brightness channel and $\circ$ is morphological opening. Pixels with $T(I) &gt; 40$ are line candidates. Opening with a $15 \times 1$ kernel keeps horizontal dividers, and a $1 \times 31$ kernel keeps vertical center lines.</p>
+
+                        <h3 id="3-2-deskew">3.2 Deskew</h3>
+                        <p>The rotation angle $\theta$ is chosen to make the row projection of the line mask as sharp as possible:</p>
+                        <p>$$\theta^{\ast} = \arg\max_{\theta} \sum_{y} \Big( \sum_{x} R_{\theta}(M)(x, y) \Big)^{2}$$</p>
+
+                        <p>where $R_{\theta}$ rotates the line mask $M$. The angle is then refined until the median slope of the divider segments in the rotated image is zero.</p>
+
+                        <h3 id="3-3-sub-pixel-divider-position">3.3 Sub-pixel Divider Position</h3>
+                        <p>For each lane, the divider profile $p(y)$ is the fraction of the lane width covered by line pixels in row $y$. Each peak is refined with a centroid over a 5-pixel window:</p>
+                        <p>$$\hat{y} = \frac{\sum_{i=-2}^{2} (y_0 + i) p(y_0 + i)}{\sum_{i=-2}^{2} p(y_0 + i)}$$</p>
+
+                        <h3 id="3-4-hidden-divider-recovery">3.4 Hidden Divider Recovery</h3>
+                        <p>With lane pitch $s$, the gap $\Delta y$ between two visible dividers holds</p>
+
+                        <p>$$k = \text{round}\left(\frac{\Delta y}{s}\right), \qquad \left|\Delta y - k s\right| \le 0.22 s, \qquad 1 \le k \le 3$$</p>
+
+                        <p>slots, and the gap is split into $k$ equal slots. When at least 40% of the gap is covered by vehicles (trucks, trailers), up to $k = 6$ is allowed.</p>
+
+                        <h3 id="3-5-stabilization-homography">3.5 Stabilization Homography</h3>
+                        <p>Reference points $\mathbf{p}_i$ are tracked to $\mathbf{q}_i$ in the current frame, and a homography $\mathbf{H}$ is estimated with RANSAC:</p>
+                        <p>$$\lambda (\mathbf{q}_i, 1)^{\top} = \mathbf{H} (\mathbf{p}_i, 1)^{\top}$$</p>
+
+                        <p>Slot polygons are drawn at $\mathbf{H} \mathbf{P}_{\text{slot}}$, and vehicle boxes are mapped back with $\mathbf{H}^{-1}$.</p>
+
+                        <h3 id="3-6-occupancy-decision">3.6 Occupancy Decision</h3>
+                        <p>For slot $S_j$ and vehicles $V_k$ (in reference coordinates):</p>
+                        <p>$$r_j = \max_{k} \frac{\text{area}(S_j \cap V_k)}{\text{area}(S_j)}$$</p>
+
+                        <p>The per-frame decision $o_j = [r_j \ge 0.30] \lor [r_j^{\text{cross}} \ge 0.20]$, where $r_j^{\text{cross}}$ is the overlap with trucks/trailers parked across the slots, is smoothed with an exponential moving average:</p>
+                        <p>$$e_j^{(t)} = \alpha o_j^{(t)} + (1 - \alpha) e_j^{(t-1)}, \qquad \alpha = 0.35$$</p>
+
+                        <p>and hysteresis gives the final state: the slot becomes occupied when $e_j \ge 0.60$ and empty when $e_j \le 0.35$.</p>
+
+                        <h3 id="3-7-vehicle-tracking">3.7 Vehicle Tracking</h3>
+                        <p>Each track has a constant-velocity Kalman filter on its box center $\mathbf{c} = (c_x, c_y)$ and velocity $\mathbf{v} = (v_x, v_y)$ in reference coordinates:</p>
+                        <p>$$\mathbf{x} = (c_x, c_y, v_x, v_y)^{\top}, \qquad \mathbf{c}_{t+1} = \mathbf{c}_t + \mathbf{v}_t, \qquad \mathbf{v}_{t+1} = \mathbf{v}_t$$</p>
+
+                        <p>High-confidence detections $D_j$ are matched to tracks $T_i$ with the Hungarian algorithm on the cost</p>
+
+                        <p>$$C_{ij} = 1 - \text{IoU}(T_i, D_j) + \lambda \frac{\Delta\phi_{ij}}{\pi}, \qquad \lambda = 0.2$$</p>
+
+                        <p>where $\Delta\phi_{ij}$ is the angle between the track's direction (from observations 3 frames apart) and the direction from its last observation to $D_j$. A pair is accepted when $\text{IoU} \ge 0.2$. Unmatched tracks are then matched to low-confidence detections ($\text{IoU} \ge 0.4$), and the rest to the remaining high-confidence detections using their last observed box. A new track starts only from a high-confidence detection whose IoU with every existing track is below 0.5.</p>
+
+                        <p>When a track is found again after a gap of $g$ frames, the filter is rewound to its last observation $\mathbf{z}_{t_0}$ and re-run over virtual observations</p>
+
+                        <p>$$\tilde{\mathbf{z}}_{t_0 + i} = \mathbf{z}_{t_0} + \frac{i}{g}\left(\mathbf{z}_{t_0 + g} - \mathbf{z}_{t_0}\right), \qquad i = 1, \dots, g - 1$$</p>
+
+                        <p>so the velocity is not corrupted by blind prediction during the gap.</p>
+
+                        <h3 id="3-8-heading-and-turn-rate">3.8 Heading and Turn Rate</h3>
+                        <p>The last $W = 30$ positions are fitted with a quadratic in time ($\tau \le 0$, $\tau = 0$ is the current frame):</p>
+                        <p>$$x(\tau) = a_x \tau^2 + b_x \tau + c_x, \qquad y(\tau) = a_y \tau^2 + b_y \tau + c_y$$</p>
+
+                        <p>The velocity is $\mathbf{v} = (b_x, b_y)$ and the acceleration is $\mathbf{a} = (2a_x, 2a_y)$. Heading and turn rate are</p>
+
+                        <p>$$\theta = \text{atan2}(v_y, v_x), \qquad \omega = \frac{v_x a_y - v_y a_x}{\lVert \mathbf{v} \rVert^2}$$</p>
+
+                        <p>Turn rates below 10°/s are set to zero (straight driving), larger ones are clipped at 90°/s and smoothed with an exponential moving average ($\alpha = 0.3$).</p>
+
+                        <h3 id="3-9-path-prediction">3.9 Path Prediction</h3>
+                        <p>The predicted path uses a constant turn rate and velocity (CTRV) model. The turn rate decays along the path so the prediction does not curl into a circle:</p>
+                        <p>$$\theta_{k+1} = \theta_k + \omega_k, \qquad \omega_{k+1} = 0.97 \omega_k, \qquad \mathbf{p}_{k+1} = \mathbf{p}_k + \lVert \mathbf{v} \rVert (\cos\theta_{k+1}, \sin\theta_{k+1})^{\top}$$</p>
+
+                        <p>for $k = 0, \dots, 59$ (2 seconds at 30 FPS). The likely target slot is the first empty slot whose center lies within $0.6 s$ of the predicted path, where $s$ is the slot pitch.</p>
+
+                        <h2 id="4-requirements">4. Requirements</h2>
+                        <p><code>requirements.txt</code></p>
+
+                        <pre><code>opencv-python&gt;=4.8.0
+numpy&gt;=1.24.0
+scipy&gt;=1.10.0
+ultralytics&gt;=8.3.0</code></pre>
+
+                        <p>FFmpeg is optional. When it is installed, the output video is encoded as H.264; otherwise OpenCV writes MPEG-4 (<code>mp4v</code>).</p>
+
+                        <h2 id="5-installation-configuration">5. Installation &amp; Configuration</h2>
+                        <h3 id="5-1-environment-setup">5.1 Environment Setup</h3>
+                        <pre><code># Clone the repository
+git clone https://github.com/kemalkilicaslan/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System.git
+cd Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System
+
+# Install required packages
+pip install -r requirements.txt</code></pre>
+
+                        <h3 id="5-2-project-structure">5.2 Project Structure</h3>
+                        <pre><code>Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System
+├── Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System.py
+├── config.py
+├── Dockerfile
+├── .dockerignore
+├── docker-compose.yml
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── LICENSE</code></pre>
+
+                        <h3 id="5-3-configuration-parameters">5.3 Configuration Parameters</h3>
+                        <p>All adjustable parameters are in <code>config.py</code>, so you can change them without editing the main script.</p>
+
+                        <p><strong>Model and Detection:</strong></p>
+                        <pre><code>MODEL_PATH = "visdrone.pt"
+VEHICLE_CLASSES = ("car", "van", "truck")   # VisDrone classes counted as vehicles
+
+IMG_SIZE = 1280              # inference size (aerial cars are ~58x26 px at 1080p)
+CONF_THRESH = 0.30           # detection confidence threshold (occupancy)
+MAX_DET = 2000               # a crowded lot exceeds the default limit of 300</code></pre>
+
+                        <p><strong>Parking Slot Extraction:</strong></p>
+                        <pre><code>REF_FRAME = 0                # frame used for slot extraction and as stabilization reference
+REBUILD_SLOTS = False        # True = always extract the slots again
+LINE_THRESH = 40             # top-hat threshold for painted line pixels
+MAX_MISSING = 3              # max. consecutive dividers hidden by vehicles
+MAX_MISSING_COVERED = 6      # max. hidden dividers under large vehicles (trucks, trailers)
+EXTRAPOLATE = 2              # max. slots added at each row end (next to islands)
+PAINT_ROW_FRAC = 0.20        # yellow paint ratio that marks a lane row as no-parking
+PAINT_SLOT_FRAC = 0.4        # painted row ratio that rejects a slot
+EDGE_MIN_VISIBLE = 0.6       # min. visible part of a slot cut by the frame border</code></pre>
+
+                        <p><strong>Occupancy Decision:</strong></p>
+                        <pre><code>OVERLAP_THRESH = 0.30        # vehicle area / slot area needed to call a slot occupied
+EMA_ALPHA = 0.35             # temporal smoothing factor of the occupancy score
+ON_THRESH = 0.60             # smoothed score above which a slot becomes occupied
+OFF_THRESH = 0.35            # smoothed score below which a slot becomes empty
+CROSSWISE_CLASSES = ("truck", "bus")   # large vehicles parked across the slots (trailers = "bus")
+CROSSWISE_ASPECT = 1.5       # box height / width above which a vehicle lies across the slots
+CROSSWISE_OVERLAP = 0.20     # overlap with a crosswise vehicle that marks a slot occupied</code></pre>
+
+                        <p><strong>Curb Zones:</strong></p>
+                        <pre><code>CURB_EXCLUDE = True          # drop every detection whose centre lies on a curb zone
+CURB_LANE_GAP = 1.0          # lanes closer than this (x pitch) form one row, the gap is a median
+CURB_ISLAND_FRAC = 0.3       # bright concrete ratio of a row that extends an island past the row end
+CURB_ISLAND_GAP = 6          # weaker rows allowed inside an island (lamp posts, cracks)
+CURB_ISLAND_START = 1.0      # weaker rows allowed before an island starts (x pitch, planters)
+CURB_MAX_EXTENT = 5.0        # max. island length past the row end (x pitch)
+CURB_MIN_WIDTH = 15          # thinner strips are not curbs (px), keeps row edges free
+</code></pre>
+
+                        <p><strong>Vehicle Tracking and Trajectory Prediction:</strong></p>
+                        <pre><code>TRACK_HIGH_THRESH = 0.25     # min. confidence to start or first-stage match a track
+TRACK_LOW_THRESH = 0.10      # min. confidence for the second matching stage
+MATCH_IOU_HIGH = 0.20        # min. IoU for high-confidence matches and recovery
+MATCH_IOU_LOW = 0.40         # min. IoU for low-confidence matches
+OCM_WEIGHT = 0.20            # weight of the direction consistency cost
+NEW_TRACK_IOU = 0.50         # no new track from a box overlapping an existing track this much
+MAX_MISSED = 12              # frames a track survives without a detection
+
+MOVE_ON_SPEED = 0.50         # px / frame above which a track becomes moving (~4 km/h)
+MOVE_OFF_SPEED = 0.25        # px / frame below which a moving track becomes parked
+MOVE_MIN_DISPLACEMENT = 5.0  # px a car must travel within MOVE_WINDOW to count as moving
+
+PREDICT_SECONDS = 2.0        # how far ahead the dotted path is predicted
+HEADING_WINDOW = 30          # past positions fitted for heading and turn rate
+YAW_DEADBAND_DEG = 10.0      # turn rates below this count as straight driving (deg / s)
+PREDICT_TARGET_SLOT = True   # outline the empty slot a predicted path drives into
+SLOT_WIDTH_M = 2.5           # real width of one parking slot (m), used for km/h</code></pre>
+
+                        <p><strong>Visualization:</strong></p>
+                        <pre><code>COLOR_OCCUPIED = (40, 40, 235)   # BGR red
+COLOR_EMPTY = (60, 220, 60)      # BGR green
+ALPHA_OCCUPIED = 0.40            # transparency of the red fill
+ALPHA_EMPTY = 0.22               # transparency of the green fill
+SHOW_SLOT_BORDERS = True         # draw thin slot border lines
+BORDER_ALPHA = 0.5               # opacity of the 1 px border lines
+SHOW_SLOT_IDS = False            # draw slot numbers
+SHOW_BOXES = False               # draw vehicle detection boxes
+TRACK_COLOR = (255, 80, 0)       # BGR blue (trajectories)
+TRAIL_LENGTH = 45                # past positions drawn as a solid trail (frames)</code></pre>
+
+                        <h2 id="6-usage-how-to-run">6. Usage / How to Run</h2>
+                        <h3 id="6-1-basic-execution">6.1 Basic Execution</h3>
+                        <pre><code>python Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System.py</code></pre>
+
+                        <p><strong>Requirements:</strong></p>
+                        <ul>
+                            <li>Input video: <code>Aerial-Parking-Lot.mp4</code> (place in project directory)</li>
+                            <li>VisDrone YOLO model: <code>visdrone.pt</code> (place in project directory)</li>
+                        </ul>
+
+                        <p><strong>Controls:</strong></p>
+                        <ul>
+                            <li>Press <code>q</code> to quit during playback</li>
+                        </ul>
+
+                        <p><strong>Outputs:</strong></p>
+                        <ul>
+                            <li><code>Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction.mp4</code>: annotated output video</li>
+                            <li><code>Parking-Lot-Slots.json</code>: slot polygons in reference frame coordinates</li>
+                            <li><code>Parking-Lot-Slots.png</code>: numbered slot map</li>
+                            <li><code>Parking-Lot-Occupancy-timeseries.csv</code>: per-frame occupancy, camera motion and number of moving vehicles</li>
+                            <li><code>Parking-Lot-Vehicle-Tracks.csv</code>: per-frame position, speed, heading, turn rate, predicted position and target slot of every vehicle with a trajectory</li>
+                            <li><code>Parking-Lot-Occupancy-summary.json</code>: overall statistics, per-slot occupancy ratio and per-vehicle trajectory summary</li>
+                        </ul>
+
+                        <h3 id="6-2-using-a-different-parking-lot-video">6.2 Using a Different Parking Lot Video</h3>
+                        <ol>
+                            <li>Set <code>INPUT_VIDEO</code> in <code>config.py</code></li>
+                            <li>Run the script: the slots are extracted again automatically because the video setting changed (<code>REBUILD_SLOTS = True</code> forces it)</li>
+                            <li>Check <code>Parking-Lot-Slots.png</code>; if lines are missed, lower <code>LINE_THRESH</code>, or raise it if asphalt cracks are picked up</li>
+                            <li>Set <code>REF_FRAME</code> to a frame where the camera is steady and the lot is clearly visible</li>
+                            <li>Set <code>SLOT_WIDTH_M</code> to the real slot width of the new lot, so the speeds in the outputs stay correct</li>
+                        </ol>
+
+                        <h3 id="6-3-tuning-the-occupancy-decision">6.3 Tuning the Occupancy Decision</h3>
+                        <pre><code># A vehicle must cover more of the slot (fewer false "occupied")
+OVERLAP_THRESH = 0.45
+
+# Faster reaction to vehicles arriving and leaving (more flicker)
+EMA_ALPHA = 0.6
+
+# Show slot numbers and detections for debugging
+SHOW_SLOT_IDS = True
+SHOW_BOXES = True</code></pre>
+
+                        <h3 id="6-4-tuning-the-trajectories">6.4 Tuning the Trajectories</h3>
+                        <pre><code># Slow vehicles are missed: count lower speeds as moving
+MOVE_ON_SPEED = 0.35
+
+# Parked cars get a trajectory: require more travel before a vehicle counts as moving
+MOVE_MIN_DISPLACEMENT = 8.0
+
+# New vehicles are picked up late: start tracks from less confident detections
+TRACK_HIGH_THRESH = 0.60
+
+# Shorter or longer predicted path
+PREDICT_SECONDS = 1.5</code></pre>
+
+                        <h2 id="7-docker-deployment">7. Docker Deployment</h2>
+                        <p>Running the system in a container keeps the code, its dependencies and the runtime environment the same on every machine.</p>
+
+                        <h3 id="files">Files</h3>
+                        <ul>
+                            <li><code>Dockerfile</code>: builds the image (Python 3.11 + OpenCV/ffmpeg system libraries + Python dependencies).</li>
+                            <li><code>.dockerignore</code>: keeps large media, model files and generated reports out of the build context.</li>
+                            <li><code>docker-compose.yml</code>: runs the container and mounts the project folder for input/output.</li>
+                        </ul>
+
+                        <h3 id="build-and-run">Build and run</h3>
+                        <pre><code># Build the image and run the container
+docker compose up --build
+
+# Or use the Docker CLI directly
+docker build -t parking-lot-occupancy-and-vehicle-trajectory-prediction:latest .
+docker run --rm -v "$(pwd)":/app parking-lot-occupancy-and-vehicle-trajectory-prediction:latest</code></pre>
+
+                        <h3 id="notes">Notes</h3>
+                        <ul>
+                            <li>The model weight (<code>visdrone.pt</code>) and the input video are read from the mounted project folder; they are not copied into the image.</li>
+                            <li>The container runs headless: <code>SHOW_WINDOW=0</code> is set in the <code>Dockerfile</code>, so the <code>cv2.imshow</code> preview is disabled and the outputs are written to the project folder.</li>
+                            <li>Inside Docker the model runs on the CPU. GPU acceleration (CUDA, or MPS on Apple Silicon) is available when the script is run directly on the host.</li>
+                        </ul>
+
+                        <h2 id="8-application-results">8. Application / Results</h2>
+                        <h3 id="8-1-input-video">8.1 Input Video</h3>
+                        <p><strong>Aerial Parking Lot:</strong></p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/1gq8OuhcC00" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p><em>1920×1080, 30 FPS, 28.3 s, 849 frames, H.264 drone footage of the parking lot.</em></p>
+
+                        <h3 id="8-2-output-video">8.2 Output Video</h3>
+                        <p><strong>Parking Lot Occupancy and Vehicle Trajectory Prediction:</strong></p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/FT8M5UBCCr4" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <p><em>Reference frame: 275 occupied (transparent red) and 125 empty (green) slots, 68.8% occupancy. Over the video the occupied count stays between 271 and 275 (mean 272.4, 68.1%). Vehicles moving outside the slots get a blue trail and a dotted 2-second predicted path.</em></p>
+
+                        <h3 id="8-3-parking-slot-map">8.3 Parking Slot Map</h3>
+                        <p><strong>Parking Lot Slots:</strong></p>
+                        <p><img src="assets/projects/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System/Parking-Lot-Slots.webp" alt="Parking Lot Slots" loading="lazy"></p>
+                        <p><em>400 slots extracted automatically from the painted lines, numbered lane by lane and shown on the frame at 11 s. Islands, hatched zones and loading bands are left out.</em></p>
+
+                        <h3 id="8-4-slot-extraction-results">8.4 Slot Extraction Results</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Parking Lanes</td>
+                                    <td>16</td>
+                                    <td>7 double rows + 2 single rows</td>
+                                </tr>
+                                <tr>
+                                    <td>Parking Slots</td>
+                                    <td>400</td>
+                                    <td>Extracted from the reference frame</td>
+                                </tr>
+                                <tr>
+                                    <td>Lot Rotation (Deskew)</td>
+                                    <td>-0.729°</td>
+                                    <td>Refined until residual slope &lt; 0.01°</td>
+                                </tr>
+                                <tr>
+                                    <td>Slot Pitch</td>
+                                    <td>31.0 px</td>
+                                    <td>Distance between divider lines</td>
+                                </tr>
+                                <tr>
+                                    <td>Detected Vehicles (Reference Frame)</td>
+                                    <td>317</td>
+                                    <td><code>MAX_DET</code> raised above the default 300</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="8-5-stabilization-results">8.5 Stabilization Results</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Max. Camera Drift</td>
+                                    <td>~9 px</td>
+                                    <td>Measured at the image center across the video</td>
+                                </tr>
+                                <tr>
+                                    <td>Tracking Inliers</td>
+                                    <td>~1,740 to 2,000</td>
+                                    <td>Points per frame after RANSAC (homography)</td>
+                                </tr>
+                                <tr>
+                                    <td>Alignment Error Reduction</td>
+                                    <td>12% to 47%</td>
+                                    <td>Homography vs. similarity transform</td>
+                                </tr>
+                                <tr>
+                                    <td>Stabilization Time</td>
+                                    <td>~33 ms/frame</td>
+                                    <td>Lucas-Kanade at 0.5 scale</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="8-6-trajectory-results">8.6 Trajectory Results</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Vehicles with Trajectory</td>
+                                    <td>21</td>
+                                    <td>Moving outside the parking slots at some point of the video</td>
+                                </tr>
+                                <tr>
+                                    <td>Moving Vehicles per Frame</td>
+                                    <td>0 to 10</td>
+                                    <td>Mean 5.6</td>
+                                </tr>
+                                <tr>
+                                    <td>Speed (Median / Max.)</td>
+                                    <td>11.9 / 30.8 km/h</td>
+                                    <td>Assumes a slot width of 2.5 m</td>
+                                </tr>
+                                <tr>
+                                    <td>Longest Moving Distance</td>
+                                    <td>112.4 m</td>
+                                    <td>One car, moving for 19.4 s</td>
+                                </tr>
+                                <tr>
+                                    <td>Target Slot Predictions</td>
+                                    <td>1</td>
+                                    <td>One car turning into slot 118</td>
+                                </tr>
+                                <tr>
+                                    <td>Processing Time</td>
+                                    <td>~0.44 s/frame</td>
+                                    <td>849 frames in 370 s on the test machine</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="8-7-system-parameters">8.7 System Parameters</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Unit</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Inference Size</td>
+                                    <td>1280</td>
+                                    <td>pixels</td>
+                                    <td>YOLO input size</td>
+                                </tr>
+                                <tr>
+                                    <td>Detection Confidence</td>
+                                    <td>0.30</td>
+                                    <td>-</td>
+                                    <td>Vehicle detection threshold (occupancy)</td>
+                                </tr>
+                                <tr>
+                                    <td>Overlap Threshold</td>
+                                    <td>0.30</td>
+                                    <td>-</td>
+                                    <td>Vehicle area / slot area</td>
+                                </tr>
+                                <tr>
+                                    <td>EMA Alpha</td>
+                                    <td>0.35</td>
+                                    <td>-</td>
+                                    <td>Temporal smoothing factor</td>
+                                </tr>
+                                <tr>
+                                    <td>Hysteresis</td>
+                                    <td>0.60 / 0.35</td>
+                                    <td>-</td>
+                                    <td>Occupied / empty switch levels</td>
+                                </tr>
+                                <tr>
+                                    <td>Top-hat Kernel</td>
+                                    <td>9</td>
+                                    <td>pixels</td>
+                                    <td>Painted line isolation</td>
+                                </tr>
+                                <tr>
+                                    <td>Line Threshold</td>
+                                    <td>40</td>
+                                    <td>-</td>
+                                    <td>Top-hat intensity threshold</td>
+                                </tr>
+                                <tr>
+                                    <td>Track Confidence</td>
+                                    <td>0.25 / 0.10</td>
+                                    <td>-</td>
+                                    <td>High / low threshold of the two matching stages</td>
+                                </tr>
+                                <tr>
+                                    <td>Moving Speed</td>
+                                    <td>0.50 / 0.25</td>
+                                    <td>px/frame</td>
+                                    <td>Moving / parked switch levels</td>
+                                </tr>
+                                <tr>
+                                    <td>Heading Window</td>
+                                    <td>30</td>
+                                    <td>frames</td>
+                                    <td>Quadratic fit for heading and turn rate</td>
+                                </tr>
+                                <tr>
+                                    <td>Prediction Horizon</td>
+                                    <td>2.0</td>
+                                    <td>seconds</td>
+                                    <td>Length of the dotted predicted path</td>
+                                </tr>
+                                <tr>
+                                    <td>Slot Border Thickness</td>
+                                    <td>1</td>
+                                    <td>pixel</td>
+                                    <td>Anti-aliased, 4-bit sub-pixel, 50% opacity</td>
+                                </tr>
+                                <tr>
+                                    <td>Occupied Color</td>
+                                    <td>RED</td>
+                                    <td>(40, 40, 235)</td>
+                                    <td>BGR, 40% fill</td>
+                                </tr>
+                                <tr>
+                                    <td>Empty Color</td>
+                                    <td>GREEN</td>
+                                    <td>(60, 220, 60)</td>
+                                    <td>BGR, 22% fill</td>
+                                </tr>
+                                <tr>
+                                    <td>Trajectory Color</td>
+                                    <td>BLUE</td>
+                                    <td>(255, 80, 0)</td>
+                                    <td>BGR, trail, predicted path and target slot</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2 id="9-tech-stack">9. Tech Stack</h2>
+                        <h3 id="9-1-core-technologies">9.1 Core Technologies</h3>
+                        <ul>
+                            <li><strong>Programming Language:</strong> Python 3.8+</li>
+                            <li><strong>Computer Vision:</strong> OpenCV 4.8+</li>
+                            <li><strong>Object Detection:</strong> YOLO trained on VisDrone (Ultralytics)</li>
+                            <li><strong>Multi-Object Tracking:</strong> OC-SORT style tracker with ByteTrack two-stage matching (own implementation)</li>
+                            <li><strong>Signal Processing and Matching:</strong> SciPy (divider peak detection, Hungarian assignment)</li>
+                            <li><strong>Video Processing:</strong> OpenCV VideoCapture + FFmpeg (H.264 encoding)</li>
+                        </ul>
+
+                        <h3 id="9-2-libraries-dependencies">9.2 Libraries &amp; Dependencies</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Library</th>
+                                    <th>Version</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>opencv-python</td>
+                                    <td>4.8+</td>
+                                    <td>Morphology, optical flow, homography, rendering, video I/O</td>
+                                </tr>
+                                <tr>
+                                    <td>numpy</td>
+                                    <td>1.24+</td>
+                                    <td>Array operations, geometry, Kalman filter, trajectory fitting</td>
+                                </tr>
+                                <tr>
+                                    <td>scipy</td>
+                                    <td>1.10+</td>
+                                    <td>Peak detection on divider profiles, track/detection assignment</td>
+                                </tr>
+                                <tr>
+                                    <td>ultralytics</td>
+                                    <td>8.3+</td>
+                                    <td>YOLO model inference</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="9-3-model-architecture">9.3 Model Architecture</h3>
+                        <p><strong>VisDrone YOLO Detector:</strong></p>
+                        <ul>
+                            <li><strong>Model File:</strong> visdrone.pt (~118 MB)</li>
+                            <li><strong>Input Resolution:</strong> 1280×1280 pixels</li>
+                            <li><strong>Training Data:</strong> VisDrone (drone-view images and videos)</li>
+                            <li><strong>Detection Classes:</strong> 10 classes (pedestrian, people, bicycle, car, van, truck, tricycle, awning-tricycle, bus, motor); filtered to car, van and truck</li>
+                            <li><strong>Note:</strong> <code>bus</code> is not a parked-vehicle class because the model labels the concrete islands as buses on this lot. It is used only for trailers parked across the slots: those boxes are tall, while the island boxes are wide</li>
+                        </ul>
+
+                        <h3 id="9-4-computer-vision-components">9.4 Computer Vision Components</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>OpenCV Function</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Top-hat Transform</td>
+                                    <td><code>cv2.morphologyEx(MORPH_TOPHAT)</code></td>
+                                    <td>Painted line isolation</td>
+                                </tr>
+                                <tr>
+                                    <td>Directional Opening</td>
+                                    <td><code>cv2.morphologyEx(MORPH_OPEN)</code></td>
+                                    <td>Horizontal dividers / vertical center lines</td>
+                                </tr>
+                                <tr>
+                                    <td>Corner Detection</td>
+                                    <td><code>cv2.goodFeaturesToTrack()</code></td>
+                                    <td>Stabilization reference points</td>
+                                </tr>
+                                <tr>
+                                    <td>Optical Flow</td>
+                                    <td><code>cv2.calcOpticalFlowPyrLK()</code></td>
+                                    <td>Reference-to-frame point tracking</td>
+                                </tr>
+                                <tr>
+                                    <td>Homography</td>
+                                    <td><code>cv2.findHomography(RANSAC)</code></td>
+                                    <td>Drone motion compensation</td>
+                                </tr>
+                                <tr>
+                                    <td>ORB Matching</td>
+                                    <td><code>cv2.ORB_create()</code></td>
+                                    <td>Stabilization fallback</td>
+                                </tr>
+                                <tr>
+                                    <td>Convex Intersection</td>
+                                    <td><code>cv2.intersectConvexConvex()</code></td>
+                                    <td>Vehicle/slot overlap area</td>
+                                </tr>
+                                <tr>
+                                    <td>Point in Polygon</td>
+                                    <td><code>cv2.pointPolygonTest()</code></td>
+                                    <td>Parking area test for trajectories</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2 id="10-license">10. License</h2>
+                        <p>This project is licensed under the <a href="https://github.com/kemalkilicaslan/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System/blob/main/LICENSE" target="_blank">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)</a>.</p>
+
+                        <h2 id="11-references">11. References</h2>
+                        <ol>
+                            <li>Ultralytics <a href="https://docs.ultralytics.com/" target="_blank">YOLO</a> Documentation.</li>
+                            <li>VisDrone <a href="https://github.com/VisDrone/VisDrone-Dataset" target="_blank">Dataset</a> Repository.</li>
+                            <li>OpenCV <a href="https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html" target="_blank">Morphological Transformations</a> Documentation.</li>
+                            <li>OpenCV <a href="https://docs.opencv.org/4.x/d4/dee/tutorial_optical_flow.html" target="_blank">Optical Flow</a> Documentation.</li>
+                            <li>OpenCV <a href="https://docs.opencv.org/4.x/d1/de0/tutorial_py_feature_homography.html" target="_blank">Feature Matching + Homography</a> Documentation.</li>
+                            <li>Zhang, Y., et al. (2022). <a href="https://arxiv.org/abs/2110.06864" target="_blank">ByteTrack: Multi-Object Tracking by Associating Every Detection Box</a>. <em>ECCV 2022</em>.</li>
+                            <li>Cao, J., et al. (2023). <a href="https://arxiv.org/abs/2203.14360" target="_blank">Observation-Centric SORT: Rethinking SORT for Robust Multi-Object Tracking</a>. <em>CVPR 2023</em>.</li>
+                            <li>Shim, K., et al. (2025). <a href="https://github.com/kamkyu94/TrackTrack" target="_blank">Focusing on Tracks for Online Multi-Object Tracking</a>. <em>CVPR 2025</em>.</li>
+                        </ol>
+
+                        <hr>
+
+                        <h3 id="acknowledgments">Acknowledgments</h3>
+                        <p>Vehicle detection uses Ultralytics YOLO with a VisDrone-trained model. Line analysis, stabilization and rendering use OpenCV. The tracker follows ideas from ByteTrack, OC-SORT and TrackTrack. Thanks to the VisDrone team and the computer vision community for their open datasets and tools.</p>
+
+                        <hr>
+
+                        <p><strong>Note:</strong> This system is intended for research, education, and parking analysis purposes. Slot extraction assumes a top-down view with painted divider lines and yellow no-parking markings; rows where more than six dividers in a row are hidden by vehicles in the reference frame may be missed. Check the generated slot map before using the results. Speeds in the outputs assume a slot width of 2.5 m, and the predicted path assumes the vehicle keeps its current speed and turn rate for the next 2 seconds.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="about-section">
+                    <div class="about-header">
+                        <h3>About</h3>
+                    </div>
+                    <p class="about-description">
+                        This project implements parking lot occupancy analysis and vehicle trajectory prediction for drone footage. It finds 400 slots from the painted lines and marks them occupied or empty with a VisDrone-trained YOLO model. Cars in the aisles are tracked with an OC-SORT style tracker, and a dotted line shows where each will be in the next 2 seconds.
+                    </p>
+
+                    <div class="about-links">
+                        <a href="https://github.com/kemalkilicaslan/Parking-Lot-Occupancy-and-Vehicle-Trajectory-Prediction-System/blob/main/LICENSE" target="_blank">CC BY-NC-ND 4.0</a>
+                    </div>
+                </div>
+
+                <div class="techskills">
+                    <h3>Tech Stack</h3>
+                    <img src="assets/icons/tech/programming-languages/Python-icon.webp" alt="Python">
+                    <img src="assets/icons/tech/libraries/OpenCV-icon.webp" alt="OpenCV">
+                    <img src="assets/icons/tech/libraries/ultralytics-icon.webp" alt="ultralytics">
+                    <img src="assets/icons/tech/libraries/NumPy-icon.webp" alt="NumPy">
+                    <img src="assets/icons/tech/tools/FFmpeg-icon.webp" alt="FFmpeg">
+                    <img src="assets/icons/tech/tools/docker-icon.webp" alt="Docker">
+                </div>
+
+                <div class="packages-section">
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>opencv-python>=4.8.0</li>
+                        <li>numpy>=1.24.0</li>
+                        <li>scipy>=1.10.0</li>
+                        <li>ultralytics>=8.3.0</li>
+                    </ul>
+                </div>
+
+                <div class="languages-section">
+                    <h3>Languages</h3>
+                    <div class="language-bar">
+                        <div class="language-segment python" style="width: 100%"></div>
+                    </div>
+                    <div class="language-item">
+                        <span class="color-dot python-dot"></span>
+                        <span>Python 100%</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+
+    <footer class="bottom">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-3 text-left">
+                    <p>© 2026 Kemal Kılıçaslan</p>
+                </div>
+                <div class="col-6 text-center">
+                    <a href="mailto:kemalkilicaslan@outlook.com" data-key="contact"><strong>Contact</strong></a>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="https://www.linkedin.com/in/kemalkilicaslan" rel="noopener noreferrer" aria-label="LinkedIn" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 999.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1085 9983 c-414 -54 -767 -301 -950 -663 -53 -107 -88 -201 -111-310 -18 -82 -19 -217 -19 -4015 0 -3798 1 -3933 19 -4015 106 -484 472 -850 956 -956 82 -18 217 -19 4015 -19 3798 0 3933 1 4015 19 484 106 850 472 956 956 18 82 19 217 19 4015 0 3798 -1 3933 -19 4015 -104 477 -453 832 -936 953 l-85 21 -3915 2 c-2153 1 -3928 -1 -3945 -3z m1114 -1154 c313 -50 584 -275 700 -581 40 -105 54 -183 54 -313 0 -134 -13 -208 -59 -328 -134 -350 -466 -577 -847 -577 -419 0 -773 276 -878 685 -35 137 -33 315 4 449 49 177 127 307 259 432 122 115 287 201 443 229 87 16 239 18 324 4z m1024 -1456 c-29 -2 -78 -2 -110 0 -32 2 -8 3 52 3 61 0 87 -1 58 -3z m-270 -10 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m450 0 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m3574 -130 c-20 -2 -52 -2 -70 0 -17 2 0 4 38 4 39 0 53 -2 32 -4z m-507 -187 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m971 -13 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m1269 -56 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m151 -14 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-2511 -37 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m1211 -13 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-2830 -130 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-3131 -7 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-160 -159 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m3501 -44 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m2294 -142 c434 -67 738 -209 969 -452 238 -250 375 -563 456 -1044 57 -335 60 -443 60 -2130 l0 -1530 -780 3 -780 2 0 1328 c0 790 -4 1396 -10 1497 -34 552 -203 836 -560 941 -88 27 -107 28 -265 28 -150 -1 -181 -4 -269 -27 -102 -27 -204 -70 -257 -107 -24 -18 -29 -29 -31 -68 l-1 -47 -6 45 -6 45 -61 -60 c-34 -33 -78 -87 -99 -119 -44 -70 -104 -196 -117 -246 -5 -19 -11 -44 -14 -55 -3 -11 -7 -31 -10 -45 -3 -14 -12 -47 -19 -75 -37 -127 -38 -197 -42 -1627 l-4 -1408 -779 -2 -780 -3 0 2528 0 2527 750 0 750 0 0 -192 c1 -106 1 -262 0 -345 -1 -119 2 -153 12 -152 7 0 42 46 78 101 110 169 279 334 460 446 41 25 78 51 82 57 4 5 8 7 8 2 0 -4 32 9 71 28 145 73 345 134 529 160 111 16 551 13 665 -4z m-4405 -2626 l0 -2525 -780 0 -780 0 0 2525 0 2525 780 0 780 0 0 -2525z m5597 2263 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m700 -10 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-730 -250 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m760 -35 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m10 -125 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m10 -150 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m10 -250 c-2 -13 -4 -3 -4 22 0 25 2 35 4 23 2 -13 2 -33 0 -45z m-8380 -130 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m0 -270 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m8380 -150 c-2 -13 -4 -3 -4 22 0 25 2 35 4 23 2 -13 2 -33 0 -45z m-3410 -30 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m3400 -190 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-3370 -80 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m3360 -80 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -125 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m-30 -275 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-2786 -845 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m2529 -37 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-2409 -83 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m467 -200 c-10 -2 -26 -2 -35 0 -10 3 -2 5 17 5 19 0 27 -2 18 -5z m70 0 c-10 -2 -26 -2 -35 0 -10 3 -2 5 17 5 19 0 27 -2 18 -5z m-4045 -130 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m450 0 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m-180 -10 c-29 -2 -78 -2 -110 0 -32 2 -8 3 52 3 61 0 87 -1 58 -3z"/> </g> </svg>
+                    </a>
+                    <a href="https://github.com/kemalkilicaslan" rel="noopener noreferrer" aria-label="GitHub" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1080 9993 c-66 -8 -209 -43 -272 -67 -399 -150 -678 -468 -781 -889 l-22 -92 0 -3945 0 -3945 22 -92 c117 -478 458 -819 936 -936 l92 -22 3945 0 3945 0 92 22 c478 117 819 458 936 936 l22 92 0 3945 0 3945 -22 92 c-116 476 -455 816 -933 936 l-85 21 -3920 2 c-2156 0 -3936 -1 -3955 -3z m4195 -864 c259 -19 320 -25 333 -32 6 -5 42 -12 80 -17 119 -16 179 -28 200 -39 11 -6 31 -11 45 -11 13 0 43 -6 68 -14 24 -8 71 -21 104 -31 33 -9 68 -20 77 -26 10 -5 29 -9 42 -9 13 0 37 -7 52 -15 16 -8 39 -15 52 -15 12 0 22 -4 22 -10 0 -5 13 -10 29 -10 16 0 34 -7 41 -15 7 -8 21 -15 30 -15 10 0 33 -8 52 -17 54 -27 62 -30 96 -38 18 -3 32 -11 32 -16 0 -5 11 -9 24 -9 13 0 26 -4 28 -8 4 -10 130 -72 146 -72 7 0 12 -4 12 -8 0 -4 26 -20 58 -35 31 -15 75 -38 97 -51 22 -14 57 -34 77 -45 64 -35 83 -46 88 -51 3 -3 32 -23 65 -45 33 -22 62 -43 63 -47 2 -5 10 -8 18 -8 8 0 14 -4 14 -8 0 -5 18 -17 40 -28 22 -10 40 -22 40 -25 0 -3 25 -23 55 -44 30 -20 55 -41 55 -46 0 -5 7 -9 16 -9 8 0 12 -4 9 -10 -3 -5 0 -10 7 -10 7 0 34 -19 59 -42 48 -45 130 -115 158 -134 34 -25 331 -335 331 -346 0 -4 15 -22 33 -40 18 -18 48 -54 67 -80 18 -27 37 -48 42 -48 4 0 8 -5 8 -11 0 -7 10 -21 23 -33 13 -12 26 -29 30 -39 3 -9 11 -17 17 -17 5 0 10 -5 10 -10 0 -10 8 -22 38 -55 6 -7 12 -16 12 -20 0 -7 51 -87 64 -100 15 -15 36 -47 42 -67 4 -10 10 -18 14 -18 4 0 15 -18 26 -40 10 -22 22 -40 25 -40 4 0 10 -11 13 -25 4 -14 11 -25 16 -25 6 0 10 -9 10 -19 0 -11 4 -22 10 -26 12 -7 150 -286 150 -302 0 -7 4 -13 9 -13 5 0 12 -13 16 -30 4 -16 11 -30 16 -30 5 0 9 -11 9 -25 0 -14 4 -25 9 -25 5 0 13 -14 16 -32 8 -34 11 -42 38 -96 9 -19 17 -42 17 -52 0 -9 7 -23 15 -30 8 -7 15 -23 15 -36 0 -14 4 -32 9 -42 15 -31 41 -119 41 -140 0 -12 4 -23 9 -26 5 -4 12 -25 16 -48 4 -23 11 -49 15 -58 11 -21 30 -97 39 -150 4 -25 10 -51 14 -57 7 -12 17 -70 37 -215 5 -38 12 -74 17 -80 9 -15 18 -125 34 -414 9 -158 9 -261 0 -415 -15 -272 -26 -397 -40 -439 -6 -19 -11 -56 -11 -82 0 -26 -4 -50 -10 -53 -5 -3 -10 -26 -10 -51 0 -25 -7 -61 -15 -81 -8 -19 -15 -50 -15 -67 -1 -17 -7 -42 -15 -56 -8 -14 -14 -37 -15 -53 0 -15 -4 -35 -9 -45 -10 -19 -29 -90 -38 -137 -3 -16 -9 -34 -13 -40 -5 -5 -11 -27 -15 -48 -4 -20 -11 -40 -16 -43 -5 -3 -9 -18 -9 -33 0 -16 -7 -34 -15 -41 -8 -7 -15 -24 -15 -39 0 -14 -7 -35 -15 -45 -8 -11 -15 -28 -15 -38 0 -10 -4 -18 -9 -18 -5 0 -12 -16 -15 -35 -4 -19 -11 -35 -16 -35 -6 0 -10 -11 -10 -25 0 -14 -4 -25 -10 -25 -5 0 -10 -6 -10 -13 0 -6 -20 -53 -45 -102 -25 -50 -45 -95 -45 -102 0 -6 -3 -13 -7 -15 -5 -1 -21 -32 -38 -68 -16 -36 -36 -71 -42 -78 -7 -7 -13 -20 -13 -28 0 -8 -3 -14 -8 -14 -4 0 -16 -17 -27 -37 -10 -21 -36 -64 -57 -95 -21 -32 -38 -60 -38 -63 0 -3 -18 -30 -40 -59 -22 -29 -40 -56 -40 -60 0 -4 -5 -12 -10 -19 -6 -7 -24 -28 -40 -47 -16 -19 -32 -43 -36 -52 -3 -10 -10 -18 -15 -18 -5 0 -9 -6 -9 -14 0 -8 -3 -16 -7 -18 -9 -3 -61 -62 -111 -125 -19 -23 -42 -52 -52 -65 -36 -43 -305 -326 -312 -327 -4 -1 -22 -15 -40 -31 -18 -17 -45 -42 -60 -55 -15 -14 -30 -25 -34 -25 -4 0 -16 -10 -28 -22 -12 -13 -38 -35 -58 -50 -20 -15 -42 -34 -50 -41 -22 -22 -190 -142 -245 -177 -29 -17 -53 -36 -53 -41 0 -5 -6 -9 -14 -9 -8 0 -21 -6 -28 -13 -7 -6 -30 -21 -50 -32 -21 -11 -38 -23 -38 -27 0 -5 -9 -8 -19 -8 -11 0 -22 -4 -26 -9 -3 -6 -26 -20 -50 -32 -25 -12 -45 -26 -45 -31 0 -4 -8 -8 -19 -8 -10 0 -24 -7 -31 -15 -7 -8 -21 -15 -31 -15 -11 0 -19 -4 -19 -10 0 -5 -4 -10 -9 -10 -5 0 -45 -16 -88 -36 -111 -50 -152 -69 -198 -88 -22 -9 -48 -21 -57 -26 -10 -6 -26 -10 -35 -10 -10 0 -27 -7 -37 -15 -11 -8 -29 -15 -41 -15 -12 0 -27 -6 -34 -13 -8 -8 -43 -12 -99 -12 l-88 0 -46 43 c-26 24 -50 57 -54 75 -5 18 -7 307 -5 642 3 589 -5 845 -29 900 -5 11 -11 36 -13 55 -5 41 -24 97 -63 185 -25 55 -98 174 -129 209 -14 16 -22 33 -18 37 5 4 40 10 78 13 130 11 210 23 238 34 16 7 43 12 62 12 19 0 36 4 39 9 4 5 29 12 56 16 28 4 50 11 50 16 0 5 17 9 38 9 20 0 46 7 56 15 11 8 30 15 43 15 13 0 23 5 23 10 0 6 10 10 23 10 13 0 32 7 43 15 10 8 29 15 40 15 12 0 27 7 34 15 7 8 23 15 35 15 13 0 25 3 27 8 3 8 69 44 147 83 25 11 51 27 59 35 7 8 23 19 35 26 77 41 327 277 327 308 0 5 3 10 8 10 4 0 23 24 42 53 19 28 38 54 41 57 3 3 8 12 12 20 9 21 30 51 45 68 6 7 12 20 12 28 0 8 5 14 10 14 6 0 10 11 10 24 0 13 7 26 15 30 8 3 15 17 15 31 0 14 4 25 9 25 5 0 12 13 16 30 4 16 11 32 16 35 5 4 9 16 9 29 0 12 7 31 15 42 8 10 15 28 15 38 0 20 6 42 34 131 9 28 16 64 16 80 0 17 4 35 9 40 11 12 30 132 41 260 32 385 33 402 20 496 -7 52 -16 126 -20 164 -11 94 -26 169 -39 194 -6 11 -11 29 -11 41 0 12 -6 34 -14 48 -8 15 -22 53 -31 84 -9 32 -21 60 -26 64 -5 3 -9 14 -9 25 0 10 -4 19 -10 19 -5 0 -10 8 -10 19 0 10 -7 24 -15 31 -8 7 -15 21 -15 32 0 10 -7 21 -15 24 -8 4 -15 15 -15 25 0 10 -4 19 -10 19 -5 0 -10 7 -10 15 0 9 -7 18 -15 21 -8 4 -15 10 -15 16 0 11 -44 72 -77 107 -12 12 -25 32 -28 42 -4 10 -11 19 -17 19 -15 0 8 159 28 190 21 34 43 445 25 463 -6 6 -11 43 -11 82 -1 42 -6 80 -15 95 -8 14 -14 44 -15 67 0 23 -4 44 -9 47 -5 3 -11 23 -14 43 -5 43 -21 92 -48 143 l-18 35 -105 3 c-77 2 -115 -1 -142 -13 -20 -8 -54 -15 -75 -15 -22 0 -39 -4 -39 -10 0 -5 -17 -12 -37 -16 -21 -4 -42 -10 -48 -14 -5 -4 -25 -11 -42 -15 -18 -3 -33 -11 -33 -16 0 -5 -11 -9 -24 -9 -13 0 -29 -7 -36 -15 -7 -8 -19 -15 -27 -15 -17 0 -118 -48 -188 -89 -27 -16 -67 -39 -89 -51 -58 -32 -210 -132 -218 -144 -9 -14 -105 -11 -143 5 -17 6 -50 16 -75 20 -25 4 -79 15 -120 24 -41 9 -109 20 -150 24 -42 4 -82 11 -89 15 -58 37 -943 37 -1002 1 -7 -5 -46 -12 -88 -16 -42 -5 -110 -15 -151 -24 -41 -9 -95 -20 -120 -25 -25 -4 -58 -13 -75 -20 -39 -15 -134 -18 -143 -5 -8 12 -163 115 -218 145 -22 12 -61 35 -89 51 -70 41 -171 89 -188 89 -8 0 -20 7 -27 15 -7 8 -23 15 -36 15 -13 0 -24 4 -24 10 0 5 -16 12 -35 16 -19 3 -38 10 -41 15 -3 5 -15 9 -27 9 -12 0 -35 7 -51 15 -15 8 -41 15 -56 15 -15 0 -44 7 -64 15 -27 12 -65 15 -142 13 l-105 -3 -18 -35 c-33 -64 -58 -148 -68 -225 -2 -22 -11 -54 -19 -72 -8 -17 -14 -62 -14 -100 0 -38 -5 -74 -11 -80 -18 -18 4 -429 25 -463 20 -31 43 -190 28 -190 -6 0 -13 -9 -17 -19 -3 -10 -16 -30 -28 -42 -33 -35 -77 -96 -77 -107 0 -6 -7 -12 -15 -16 -8 -3 -15 -12 -15 -21 0 -8 -4 -15 -10 -15 -5 0 -10 -9 -10 -19 0 -10 -7 -21 -15 -25 -8 -3 -15 -14 -15 -24 0 -11 -7 -25 -15 -32 -8 -7 -15 -21 -15 -31 0 -11 -4 -19 -10 -19 -5 0 -10 -9 -10 -19 0 -11 -4 -22 -9 -25 -5 -4 -17 -32 -26 -64 -9 -31 -23 -69 -31 -84 -8 -14 -14 -35 -14 -46 0 -11 -7 -36 -15 -55 -8 -20 -15 -50 -15 -66 0 -16 -4 -32 -9 -35 -4 -3 -11 -41 -15 -83 -3 -43 -10 -103 -15 -133 -12 -71 -12 -232 0 -340 5 -47 14 -132 19 -190 11 -122 25 -218 40 -275 28 -101 42 -152 51 -181 5 -17 9 -38 9 -47 0 -9 6 -31 14 -49 8 -18 21 -49 30 -70 9 -20 16 -41 16 -47 0 -6 5 -11 10 -11 6 0 10 -11 10 -25 0 -14 7 -28 15 -31 8 -4 15 -17 15 -30 0 -13 5 -24 10 -24 6 0 10 -9 10 -20 0 -10 6 -23 13 -27 14 -9 35 -41 43 -65 4 -10 10 -18 15 -18 5 0 9 -5 9 -10 0 -18 112 -162 171 -221 62 -62 196 -174 244 -205 17 -10 36 -24 43 -31 7 -7 20 -13 28 -13 8 0 14 -4 14 -10 0 -5 9 -10 19 -10 11 0 22 -4 26 -9 3 -6 27 -20 53 -33 26 -13 49 -26 50 -30 2 -5 11 -8 20 -8 10 0 26 -7 36 -15 11 -8 28 -15 39 -15 10 0 25 -7 33 -15 9 -8 26 -15 40 -15 13 0 24 -4 24 -10 0 -5 13 -10 29 -10 16 0 36 -7 45 -15 8 -8 31 -15 50 -15 20 0 36 -4 36 -8 0 -9 70 -27 158 -42 29 -4 58 -13 65 -18 7 -5 41 -12 77 -16 58 -5 221 -23 228 -25 6 -2 1 -31 -5 -31 -5 0 -24 -24 -43 -53 -19 -28 -38 -54 -41 -57 -12 -10 -84 -166 -97 -210 -14 -50 -30 -117 -39 -168 -4 -25 -14 -37 -44 -52 -21 -11 -45 -20 -54 -20 -8 0 -15 -4 -15 -10 0 -5 -12 -10 -26 -10 -14 0 -40 -6 -57 -14 -18 -8 -52 -17 -77 -20 -25 -3 -79 -10 -120 -15 -71 -10 -104 -8 -265 16 -22 3 -49 12 -60 19 -11 8 -27 14 -36 14 -16 0 -76 27 -89 40 -3 3 -22 13 -42 24 -56 29 -248 220 -248 248 0 6 -11 21 -25 34 -14 13 -25 28 -25 34 0 6 -8 23 -18 38 -10 15 -29 43 -43 63 -96 143 -262 271 -439 340 -20 7 -87 15 -157 17 -127 3 -155 -4 -190 -47 -18 -20 -16 -66 2 -85 8 -8 15 -17 15 -21 0 -14 77 -77 161 -131 60 -38 134 -106 187 -173 20 -25 40 -48 43 -51 25 -20 139 -223 139 -247 0 -7 5 -13 10 -13 6 0 10 -8 10 -19 0 -10 7 -24 15 -31 8 -7 15 -22 15 -34 0 -12 7 -31 15 -42 8 -10 15 -29 15 -41 0 -13 5 -23 10 -23 6 0 10 -8 10 -19 0 -10 7 -24 15 -31 8 -7 15 -18 15 -24 0 -6 11 -23 25 -38 14 -15 25 -31 25 -35 0 -5 13 -23 30 -41 17 -18 30 -35 30 -38 0 -8 91 -94 100 -94 4 0 10 -4 12 -9 5 -14 117 -84 193 -121 39 -18 78 -37 87 -42 10 -4 28 -8 41 -8 13 0 28 -5 34 -11 10 -10 47 -17 198 -40 77 -12 358 -5 396 10 14 5 53 10 89 12 l65 4 9 -359 c6 -264 6 -364 -3 -378 -6 -10 -11 -29 -11 -42 0 -38 -79 -102 -136 -111 -52 -7 -141 2 -150 16 -3 5 -15 9 -27 9 -12 0 -31 7 -41 15 -11 8 -28 15 -38 15 -10 0 -26 4 -36 10 -9 5 -35 17 -57 26 -46 19 -87 38 -198 88 -43 20 -83 36 -88 36 -5 0 -9 5 -9 10 0 6 -8 10 -19 10 -10 0 -24 7 -31 15 -7 8 -21 15 -31 15 -11 0 -19 4 -19 8 0 5 -20 19 -45 31 -24 12 -47 26 -50 32 -4 5 -15 9 -26 9 -10 0 -19 3 -19 8 0 4 -17 16 -37 27 -21 11 -44 26 -51 32 -7 7 -20 13 -28 13 -8 0 -14 4 -14 9 0 5 -24 24 -52 41 -56 35 -224 155 -246 177 -8 7 -30 26 -50 40 -21 15 -47 38 -59 50 -12 13 -25 23 -28 23 -4 0 -18 11 -33 25 -15 13 -42 38 -60 55 -18 16 -34 30 -36 30 -1 0 -57 55 -123 122 -120 123 -177 185 -243 268 -19 24 -44 54 -55 66 -49 54 -65 75 -65 84 0 6 -4 10 -9 10 -5 0 -12 8 -15 18 -4 9 -20 33 -36 52 -16 19 -34 40 -40 47 -5 7 -10 15 -10 19 0 4 -18 31 -40 60 -22 29 -40 56 -40 59 0 3 -17 31 -38 63 -21 31 -47 74 -57 95 -11 20 -23 37 -27 37 -5 0 -8 6 -8 14 0 8 -6 21 -13 28 -6 7 -25 42 -42 78 -16 36 -33 67 -37 68 -5 2 -8 9 -8 16 0 6 -20 51 -45 99 -25 48 -45 94 -45 102 0 8 -4 15 -10 15 -5 0 -10 11 -10 25 0 14 -4 25 -10 25 -5 0 -12 16 -16 35 -3 19 -10 35 -15 35 -5 0 -9 8 -9 18 0 10 -7 27 -15 38 -8 10 -15 31 -15 45 0 15 -7 32 -15 39 -8 7 -15 25 -15 41 0 15 -4 30 -9 33 -5 4 -12 24 -16 46 -4 22 -11 42 -16 46 -5 3 -9 18 -9 34 0 16 -4 31 -9 35 -6 3 -13 26 -17 50 -3 25 -10 48 -15 51 -5 3 -9 20 -9 37 0 18 -7 45 -15 61 -8 15 -15 41 -15 56 0 16 -5 41 -11 57 -11 28 -21 84 -39 217 -5 38 -12 76 -16 85 -10 21 -20 145 -35 414 -10 171 -10 265 -1 430 17 292 26 400 35 415 10 16 28 141 30 209 1 28 4 49 6 47 8 -8 31 57 31 86 0 15 7 44 15 63 8 20 15 50 15 66 0 16 4 32 9 36 6 3 13 26 17 50 3 25 10 48 15 51 5 3 9 18 9 34 0 16 4 31 9 35 6 3 13 26 17 50 3 25 10 45 15 45 5 0 9 13 9 29 0 16 7 34 15 41 8 7 15 23 15 37 0 13 7 31 15 39 8 9 15 26 15 40 0 13 4 24 9 24 5 0 12 16 15 35 4 19 11 35 16 35 6 0 10 11 10 25 0 14 5 25 10 25 6 0 10 5 10 12 0 11 52 127 71 158 12 20 43 87 59 128 7 17 15 32 19 32 3 0 15 19 26 43 11 23 26 48 32 55 7 7 13 20 13 28 0 8 3 14 8 14 4 0 13 14 20 30 8 17 19 36 25 43 7 7 21 28 31 47 11 19 25 39 33 43 7 4 13 13 13 18 0 6 11 25 25 43 14 18 25 38 25 44 0 6 4 12 8 14 4 2 18 20 31 41 12 20 27 37 32 37 5 0 9 7 9 15 0 9 7 18 15 21 8 4 15 10 15 16 0 5 10 19 23 32 31 33 57 65 57 72 0 3 14 19 30 36 17 17 43 47 57 67 24 32 271 290 316 330 46 40 67 58 98 81 18 14 47 39 65 55 53 49 82 74 147 122 34 25 64 48 67 52 3 3 22 15 43 26 20 11 37 23 37 27 0 5 7 8 15 8 8 0 15 4 15 9 0 5 8 12 18 15 9 3 29 17 43 30 14 13 35 27 47 30 12 4 22 12 22 17 0 5 4 9 9 9 5 0 53 26 108 58 54 32 122 69 151 82 28 14 52 28 52 32 0 5 5 8 12 8 16 0 142 62 146 72 2 4 15 8 28 8 13 0 24 4 24 9 0 5 14 13 32 16 34 8 42 11 96 38 19 9 42 17 52 17 9 0 23 7 30 15 7 8 25 15 41 15 16 0 29 5 29 10 0 6 10 10 23 10 12 0 35 7 51 15 15 8 41 15 57 15 15 0 30 4 33 9 3 5 22 12 42 16 20 3 44 10 53 15 22 11 97 30 151 39 25 4 51 10 58 15 14 8 81 21 194 36 38 5 74 12 80 17 12 7 87 14 318 32 147 11 423 11 565 0z m-2288 -1755 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-100 -10 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m3593 -308 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m2230 -80 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-2350 -40 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-1639 -133 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m115 -105 l29 -33 -32 29 c-31 28 -38 36 -30 36 2 0 16 -15 33 -32z m119 -128 c10 -11 16 -20 13 -20 -3 0 -13 9 -23 20 -10 11 -16 20 -13 20 3 0 13 -9 23 -20z m4172 -442 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m40 -355 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m10 -135 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m10 -150 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-3390 -30 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-300 -20 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-4660 -50 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m4950 -30 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m3410 -150 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-3670 20 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m250 -25 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m-4970 -100 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m4730 -170 c-2 -38 -3 -7 -3 67 0 74 1 105 3 68 2 -38 2 -98 0 -135z m-4730 -70 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m8390 -125 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-3420 25 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m-250 -5 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m260 -130 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-4950 -30 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m4660 -50 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m300 -30 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m3390 -20 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-10 -160 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -135 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m-40 -345 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-4157 -411 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m-110 -120 c0 -2 -15 -16 -32 -33 l-33 -29 29 33 c28 30 36 37 36 29z m-130 -121 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z"/> </g> </svg>
+                    </a>
+                    <a href="https://medium.com/@kemalkilicaslan" rel="noopener noreferrer" aria-label="Medium" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1080 9993 c-66 -8 -209 -43 -272 -67 -399 -150 -678 -468 -781 -889 l-22 -92 0 -3945 0 -3945 22 -92 c117 -478 458 -819 936 -936 l92 -22 3945 0 3945 0 92 22 c478 117 819 458 936 936 l22 92 0 3945 0 3945 -22 92 c-116 476 -455 816 -933 936 l-85 21 -3920 2 c-2156 0 -3936 -1 -3955 -3z m2490 -2641 c661 -124 1201 -479 1575 -1037 81 -121 211 -383 259 -522 92 -266 130 -501 130 -793 0 -394 -71 -704 -244 -1055 -340 -695 -963 -1160 -1745 -1301 -144 -27 -606 -27 -750 0 -514 93 -942 313 -1294 665 -374 375 -608 850 -682 1391 -18 123 -18 477 0 600 52 380 190 745 392 1040 403 589 1004 950 1719 1034 19 2 148 3 285 1 195 -3 273 -8 355 -23z m3525 -124 c339 -74 656 -448 845 -995 47 -134 101 -337 125 -463 108 -577 89 -1221 -50 -1755 -177 -679 -513 -1138 -907 -1240 -80 -21 -233 -21 -313 0 -514 133 -925 886 -1010 1855 -100 1126 267 2221 847 2529 154 82 303 104 463 69z m1764 -253 c121 -110 224 -466 286 -995 38 -325 50 -556 50 -980 0 -424 -12 -655 -50 -980 -62 -529 -165 -885 -286 -995 -127 -115 -261 67 -354 481 -92 409 -135 887 -135 1494 0 179 5 408 10 510 57 1019 265 1658 479 1465z"/> </g> </svg>
+                    </a>
+                    <a href="https://www.kaggle.com/kemalkilicaslan" rel="noopener noreferrer" aria-label="Kaggle" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M110 0H890A110 110 0 0 1 1000 110V890A110 110 0 0 1 890 1000H110A110 110 0 0 1 0 890V110A110 110 0 0 1 110 0Z M310 133H400Q405 133 405 138V418C405 445 420 462 440 462C457 462 472 455 485 444L655 296Q659 293 664 293H797Q805 293 800 298L578 490C548 518 548 565 578 592L800 792Q805 797 797 797H660Q656 797 653 794L485 648C472 636 456 628 440 628C420 628 405 645 405 672V792Q405 797 400 797H310Q305 797 305 792V138Q305 133 310 133Z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@kemal_kilicaslan" rel="noopener noreferrer" aria-label="YouTube" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1080 9993 c-66 -8 -209 -43 -272 -67 -399 -150 -678 -468 -781 -889 l-22 -92 0 -3945 0 -3945 22 -92 c117 -478 458 -819 936 -936 l92 -22 3945 0 3945 0 92 22 c478 117 819 458 936 936 l22 92 0 3945 0 3945 -22 92 c-116 476 -455 816 -933 936 l-85 21 -3920 2 c-2156 0 -3936 -1 -3955 -3z m1907 -2619 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m390 0 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-490 -10 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m590 0 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m3003 -308 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m1030 -71 c13 -14 21 -25 18 -25 -2 0 -15 11 -28 25 -13 14 -21 25 -18 25 2 0 15 -11 28 -25z m1200 -9 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-2350 -40 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-4710 -110 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m3071 -23 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-3161 -56 c0 -1 -26 -27 -57 -57 l-58 -55 55 58 c50 53 60 62 60 54z m3276 -49 l29 -33 -32 29 c-31 28 -38 36 -30 36 2 0 16 -15 33 -32z m2249 -98 c698 -15 1062 -35 1180 -65 156 -40 293 -149 358 -285 101 -211 137 -527 137 -1205 0 -639 -31 -945 -119 -1164 -65 -162 -212 -286 -383 -326 -74 -16 -264 -35 -361 -35 -38 0 -66 -3 -64 -7 13 -21 -2032 -25 -2468 -5 -265 12 -475 32 -564 53 -86 21 -208 87 -264 142 -112 112 -179 301 -206 582 -44 446 -42 1138 4 1555 27 247 78 399 172 517 43 54 142 125 213 153 48 19 178 49 219 50 11 0 11 3 0 18 -13 16 -12 16 7 -1 19 -16 33 -16 155 -8 136 10 728 30 1009 34 414 7 548 6 975 -3z m-5685 -24 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m7727 -448 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-7448 -415 c57 -214 106 -392 109 -397 4 -8 68 223 192 697 l23 87 155 0 c119 0 153 -3 150 -12 -7 -19 -81 -254 -232 -738 l-136 -436 0 -417 0 -417 -150 0 -150 0 0 416 0 416 -54 176 c-30 98 -87 281 -126 407 -39 127 -89 286 -110 355 -22 69 -48 152 -60 184 -11 33 -20 61 -20 63 0 1 69 3 153 3 l153 0 103 -387z m7488 60 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m10 -135 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-6450 -48 c165 -27 263 -119 311 -293 15 -54 17 -115 17 -477 0 -444 -2 -467 -55 -570 -28 -56 -99 -120 -170 -154 -61 -29 -72 -31 -175 -31 -101 0 -115 2 -168 28 -111 55 -181 147 -212 280 -21 89 -21 801 0 900 38 182 140 290 298 316 73 12 84 12 154 1z m823 -614 c0 -371 4 -625 10 -640 10 -29 46 -42 86 -32 15 4 51 32 80 62 l54 55 2 582 3 582 138 3 137 3 0 -756 0 -755 -140 0 -140 0 0 81 0 81 -75 -70 c-116 -108 -220 -138 -315 -89 -37 18 -51 33 -75 82 l-30 60 -3 683 -3 682 136 0 135 0 0 -614z m5637 512 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-8350 -100 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m8360 -180 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-8390 -105 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m0 -240 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m8390 -125 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-8360 -140 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m8350 -100 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-10 -160 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -135 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m-40 -345 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-7736 -425 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m3579 14 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m-3465 -137 c27 -27 47 -50 44 -50 -3 0 -27 23 -54 50 -27 28 -47 50 -44 50 3 0 27 -22 54 -50z m3355 17 c0 -2 -15 -16 -32 -33 l-33 -29 29 33 c28 30 36 37 36 29z m-130 -121 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-3089 -23 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m4710 -110 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m2350 -40 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-1171 4 c0 -2 -12 -14 -27 -28 l-28 -24 24 28 c23 25 31 32 31 24z m-1059 -84 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m496 -199 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-4080 -120 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m586 -1 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m-486 -9 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m390 0 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z"/> <path d="M5138 6083 l-468 -3 0 -140 0 -139 153 -3 152 -3 3 -862 2 -863 148 0 147 0 -3 865 -2 865 164 0 165 0 3 145 c2 80 3 144 3 143 0 -2 -210 -4 -467 -5z"/> <path d="M6580 5075 l0 -1005 135 0 135 0 0 70 c0 39 3 70 8 70 4 0 21 -16 37 -35 17 -19 36 -35 43 -35 7 0 15 -7 18 -15 4 -8 12 -15 20 -15 8 0 14 -5 14 -11 0 -5 5 -7 10 -4 6 3 10 1 10 -4 0 -6 3 -10 8 -9 4 1 28 -3 53 -11 46 -13 124 -12 147 3 6 4 12 5 12 2 0 -12 72 53 100 90 17 23 17 24 38 119 13 58 16 151 15 530 0 471 -3 528 -32 598 -6 16 -11 32 -11 36 0 4 -14 28 -31 54 -43 66 -96 89 -194 86 -41 -2 -75 -6 -75 -10 0 -4 -13 -10 -30 -14 -16 -4 -30 -11 -30 -16 0 -5 -5 -9 -10 -9 -6 0 -35 -25 -65 -56 l-55 -56 0 326 0 326 -135 0 -135 0 0 -1005z m460 263 c0 -5 4 -7 9 -4 5 3 14 -1 21 -9 7 -8 9 -15 4 -15 -5 0 -3 -4 4 -8 22 -15 26 -70 29 -450 4 -371 -3 -477 -30 -494 -6 -4 -8 -8 -3 -8 5 0 1 -9 -9 -20 -10 -11 -21 -17 -26 -15 -4 3 -10 1 -14 -5 -3 -5 -17 -10 -30 -10 -29 0 -105 29 -105 40 0 4 -9 10 -20 13 -20 5 -20 14 -20 470 l0 466 30 21 c17 12 37 23 45 24 8 1 18 5 21 9 10 10 94 5 94 -5z"/> <path d="M7903 5589 c-10 -4 -36 -12 -58 -19 -63 -19 -147 -80 -182 -131 -18 -26 -42 -78 -54 -116 -12 -37 -25 -75 -30 -84 -4 -9 -7 -194 -7 -411 l-1 -396 28 -81 c15 -45 26 -81 24 -81 -3 0 2 -7 9 -14 7 -8 33 -39 58 -69 80 -95 228 -143 370 -119 92 16 94 16 100 22 6 6 45 29 80 46 14 7 32 23 40 35 8 12 23 31 33 41 9 10 15 18 12 18 -3 0 6 18 19 39 14 21 23 41 21 43 -3 2 0 20 6 39 5 19 13 82 16 142 l5 107 -136 0 c-75 0 -136 -1 -137 -2 -1 -2 -4 -52 -8 -112 -4 -68 -11 -111 -18 -113 -7 -3 -10 -10 -8 -16 10 -28 -90 -69 -130 -54 -8 4 -18 6 -21 6 -15 -2 -64 57 -70 85 -5 17 -8 111 -8 208 l-1 178 274 0 273 0 -6 188 c-8 224 -10 250 -31 326 -30 112 -91 199 -169 241 -20 11 -36 23 -36 28 0 4 -3 6 -7 4 -5 -3 -19 0 -33 6 -14 5 -34 11 -45 13 -41 7 -155 9 -172 3z m214 -191 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-47 -73 c27 -28 33 -62 37 -202 l4 -123 -128 0 -128 0 0 140 c0 114 3 143 15 150 8 5 11 10 6 10 -14 0 16 31 39 40 39 16 133 6 155 -15z m57 -57 c-2 -13 -4 -5 -4 17 -1 22 1 32 4 23 2 -10 2 -28 0 -40z m10 -310 c-2 -24 -4 -5 -4 42 0 47 2 66 4 43 2 -24 2 -62 0 -85z"/> <path d="M6213 5573 l-143 -4 0 -574 0 -574 -55 -56 c-30 -31 -59 -54 -65 -50 -5 3 -10 1 -10 -4 0 -12 -49 -15 -66 -3 -32 21 -34 50 -34 656 l0 606 -135 0 -135 0 -1 -642 c-1 -354 0 -647 1 -653 2 -5 4 -19 5 -30 5 -49 54 -147 76 -152 10 -3 19 -10 19 -16 0 -6 3 -8 6 -4 4 3 21 1 38 -6 29 -11 61 -13 111 -4 12 1 43 15 69 30 27 15 50 27 51 27 2 0 30 28 64 63 l61 62 0 -87 0 -88 140 0 140 0 2 755 c2 415 3 754 3 753 0 -1 -64 -4 -142 -5z m-416 -115 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -100 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-10 -155 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m0 -440 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m10 -135 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m10 -110 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z"/> <path d="M2603 5335 c-17 -7 -40 -28 -50 -47 -17 -30 -18 -67 -18 -463 0 -392 2 -433 18 -462 33 -61 120 -82 171 -42 56 44 56 41 56 507 l0 429 -23 34 c-38 57 -90 72 -154 44z"/> </g> </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

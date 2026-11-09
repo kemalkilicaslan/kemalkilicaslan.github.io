@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(){var t=localStorage.getItem('theme');document.documentElement.classList.add(t==='dark'?'dark-theme':'light-theme');})()</script>
+    <title>Kemal Kılıçaslan | Document and Identity Fraud Detection System</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kemal Kilicaslan">
+    <meta name="description" content="Document and identity fraud detection with a field-level forgery CNN, MRZ and national ID checks, point-in-time SQL features, a YAML rule engine, LightGBM and capacity-based alerts.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/icons/brand/KEMAL-KILICASLAN.ico" type="image/x-icon">
+    <link rel="canonical" href="https://kemalkilicaslan.com/Document-and-Identity-Fraud-Detection-System.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="Kemal Kılıçaslan | Document and Identity Fraud Detection System">
+    <meta property="og:description" content="Document and identity fraud detection with a field-level forgery CNN, MRZ and national ID checks, point-in-time SQL features, a YAML rule engine, LightGBM and capacity-based alerts.">
+    <meta property="og:url" content="https://kemalkilicaslan.com/Document-and-Identity-Fraud-Detection-System.html">
+    <meta property="og:image" content="https://kemalkilicaslan.com/assets/icons/brand/KEMAL-KILICASLAN.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kemal Kilicaslan Official Website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kemal Kılıçaslan | Document and Identity Fraud Detection System">
+    <meta name="twitter:description" content="Document and identity fraud detection with a field-level forgery CNN, MRZ and national ID checks, point-in-time SQL features, a YAML rule engine, LightGBM and capacity-based alerts.">
+    <meta name="twitter:image" content="https://kemalkilicaslan.com/assets/icons/brand/KEMAL-KILICASLAN.png">
+    <meta name="twitter:site" content="@iam_kilicaslan">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C3W7PCE61L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C3W7PCE61L');
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "Document and Identity Fraud Detection System",
+            "description": "Document and identity fraud detection with a field-level forgery CNN, MRZ and national ID checks, point-in-time SQL features, a YAML rule engine, LightGBM and capacity-based alerts.",
+            "url": "https://kemalkilicaslan.com/Document-and-Identity-Fraud-Detection-System.html",
+            "keywords": "Document Fraud Detection, Identity Fraud, ID Document Forgery, Forgery Localisation, SIDTD, ResNet-18, PyTorch, timm, ONNX, ONNX Runtime, OCR, Tesseract, MRZ, ICAO 9303, TCKN, DuckDB, SQL, Point-in-Time Features, Rule Engine, LightGBM, Hybrid Score, Capacity Curve, PSI, Fraud Monitoring, FastAPI, Streamlit, Docker",
+            "author": {
+                "@type": "Person",
+                "name": "Kemal Kılıçaslan",
+                "url": "https://kemalkilicaslan.com",
+                "jobTitle": "Super Intelligence Developer",
+                "sameAs": [
+                    "https://www.linkedin.com/in/kemalkilicaslan",
+                    "https://github.com/kemalkilicaslan",
+                    "https://medium.com/@kemalkilicaslan",
+                    "https://www.kaggle.com/kemalkilicaslan",
+                    "https://huggingface.co/kemalkilicaslan",
+                    "https://www.youtube.com/@kemal_kilicaslan"
+                ]
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand">
+        <div class="container d-flex justify-content-between align-items-center">
+            <ul class="navbar-nav d-flex align-items-center">
+                <li>
+                    <a class="nav-link" href="index.html#index">KEMAL KILIÇASLAN</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="index.html#myprojects" data-key="projects">PROJECTS</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="index.html#mycertificates" data-key="certificates">CERTIFICATES</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav d-flex align-items-center">
+                <a href="https://github.com/kemalkilicaslan/Document-and-Identity-Fraud-Detection-System" rel="noopener noreferrer" aria-label="GitHub" class="nav-link" target="_blank">
+                    <svg class="github-icon" viewBox="0 0 16 16" width="25" height="25" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle text-dark d-flex align-items-center" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedLang" class="me-2" style="font-size: 25px;">🇬🇧</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" data-key="English" data-lang="English" data-flag="🇬🇧">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Türkçe" data-lang="Türkçe" data-flag="🇹🇷">🇹🇷 Türkçe</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Deutsch" data-lang="Deutsch" data-flag="🇩🇪">🇩🇪 Deutsch</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Español" data-lang="Español" data-flag="🇪🇸">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Dutch" data-lang="Dutch" data-flag="🇳🇱">🇳🇱 Dutch</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Italiano" data-lang="Italiano" data-flag="🇮🇹">🇮🇹 Italiano</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Français" data-lang="Français" data-flag="🇫🇷">🇫🇷 Français</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Português" data-lang="Português" data-flag="🇧🇷">🇧🇷 Português</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="Русский" data-lang="Русский" data-flag="🇷🇺">🇷🇺 Русский</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="日本語" data-lang="日本語" data-flag="🇯🇵">🇯🇵 日本語</a></li>
+                            <li><a class="dropdown-item" href="#" data-key="العربية" data-lang="العربية" data-flag="🇸🇦">🇸🇦 العربية</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button id="theme-toggle" class="btn btn-outline-dark ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 80 80" width="25" height="25">
+                            <circle r="39" />
+                            <path fill="#fff" d="M0,38a38,38 0 0 1 0,-76a19,19 0 0 1 0,38a19,19 0 0 0 0,38" />
+                            <circle r="5" cy="19" fill="#fff" />
+                            <circle r="5" cy="-19" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 id="document-and-identity-fraud-detection-system">Document and Identity Fraud Detection System</h1>
+        <div class="content-grid">
+            <div class="main-content">
+                <div class="readme-section">
+                    <div class="readme-content">
+
+                        <h2 id="1-introduction">1. Introduction</h2>
+                        <p>This project implements a document and identity fraud detection system for a savings-finance application flow, where customers save towards a home or vehicle and are financed at an allocation month. It covers the whole chain: a field-level CNN that finds forged fields on ID images, OCR checks on the machine-readable zone (MRZ) and dates, national ID (TCKN) check digits, point-in-time SQL features over the application history, a rule engine kept in YAML, a LightGBM model, a hybrid score, an alert threshold set by analyst capacity, monitoring with early-warning indicators, a scoring API and an analyst dashboard.</p>
+
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Capacity-Curves.png" alt="Alert capacity vs. fraud caught" loading="lazy"></p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Forged ID detection (SIDTD test split, documents never seen in training)</td>
+                                    <td>Document ROC-AUC <strong>0.983</strong>, PR-AUC <strong>0.974</strong>; <strong>92.2 %</strong> of forged documents caught with 5.9 % of genuine documents sent to review</td>
+                                </tr>
+                                <tr>
+                                    <td>Localisation</td>
+                                    <td>The highest-scoring field is the tampered field in <strong>91.2 %</strong> of flagged forgeries</td>
+                                </tr>
+                                <tr>
+                                    <td>Application fraud (out-of-time test, 11,863 applications, 511 frauds)</td>
+                                    <td>Hybrid score PR-AUC <strong>0.541</strong> against 0.493 for the rules; at a 2 % alert rate it catches <strong>36.2 %</strong> of fraud applications and <strong>44.1 %</strong> of fraud loss, against 33.5 % and 40.1 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Analyst capacity (5 % alert rate)</td>
+                                    <td>Hybrid and rules catch <strong>56.9 %</strong> and <strong>57.1 %</strong> of fraud applications and about <strong>67.5 %</strong> of fraud loss</td>
+                                </tr>
+                                <tr>
+                                    <td>New fraud type (device farm, from 2026-04)</td>
+                                    <td>The rule set catches 12.8 %; two candidate rules raise it to <strong>82.0 %</strong> in the back-test, for 0.9 points more alert volume</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>The forgery CNN is not the main result. The device-farm pattern that appears in April 2026 slips past every production rule because the phone numbers, IBANs and addresses are all different, and it shows up only in the monthly recall by scenario and in a key risk indicator (Section 10.5). Two candidate rules, back-tested on recent applications, close that gap.</p>
+
+                        <p><strong>Core Features:</strong></p>
+
+                        <ul>
+                            <li>Image-processing pipeline on dewarped ID images: template-guided field cropping, aspect-preserving resizing and sliding windows</li>
+                            <li>Field-level forgery CNN (ResNet-18, timm) that scores every text field of an ID image and names the most suspicious one</li>
+                            <li>Train / validation / test split grouped by source document, with documents mixed by Crop_and_Replace joined into one group, so no document leaks across splits</li>
+                            <li>Platt calibration on the validation split, an operating point fixed at 5 % of genuine documents, and ONNX export for CPU inference</li>
+                            <li>ICAO 9303 TD3 MRZ check digits, MRZ ↔ visual zone comparison and date-logic checks on Tesseract OCR output</li>
+                            <li>Turkish national ID number (TCKN) check-digit validation in Python and as a DuckDB SQL macro, tested against each other</li>
+                            <li>Synthetic savings-finance data: 30,114 applications, payments and contracts with seven fraud scenarios and deliberate noise</li>
+                            <li>Point-in-time SQL features in DuckDB: identity velocity, shared phone / IBAN / address / device / IP network, guarantor reuse, agent history, income ratios</li>
+                            <li>Rule engine that reads SQL conditions, weights and owner units from YAML</li>
+                            <li>LightGBM trained only on labels confirmed by the training cut-off, with a 90-day label-maturity gap</li>
+                            <li>Rules, LightGBM and a hybrid score compared at the same alert volume, on recall and on fraud loss stopped</li>
+                            <li>Monthly precision, recall and PSI, recall by scenario, five KRIs with RED / AMBER / GREEN status, and a back-test for candidate rules</li>
+                            <li>Image-processing figures built from the test split: pipeline stages, field localisation, genuine vs. forged patches, OCR preprocessing</li>
+                            <li>Management report and fraud-ring case study (Markdown + HTML), a Streamlit analyst dashboard and a FastAPI scoring API</li>
+                        </ul>
+
+                        <h2 id="2-methodology-approach">2. Methodology / Approach</h2>
+                        <p>Each decision uses two inputs: the ID image and the application. The image is scored by the CNN and checked by OCR. The application is turned into point-in-time features in SQL. Rules and LightGBM both read the same feature table, and the hybrid score combines them.</p>
+
+                        <h3 id="2-1-system-architecture">2.1 System Architecture</h3>
+                        <pre><code>ID image ──► field-level forgery CNN ──► doc score + suspicious field ─┐
+         └─► OCR: MRZ check digits, MRZ↔visual zone, date logic ───────┤
+application ─► point-in-time SQL features (velocity, shared phone/IBAN/ ├─► rule engine (YAML/SQL) ─┐
+               device/guarantor, agent history, income ratios) ────────┘   LightGBM ──────────────┴─► hybrid score
+                                                                                                   ► capacity-based alert
+                                                                                                   ► monitoring, KRIs, reports</code></pre>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Stage</th>
+                                    <th>What it does</th>
+                                    <th>Why</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Field patches</td>
+                                    <td>Crops every text field with its template box (plus padding) and resizes it to 64 px height</td>
+                                    <td>SIDTD forgeries change a single field. A whole-document classifier would downsample that edit away</td>
+                                </tr>
+                                <tr>
+                                    <td>Forgery CNN</td>
+                                    <td>ResNet-18 scores 256-px windows of each field patch with stride 128; field score = max window, document score = max field</td>
+                                    <td>Small edits stay visible, and the arg-max field tells the analyst where to look</td>
+                                </tr>
+                                <tr>
+                                    <td>OCR checks</td>
+                                    <td>Tesseract reads the MRZ and the visual-zone dates (grayscale, bicubic upscaling, auto-contrast); TD3 check digits, MRZ ↔ visual-zone agreement and date logic</td>
+                                    <td>Rule-based checks that need no training data. Their false-positive rate on genuine documents is measured before they become rules</td>
+                                </tr>
+                                <tr>
+                                    <td>Features</td>
+                                    <td>One SQL file (<code>sql/01_features.sql</code>) that joins each application only to applications that arrived earlier</td>
+                                    <td>The same query can run at decision time, so no feature sees the future</td>
+                                </tr>
+                                <tr>
+                                    <td>Rules</td>
+                                    <td>15 SQL conditions in <code>configs/rules.yaml</code>, each with a weight and an owner unit; score = min(100, sum of weights)</td>
+                                    <td>Analysts tune thresholds without code changes, and every alert has a reason and an owner</td>
+                                </tr>
+                                <tr>
+                                    <td>LightGBM + hybrid</td>
+                                    <td>LightGBM on the same features, Platt-calibrated; hybrid = ½ · rule score / 100 + ½ · model score</td>
+                                    <td>The model catches combinations the rules miss; the rules stay explainable</td>
+                                </tr>
+                                <tr>
+                                    <td>Alert threshold</td>
+                                    <td>The threshold at which 5 % of applications go to review</td>
+                                    <td>The analysts' capacity is fixed; methods are compared at the same alert volume</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="2-2-image-processing">2.2 Image Processing</h3>
+                        <p>The document model never sees a whole ID card. Every image goes through the same four stages in training, in evaluation and in the API:</p>
+
+                        <ol>
+                            <li><strong>Dewarped input.</strong> SIDTD video frames come perspective-corrected to the template size (<code>clips_cropped</code>), so the field boxes annotated on the template land on the same pixels in every frame of that document.</li>
+                            <li><strong>Field cropping.</strong> Each text field is cut out with its template box plus padding (6 px and 12 % of the box), so the edges of a pasted or rewritten field stay inside the crop. Photo, face, signature and the document outline are skipped.</li>
+                            <li><strong>Resizing.</strong> The crop is resized to 64 px height with bilinear interpolation, keeping its aspect ratio so characters are not stretched.</li>
+                            <li><strong>Sliding windows.</strong> The patch is split into 256 px windows with stride 128. Short patches are centred on grey padding. Windows are normalised with ImageNet mean and standard deviation; during training one random window per patch is used, with brightness and contrast jitter (×0.8–1.2, ±20).</li>
+                        </ol>
+
+                        <p>The field score is the highest window score, and the document score is the highest field score. The API, which does not know the source document, resizes the upload to the template size and uses the median box of every field for that document type, widened by 15 %.</p>
+
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Image-Pipeline.jpg" alt="Image-processing pipeline" loading="lazy"></p>
+
+                        <p><sub>Image: SIDTD [1], CC BY 4.0. Field boxes, crops and scores added.</sub></p>
+
+                        <p>The OCR checks use their own preprocessing: the line is cropped with less padding, converted to grayscale, upscaled to 64 px with bicubic interpolation and contrast-stretched before Tesseract reads it in single-line mode (<code>--psm 7</code>) with a character whitelist (Section 10.2).</p>
+
+                        <h3 id="2-3-implementation-strategy">2.3 Implementation Strategy</h3>
+                        <ul>
+                            <li>The code is a small installable package (<code>src/docfraud/</code>) with one module per concern and one numbered script per pipeline step (<code>scripts/00_…</code> to <code>scripts/13_…</code>). <code>run_all.sh</code> runs them in order and can resume from any step.</li>
+                            <li>Every path and parameter comes from <code>configs/config.yaml</code> through <code>docfraud.config</code>. Setting <code>DOCFRAUD_CONFIG</code> points the whole pipeline at another file.</li>
+                            <li>The split is grouped by source document. Crop_and_Replace forgeries combine two documents, so those groups are merged with union-find before splitting.</li>
+                            <li>Synthetic applications take their ID images only from the SIDTD test split, so the document score the rules see is out-of-sample.</li>
+                            <li>Features are point-in-time. Every link and velocity feature uses <code>b.app_ts &lt; a.app_ts</code>.</li>
+                            <li>LightGBM is trained on applications before 2026-03-01 minus 90 days and only on frauds confirmed by 2026-03-01: 182 of the 392 frauds in that window. Later applications are the out-of-time test.</li>
+                            <li>Platt scaling, not isotonic regression, calibrates the model score, because isotonic creates ties right at the alert threshold.</li>
+                            <li>New rules go to <code>configs/rules_candidate.yaml</code> and are back-tested on recent data before promotion.</li>
+                            <li>The synthetic data contains noise on purpose: families at one address, returning customers, genuinely high earners, shared branch tablets, real credit defaults and OCR errors. No rule is a perfect proxy for the label.</li>
+                            <li><code>run_all.sh</code> copies every figure to the project root as <code>Document-and-Identity-Fraud-Detection-*.png</code> / <code>*.jpg</code> for this README. Figures built from ID images are saved as JPEG, charts as PNG.</li>
+                        </ul>
+
+                        <h2 id="3-mathematical-framework">3. Mathematical Framework</h2>
+
+                        <h3 id="3-1-national-id-number-tckn-check-digits">3.1 National ID Number (TCKN) Check Digits</h3>
+                        <p>For an 11-digit number $d_1 \dots d_{11}$ with $d_1 \neq 0$:</p>
+
+                        <p>$$d_{10} = \left(7 \sum_{i \in \{1,3,5,7,9\}} d_i - \sum_{i \in \{2,4,6,8\}} d_i\right) \bmod 10, \qquad d_{11} = \left(\sum_{i=1}^{10} d_i\right) \bmod 10$$</p>
+
+                        <h3 id="3-2-mrz-check-digits-icao-9303">3.2 MRZ Check Digits (ICAO 9303)</h3>
+                        <p>Characters map to values ($0$–$9$ → 0–9, $A$–$Z$ → 10–35, <code>&lt;</code> → 0) and are weighted cyclically by $(7, 3, 1)$:</p>
+
+                        <p>$$c = \left(\sum_{i} v(x_i) \cdot w_{i \bmod 3}\right) \bmod 10$$</p>
+
+                        <p>The second TD3 line carries check digits for the document number, birth date, expiry date, optional data and a composite of all four.</p>
+
+                        <h3 id="3-3-document-score-and-calibration">3.3 Document Score and Calibration</h3>
+                        <p>For field patches $f$ of document $D$, each split into windows $w$, with CNN logit $z(w)$:</p>
+
+                        <p>$$z(D) = \max_{f \in D} \max_{w \in f} z(w), \qquad s(D) = \sigma\left(a \cdot z(D) + b\right)$$</p>
+
+                        <p>$a$ and $b$ are fitted by logistic regression (Platt scaling) on the validation split. The operating threshold is the score above which 5 % of genuine validation documents fall.</p>
+
+                        <h3 id="3-4-training-loss">3.4 Training Loss</h3>
+                        <p>Binary cross-entropy on field windows with the positive class weighted by the class ratio:</p>
+
+                        <p>$$\mathcal{L} = -\frac{1}{N}\sum_{i}\left[p_w \, y_i \log \sigma(z_i) + (1 - y_i) \log\left(1 - \sigma(z_i)\right)\right], \qquad p_w = \frac{1 - \bar{y}}{\bar{y}}$$</p>
+
+                        <h3 id="3-5-rule-and-hybrid-scores">3.5 Rule and Hybrid Scores</h3>
+                        <p>$$\text{rule score} = \min\left(100, \sum_{r \text{ fired}} w_r\right), \qquad \text{hybrid} = \frac{1}{2} \cdot \frac{\text{rule score}}{100} + \frac{1}{2} \cdot \sigma\left(a \cdot \text{logit}(p_{\text{LGBM}}) + b\right)$$</p>
+
+                        <p>Rule decision bands: DECLINE at 70 or more, REVIEW from 30 to 69, APPROVE below 30.</p>
+
+                        <h3 id="3-6-capacity-curve">3.6 Capacity Curve</h3>
+                        <p>Applications are sorted by score. At alert rate $r$ the top $k = \lfloor r N \rceil$ are reviewed:</p>
+
+                        <p>$$\text{recall}(r) = \frac{\sum_{i \le k} y_i}{\sum_i y_i}, \qquad \text{loss recall}(r) = \frac{\sum_{i \le k} y_i \, L_i}{\sum_i y_i \, L_i}$$</p>
+
+                        <h3 id="3-7-population-stability-index">3.7 Population Stability Index</h3>
+                        <p>With quantile bins from the baseline months (2025-01 to 2025-06), $e_j$ the baseline share and $a_j$ the current share in bin $j$:</p>
+
+                        <p>$$\text{PSI} = \sum_{j} (a_j - e_j) \ln \frac{a_j}{e_j}$$</p>
+
+                        <h2 id="4-dataset">4. Dataset</h2>
+
+                        <h3 id="4-1-datasets">4.1 Datasets</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Source</th>
+                                    <th>Used for</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SIDTD templates and clips (<code>templates.zip</code>, <code>clips_cropped.zip</code>)</td>
+                                    <td>Synthetic dataset of ID and Travel Documents [1], CC BY 4.0</td>
+                                    <td>Forgery CNN, OCR checks, ID images of the synthetic applications</td>
+                                </tr>
+                                <tr>
+                                    <td>Applications, payments, contracts</td>
+                                    <td>Generated by <code>src/docfraud/data/synthetic.py</code> (seed 42)</td>
+                                    <td>Features, rules, LightGBM, monitoring, reports</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>SIDTD holds ten document types (Albanian, Spanish, Estonian, Finnish and Slovak ID cards; Azerbaijani, Greek, Latvian and Serbian passports; Russian internal passport). Forgeries change one field, either by inpainting and rewriting it (Inpaint_and_Rewrite) or by pasting the same field from another document (Crop_and_Replace).</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Split</th>
+                                    <th>Genuine images</th>
+                                    <th>Forged images</th>
+                                    <th>Groups (genuine / forged)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>train</td>
+                                    <td>4,879</td>
+                                    <td>4,044</td>
+                                    <td>649 / 455</td>
+                                </tr>
+                                <tr>
+                                    <td>val</td>
+                                    <td>620</td>
+                                    <td>393</td>
+                                    <td>139 / 99</td>
+                                </tr>
+                                <tr>
+                                    <td>test</td>
+                                    <td>592</td>
+                                    <td>295</td>
+                                    <td>139 / 95</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="4-2-synthetic-applications">4.2 Synthetic Applications</h3>
+                        <p>30,114 applications from 2025-01-01 to 2026-09-30 across 30 branches and 220 agents, with 290,120 payment rows and one contract per application. 1,114 applications (3.70 %) are fraud:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Scenario</th>
+                                    <th>Applications</th>
+                                    <th>Fraud loss (TRY)</th>
+                                    <th>How it looks in the data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>FRAUD_RING</code></td>
+                                    <td>311</td>
+                                    <td>59.8 M</td>
+                                    <td>Different identities share phone, IBAN, address or device; one branch and agent; 4–12 applications in 45 days</td>
+                                </tr>
+                                <tr>
+                                    <td><code>AGENT_FRAUD</code></td>
+                                    <td>157</td>
+                                    <td>5.4 M</td>
+                                    <td>An agent's applications are cancelled 45–100 days later; month-end clustering</td>
+                                </tr>
+                                <tr>
+                                    <td><code>INCOME_FRAUD</code></td>
+                                    <td>150</td>
+                                    <td>233.3 M</td>
+                                    <td>Income 3–6× the occupation median, unexplained down payment, fast allocation, then default</td>
+                                </tr>
+                                <tr>
+                                    <td><code>FORGED_ID</code></td>
+                                    <td>150</td>
+                                    <td>65.1 M</td>
+                                    <td>Forged SIDTD image, sometimes an invalid national ID number, the same identity at several branches</td>
+                                </tr>
+                                <tr>
+                                    <td><code>DEVICE_FARM</code> (from 2026-04)</td>
+                                    <td>133</td>
+                                    <td>5.6 M</td>
+                                    <td>6–15 identities from one mobile device and one /24 IP network in 10 days; everything else differs</td>
+                                </tr>
+                                <tr>
+                                    <td><code>SYNTHETIC_ID</code></td>
+                                    <td>120</td>
+                                    <td>22.0 M</td>
+                                    <td>Invalid national ID number, age 19–25, high income, online at night</td>
+                                </tr>
+                                <tr>
+                                    <td><code>GUARANTOR_FRAUD</code></td>
+                                    <td>93</td>
+                                    <td>5.6 M</td>
+                                    <td>One guarantor on 3–6 unrelated applications, sometimes with an invalid ID number</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><code>docs/fraud_scenarios.md</code> maps every scenario to the controls that catch it and the unit that owns them.</p>
+
+                        <h3 id="4-3-leakage-controls">4.3 Leakage Controls</h3>
+                        <ul>
+                            <li>No source document appears in more than one split; the check runs in step 02.</li>
+                            <li>Applications draw ID images from the test split only.</li>
+                            <li>Features look only backwards in time.</li>
+                            <li>LightGBM sees only fraud labels confirmed before the training cut-off, and the newest 90 days before the cut are dropped because their outcome is not known yet.</li>
+                        </ul>
+
+                        <h3 id="4-4-evaluation-metrics">4.4 Evaluation Metrics</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Metrics</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Document</td>
+                                    <td>ROC-AUC, PR-AUC, recall at 1 / 5 / 10 % false-positive rate on genuine documents, recall and FPR at the operating point, by fake type and document type</td>
+                                </tr>
+                                <tr>
+                                    <td>Field</td>
+                                    <td>ROC-AUC, PR-AUC, localisation accuracy of the top field, recall by tampered field</td>
+                                </tr>
+                                <tr>
+                                    <td>OCR check</td>
+                                    <td>Share of evaluated genuine and forged documents flagged</td>
+                                </tr>
+                                <tr>
+                                    <td>Application</td>
+                                    <td>ROC-AUC, PR-AUC, precision, recall and fraud loss recall at the capacity threshold, recall by scenario</td>
+                                </tr>
+                                <tr>
+                                    <td>Rule</td>
+                                    <td>Alerts, precision, recall, loss share, unique true positives, false positives per true positive, greedy added recall</td>
+                                </tr>
+                                <tr>
+                                    <td>Monitoring</td>
+                                    <td>Monthly precision and recall, PSI, KRIs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2 id="5-model">5. Model</h2>
+                        <p><strong>Forgery model:</strong> <code>models/doc_classifier.pt</code> (PyTorch) and <code>models/doc_classifier.onnx</code> (ONNX, opset 18)<br>
+                        <strong>Architecture:</strong> ResNet-18 from <code>timm</code>, ImageNet weights, one output logit<br>
+                        <strong>Input:</strong> field patch windows of 64 × 256 px; stride 128 at inference<br>
+                        <strong>Training:</strong> 6 epochs, batch 128, AdamW (lr 3e-4, weight decay 1e-4), one-cycle LR, BCE with positive weight; 30,889 training patches (13.3 % tampered); best epoch by validation PR-AUC<br>
+                        <strong>Calibration:</strong> <code>models/doc_calibration.json</code> (Platt parameters, threshold 0.328)</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Epoch</th>
+                                    <th>Train loss</th>
+                                    <th>Val ROC-AUC</th>
+                                    <th>Val PR-AUC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>0.996</td>
+                                    <td>0.917</td>
+                                    <td>0.809</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>0.315</td>
+                                    <td>0.956</td>
+                                    <td>0.891</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>0.150</td>
+                                    <td>0.952</td>
+                                    <td>0.897</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>0.096</td>
+                                    <td>0.959</td>
+                                    <td><strong>0.915</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>0.063</td>
+                                    <td>0.952</td>
+                                    <td>0.906</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>0.052</td>
+                                    <td>0.954</td>
+                                    <td>0.910</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>Application model:</strong> <code>models/app_lgbm.txt</code> with <code>models/app_lgbm_meta.json</code><br>
+                        <strong>Algorithm:</strong> LightGBM binary, 15 leaves, learning rate 0.03, feature and bagging fraction 0.8, L2 1.0, <code>scale_pos_weight</code> 5, early stopping on the last 20 % of the training period<br>
+                        <strong>Features:</strong> 31 point-in-time features (identity, income, product, channel, links, agent history, document and OCR flags)<br>
+                        <strong>Alert threshold:</strong> <code>models/alert_threshold.json</code>, hybrid score 0.150 at a 5 % alert rate</p>
+
+                        <h2 id="6-requirements">6. Requirements</h2>
+                        <p><code>requirements.txt</code></p>
+
+                        <pre><code>torch&gt;=2.2
+torchvision&gt;=0.17
+timm&gt;=1.0
+onnx&gt;=1.16
+onnxruntime&gt;=1.18
+onnxscript&gt;=0.1
+numpy&gt;=1.26
+pandas&gt;=2.2,&lt;3
+pyarrow&gt;=15
+scikit-learn&gt;=1.4
+lightgbm&gt;=4.3
+duckdb&gt;=1.0
+Faker&gt;=24
+PyYAML&gt;=6
+pillow&gt;=10
+pytesseract&gt;=0.3.10
+networkx&gt;=3.2
+matplotlib&gt;=3.8
+markdown&gt;=3.5
+tabulate&gt;=0.9
+fastapi&gt;=0.110
+uvicorn&gt;=0.29
+python-multipart&gt;=0.0.9
+streamlit&gt;=1.50
+pytest&gt;=8
+httpx&gt;=0.27</code></pre>
+
+                        <p>The same dependencies are declared in <code>pyproject.toml</code>; the <code>dev</code> extra adds <code>pytest</code>, <code>httpx</code> and <code>ruff</code>. The OCR checks also need the <code>tesseract</code> binary on <code>PATH</code>. pandas is held below 3.0: pandas 3 stores missing strings as <code>NaN</code> instead of <code>None</code>, which turns every synthetic application into a fraud label.</p>
+
+                        <h2 id="7-installation-configuration">7. Installation &amp; Configuration</h2>
+
+                        <h3 id="7-1-environment-setup">7.1 Environment Setup</h3>
+                        <pre><code># Clone the repository
+git clone https://github.com/kemalkilicaslan/Document-and-Identity-Fraud-Detection-System.git
+cd Document-and-Identity-Fraud-Detection-System
+
+# Tesseract for the OCR checks
+brew install tesseract                            # Ubuntu: sudo apt install tesseract-ocr
+
+# Create an environment and install the package
+python3 -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install -e ".[dev]"                           # or: pip install -r requirements.txt</code></pre>
+
+                        <h3 id="7-2-project-structure">7.2 Project Structure</h3>
+                        <pre><code>Document-and-Identity-Fraud-Detection-System/
+├── .github/workflows/ci.yml        # ruff + pytest on Python 3.10 and 3.12
+├── configs/
+│   ├── config.yaml                 # paths, split, patch, CNN, OCR, synthetic data and scoring settings
+│   ├── rules.yaml                  # production rules: SQL condition, weight, owner, decision bands
+│   └── rules_candidate.yaml        # candidate rules back-tested in step 11
+├── scripts/
+│   ├── _bootstrap.py               # puts src/ on the path, step header and timer
+│   ├── 00_check_env.py … 13_image_figures.py   # the 14 pipeline steps (Section 8.2)
+├── src/docfraud/
+│   ├── config.py                   # config loading, project paths, seeding
+│   ├── data/sidtd.py               # SIDTD manifest, field boxes, grouped split
+│   ├── data/patches.py             # field cropping, resizing, sliding windows
+│   ├── data/synthetic.py           # synthetic applications, payments, contracts, fraud scenarios
+│   ├── classifier/model.py         # ResNet-18 factory, patch dataset, window scoring
+│   ├── ocr/engine.py               # Tesseract MRZ and visual-zone reading, document checks
+│   ├── validators/                 # national ID (TCKN), MRZ (ICAO 9303) and date logic
+│   ├── rules/engine.py             # YAML rules → SQL on DuckDB → score and decision
+│   ├── scoring/metrics.py          # capacity curve, rule effectiveness, greedy order, PSI
+│   ├── api.py                      # FastAPI scoring API
+│   └── dashboard.py                # Streamlit analyst dashboard
+├── sql/
+│   ├── 00_macros.sql               # tckn_valid() and ip24() DuckDB macros
+│   ├── 01_features.sql             # point-in-time application features
+│   └── analysis/01_…10_*.sql       # segmentation, branch risk, velocity, clusters, agents, rules, trend, alert queue
+├── tests/                          # pytest suite (no data needed)
+├── docs/fraud_scenarios.md         # scenario and control matrix
+├── data/                           # SIDTD zips, extracted images, patches, DuckDB (not tracked)
+├── models/                         # CNN, ONNX, calibration, LightGBM, alert threshold (not tracked)
+├── reports/
+│   ├── tables/                     # every metric and SQL result as CSV
+│   ├── figures/                    # report figures
+│   ├── logs/                       # one log per run_all.sh run
+│   ├── management_report.md|.html  # management report
+│   └── case_study.md|.html         # case study of the largest fraud ring
+├── Document-and-Identity-Fraud-Detection-*.png / *.jpg   # README figures
+├── run_all.sh                      # all steps in order; ./run_all.sh 07 resumes from step 07
+├── Dockerfile
+├── .dockerignore
+├── docker-compose.yml
+├── .gitignore
+├── Makefile
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+└── LICENSE</code></pre>
+
+                        <h3 id="7-3-required-files">7.3 Required Files</h3>
+                        <ul>
+                            <li><strong>Data:</strong> <code>templates.zip</code> and <code>clips_cropped.zip</code> from SIDTD [1] in <code>data/raw/</code>. Step 00 extracts them into <code>data/interim/</code>.
+                                <ul>
+                                    <li><a href="http://datasets.cvc.uab.es/SIDTD/templates.zip" target="_blank">http://datasets.cvc.uab.es/SIDTD/templates.zip</a></li>
+                                    <li><a href="http://datasets.cvc.uab.es/SIDTD/clips_cropped.zip" target="_blank">http://datasets.cvc.uab.es/SIDTD/clips_cropped.zip</a></li>
+                                </ul>
+                            </li>
+                            <li><strong>Models:</strong> produced by steps 04, 05 and 09. The API and the dashboard need them.</li>
+                        </ul>
+
+                        <h3 id="7-4-configuration-parameters">7.4 Configuration Parameters</h3>
+                        <p><code>configs/config.yaml</code> (excerpt):</p>
+
+                        <pre><code>splits:
+  train: 0.70                 # share of document groups per split
+  val: 0.15
+  test: 0.15
+
+classifier:
+  backbone: resnet18
+  pretrained: true
+  window: 256                 # patch width the CNN sees
+  stride: 128                 # sliding-window stride at inference
+  epochs: 6
+  batch_size: 128
+  lr: 0.0003
+
+synthetic:
+  start_date: "2025-01-01"
+  end_date: "2026-09-30"
+  n_legit_applications: 29000
+  new_fraud_type_start: "2026-04-01"   # device farm appears here
+
+scoring:
+  train_until: "2026-03-01"   # LightGBM trains before this date; out-of-time test after
+  maturity_days: 90           # newest applications before the cut have no known outcome yet
+  review_capacity_pct: 0.05   # analysts can review 5 % of applications</code></pre>
+
+                        <p>A rule in <code>configs/rules.yaml</code>:</p>
+
+                        <pre><code>- id: R07_SHARED_PHONE
+  description: Phone number used by 2+ other identities in the last 90 days
+  condition: phone_other_tckn_90d &gt;= 2
+  weight: 35
+  owner: Internal Control</code></pre>
+
+                        <h2 id="8-usage-how-to-run">8. Usage / How to Run</h2>
+
+                        <h3 id="8-1-full-pipeline">8.1 Full Pipeline</h3>
+                        <pre><code>./run_all.sh                   # unit tests, then steps 00–13 (~12 min on an Apple M-series, most of it CNN training)
+./run_all.sh 07                # resume from step 07
+PYTHON=.venv/bin/python ./run_all.sh</code></pre>
+
+                        <h3 id="8-2-pipeline-steps">8.2 Pipeline Steps</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Step</th>
+                                    <th>Script</th>
+                                    <th>Produces</th>
+                                    <th>Seconds</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>00</td>
+                                    <td><code>00_check_env.py</code></td>
+                                    <td>package and Tesseract check, SIDTD extraction</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>01</td>
+                                    <td><code>01_build_manifest.py</code></td>
+                                    <td>image manifest (real/fake, fake type, tampered field) and field boxes</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td><code>02_make_splits.py</code></td>
+                                    <td>grouped train/val/test split</td>
+                                    <td>0.2</td>
+                                </tr>
+                                <tr>
+                                    <td>03</td>
+                                    <td><code>03_extract_field_patches.py</code></td>
+                                    <td>one patch per text field</td>
+                                    <td>45</td>
+                                </tr>
+                                <tr>
+                                    <td>04</td>
+                                    <td><code>04_train_doc_classifier.py</code></td>
+                                    <td><code>doc_classifier.pt</code>, training history</td>
+                                    <td>357</td>
+                                </tr>
+                                <tr>
+                                    <td>05</td>
+                                    <td><code>05_evaluate_doc_classifier.py</code></td>
+                                    <td>document and field scores, calibration, metrics, ONNX export</td>
+                                    <td>90</td>
+                                </tr>
+                                <tr>
+                                    <td>06</td>
+                                    <td><code>06_run_ocr_checks.py</code></td>
+                                    <td>MRZ and date checks on 887 test images, flag rates</td>
+                                    <td>43</td>
+                                </tr>
+                                <tr>
+                                    <td>07</td>
+                                    <td><code>07_generate_synthetic_data.py</code></td>
+                                    <td>applications, payments, contracts, fraud labels</td>
+                                    <td>25</td>
+                                </tr>
+                                <tr>
+                                    <td>08</td>
+                                    <td><code>08_build_database.py</code></td>
+                                    <td>DuckDB database and <code>application_features</code></td>
+                                    <td>0.6</td>
+                                </tr>
+                                <tr>
+                                    <td>09</td>
+                                    <td><code>09_run_rules_and_scoring.py</code></td>
+                                    <td>rule hits, LightGBM, hybrid score, threshold, rule effectiveness</td>
+                                    <td>0.9</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td><code>10_run_sql_analyses.py</code></td>
+                                    <td>ten analytical SQL results</td>
+                                    <td>0.5</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td><code>11_monitoring.py</code></td>
+                                    <td>monthly metrics, PSI, KRIs, candidate-rule back-test</td>
+                                    <td>0.7</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td><code>12_build_reports.py</code></td>
+                                    <td>management report and case study (Markdown + HTML), figures</td>
+                                    <td>0.6</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td><code>13_image_figures.py</code></td>
+                                    <td>image-processing figures from the test split</td>
+                                    <td>2.5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>Times are the run time of each script's own work on an Apple M-series machine (MPS), as printed in the log; package imports are not included.</p>
+
+                        <h3 id="8-3-dashboard-and-api">8.3 Dashboard and API</h3>
+                        <pre><code>streamlit run src/docfraud/dashboard.py   # or: make dashboard  -&gt; http://localhost:8501
+uvicorn docfraud.api:app --reload         # or: make api        -&gt; http://127.0.0.1:8000/docs</code></pre>
+
+                        <p>The dashboard has five tabs: overview, alert queue and case view (with the suspicious field drawn on the ID image), rule performance, monitoring and early warning, and the document model.</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Endpoint</th>
+                                    <th>Input → Output</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GET</td>
+                                    <td><code>/health</code></td>
+                                    <td>status</td>
+                                </tr>
+                                <tr>
+                                    <td>POST</td>
+                                    <td><code>/documents/score</code></td>
+                                    <td>dewarped ID image + <code>doc_type</code> → document score, suspicious flag, top field, score per field</td>
+                                </tr>
+                                <tr>
+                                    <td>GET</td>
+                                    <td><code>/applications/{app_id}</code></td>
+                                    <td>stored scores, fired rules and features of an application</td>
+                                </tr>
+                                <tr>
+                                    <td>POST</td>
+                                    <td><code>/applications/score</code></td>
+                                    <td>point-in-time features of a new application → rule score, decision, model score, hybrid score, alert, reasons</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <pre><code>curl -F "file=@data/interim/clips_cropped/Images/fakes/alb_id_14_fake_6_52_frame_00_dewarped.jpg" \
+     -F "doc_type=alb_id" http://127.0.0.1:8000/documents/score
+# {"doc_type":"alb_id","doc_score":0.997,"suspicious":true,"top_field":"number", ...}</code></pre>
+
+                        <h3 id="8-4-tests-and-ci">8.4 Tests and CI</h3>
+                        <pre><code>make install    # pip install -e ".[dev]"
+make test       # pytest
+make lint       # ruff check src tests scripts
+make reproduce  # ./run_all.sh
+make reports    # open the HTML reports</code></pre>
+
+                        <p><code>pytest</code> runs 12 tests, none of which need data or a GPU. They cover:</p>
+
+                        <ul>
+                            <li>national ID check digits, generation and the SQL macro against the Python version</li>
+                            <li>MRZ check digits on the ICAO example, valid and tampered lines, line 1 parsing and MRZ dates</li>
+                            <li>SIDTD date formats and date logic</li>
+                            <li>rule scores and decision bands</li>
+                            <li>the capacity curve and PSI</li>
+                            <li>masking of national ID numbers, phone numbers and IBANs in the published SQL tables</li>
+                        </ul>
+
+                        <p>GitHub Actions runs <code>ruff</code> and <code>pytest</code> on Python 3.10 and 3.12 with CPU-only PyTorch.</p>
+
+                        <h2 id="9-docker-deployment">9. Docker Deployment</h2>
+                        <p>The system can be packaged and run in a container so that the code, its dependencies and the runtime environment stay consistent across machines.</p>
+
+                        <h3 id="files">Files</h3>
+                        <ul>
+                            <li><code>Dockerfile</code> - builds the image (Python 3.11 + Tesseract + CPU-only PyTorch + the <code>docfraud</code> package).</li>
+                            <li><code>.dockerignore</code> - keeps datasets, models and generated results out of the build context.</li>
+                            <li><code>docker-compose.yml</code> - runs the scoring API and the dashboard and mounts <code>data/</code>, <code>models/</code> and <code>reports/</code>.</li>
+                        </ul>
+
+                        <h3 id="build-and-run">Build and run</h3>
+                        <pre><code>docker compose up --build
+
+# or with the Docker CLI directly
+docker build -t document-and-identity-fraud-detection-system:latest .
+docker run --rm -p 8000:8000 -v "$(pwd)/data":/app/data -v "$(pwd)/models":/app/models \
+  -v "$(pwd)/reports":/app/reports document-and-identity-fraud-detection-system:latest</code></pre>
+
+                        <h3 id="notes">Notes</h3>
+                        <ul>
+                            <li>The default command serves the API on port 8000; the <code>fraud-dashboard</code> service serves Streamlit on port 8501.</li>
+                            <li>The API and the dashboard need the outputs of <code>run_all.sh</code> in the mounted folders. The pipeline can also run inside the container: <code>docker compose run --rm fraud-api ./run_all.sh</code> or <code>docker compose run --rm fraud-api pytest</code>.</li>
+                            <li>The image uses CPU-only PyTorch, so CNN training in the container is much slower than on MPS or CUDA.</li>
+                        </ul>
+
+                        <h2 id="10-application-results">10. Application / Results</h2>
+                        <p>Every number in this section comes from <code>reports/tables/</code> and <code>reports/logs/</code> of one full run.</p>
+
+                        <h3 id="10-1-forged-id-detection">10.1 Forged ID Detection</h3>
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Doc-Model-Curves.png" alt="ROC and PR curves of the document model" loading="lazy"></p>
+
+                        <p>Test split, 887 images (295 forged):</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Document ROC-AUC</td>
+                                    <td>0.983</td>
+                                </tr>
+                                <tr>
+                                    <td>Document PR-AUC</td>
+                                    <td>0.974</td>
+                                </tr>
+                                <tr>
+                                    <td>Recall at 1 % / 5 % / 10 % FPR</td>
+                                    <td>84.1 % / 91.2 % / 95.3 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Field ROC-AUC / PR-AUC</td>
+                                    <td>0.974 / 0.874</td>
+                                </tr>
+                                <tr>
+                                    <td>Top field = tampered field (flagged forgeries)</td>
+                                    <td>91.2 %</td>
+                                </tr>
+                                <tr>
+                                    <td>At the operating threshold (0.328): recall / FPR</td>
+                                    <td>92.2 % / 5.9 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fake type</th>
+                                    <th>Forged images</th>
+                                    <th>Caught</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Inpaint_and_Rewrite</td>
+                                    <td>262</td>
+                                    <td>95.0 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Crop_and_Replace</td>
+                                    <td>33</td>
+                                    <td>69.7 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Forgery-Localisation.jpg" alt="Field-level localisation on test documents" loading="lazy"></p>
+
+                        <p><sub>Images: SIDTD [1], CC BY 4.0. Field boxes coloured by forgery score; the dashed box marks the ground-truth tampered field.</sub></p>
+
+                        <p>Each field box is coloured by its score. On the three forgeries (Finnish ID surname, Russian internal passport number, Serbian passport name) the top field is the tampered one. The Finnish template scores 1.000, while the Russian video frame (0.422) and the Serbian Crop_and_Replace (0.361) clear the 0.328 threshold only narrowly. On the genuine Greek passport no field comes close to the threshold.</p>
+
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Field-Patches.jpg" alt="Genuine vs. forged field patches" loading="lazy"></p>
+
+                        <p><sub>Images: SIDTD [1], CC BY 4.0. Patches as the CNN sees them, with field scores.</sub></p>
+
+                        <p>The patches show what the CNN keys on. Inpaint_and_Rewrite leaves a different font and stroke weight on a smoothed background; Crop_and_Replace leaves misaligned, doubled strokes where two documents were blended. When the pasted field is clean, as in the last row, the score drops to 0.069 and the document can slip below the threshold.</p>
+
+                        <p>Crop_and_Replace is harder: the pasted field was printed by a real document, so its texture is genuine and only its alignment and background give it away. By document type, recall ranges from 72.7 % (Finnish ID) to 100 % (Estonian ID, Greek passport). The FPR is highest on the Russian internal passport (15.4 %) and the Latvian passport (14.3 %). The hardest tampered fields are the surname and the document type line (75.0 % caught each) and the document number (83.3 %).</p>
+
+                        <h3 id="10-2-ocr-checks">10.2 OCR Checks</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Check</th>
+                                    <th>Evaluated (genuine / forged)</th>
+                                    <th>Flagged genuine</th>
+                                    <th>Flagged forged</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MRZ check digits</td>
+                                    <td>24 / 22</td>
+                                    <td>16.7 %</td>
+                                    <td>0 %</td>
+                                </tr>
+                                <tr>
+                                    <td>MRZ ↔ visual zone</td>
+                                    <td>20 / 20</td>
+                                    <td>5.0 %</td>
+                                    <td>0 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Date logic</td>
+                                    <td>215 / 177</td>
+                                    <td>2.3 %</td>
+                                    <td>0 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Ocr-Preprocessing.png" alt="OCR preprocessing of the MRZ line" loading="lazy"></p>
+
+                        <p><sub>Images: SIDTD [1], CC BY 4.0.</sub></p>
+
+                        <p>The OCR checks did not flag a single forged document, and every flag they raised was on a genuine one. SIDTD edits one visual-zone field and leaves the MRZ untouched, so MRZ check digits cannot change. Tesseract's generic English model also reads MRZ lines from video frames poorly: only 46 of the 887 test images gave a TD3 line that could be checked. In the application data the matching rules R03 and R04 reach 2.0 % and 0.5 % precision (Section 10.4), so they are candidates for retirement until an MRZ-specific OCR model is in place.</p>
+
+                        <h3 id="10-3-rules-lightgbm-and-hybrid-at-the-same-capacity">10.3 Rules, LightGBM and Hybrid at the Same Capacity</h3>
+                        <p>Out-of-time test from 2026-03-01: 11,863 applications, 511 frauds. Alert rate 5 %.</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>ROC-AUC</th>
+                                    <th>PR-AUC</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>Fraud loss caught</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rules</td>
+                                    <td>0.838</td>
+                                    <td>0.493</td>
+                                    <td>49.2 %</td>
+                                    <td>57.1 %</td>
+                                    <td>67.6 % (30.4 M TRY)</td>
+                                </tr>
+                                <tr>
+                                    <td>LightGBM</td>
+                                    <td>0.810</td>
+                                    <td>0.417</td>
+                                    <td>47.4 %</td>
+                                    <td>55.0 %</td>
+                                    <td>66.5 % (29.9 M TRY)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hybrid</strong></td>
+                                    <td><strong>0.858</strong></td>
+                                    <td><strong>0.541</strong></td>
+                                    <td>49.1 %</td>
+                                    <td>56.9 %</td>
+                                    <td>67.5 % (30.3 M TRY)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>At exactly 5 % the hybrid score and the rules flag almost the same frauds (56.9 % against 57.1 %), because the rule score has few distinct values and a block of applications ties at 30 points. At 1 % the two are level; from 2 % and from 15 % upward the hybrid score ranks better:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Alert rate</th>
+                                    <th>Rules recall</th>
+                                    <th>Hybrid recall</th>
+                                    <th>Rules loss caught</th>
+                                    <th>Hybrid loss caught</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1 %</td>
+                                    <td>21.7 %</td>
+                                    <td>21.7 %</td>
+                                    <td>28.5 %</td>
+                                    <td>28.3 %</td>
+                                </tr>
+                                <tr>
+                                    <td>2 %</td>
+                                    <td>33.5 %</td>
+                                    <td><strong>36.2 %</strong></td>
+                                    <td>40.1 %</td>
+                                    <td><strong>44.1 %</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>5 %</td>
+                                    <td>57.1 %</td>
+                                    <td>56.9 %</td>
+                                    <td>67.6 %</td>
+                                    <td>67.5 %</td>
+                                </tr>
+                                <tr>
+                                    <td>15 %</td>
+                                    <td>74.4 %</td>
+                                    <td><strong>77.1 %</strong></td>
+                                    <td>84.1 %</td>
+                                    <td><strong>89.3 %</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>20 %</td>
+                                    <td>75.5 %</td>
+                                    <td><strong>79.8 %</strong></td>
+                                    <td>84.2 %</td>
+                                    <td><strong>90.6 %</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>LightGBM alone is weaker than the rules: it learns from 182 confirmed frauds, and the label-maturity rule hides most of the recent ones. Its top features by gain are the document forgery score, allocation month, the agent's early-cancellation rate, the down-payment ratio and guarantor reuse.</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Scenario (test period)</th>
+                                    <th>Frauds</th>
+                                    <th>Hybrid recall at 5 %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>SYNTHETIC_ID</code></td>
+                                    <td>53</td>
+                                    <td>88.7 %</td>
+                                </tr>
+                                <tr>
+                                    <td><code>FORGED_ID</code></td>
+                                    <td>58</td>
+                                    <td>87.9 %</td>
+                                </tr>
+                                <tr>
+                                    <td><code>GUARANTOR_FRAUD</code></td>
+                                    <td>35</td>
+                                    <td>74.3 %</td>
+                                </tr>
+                                <tr>
+                                    <td><code>FRAUD_RING</code></td>
+                                    <td>93</td>
+                                    <td>72.0 %</td>
+                                </tr>
+                                <tr>
+                                    <td><code>AGENT_FRAUD</code></td>
+                                    <td>84</td>
+                                    <td>59.5 %</td>
+                                </tr>
+                                <tr>
+                                    <td><code>INCOME_FRAUD</code></td>
+                                    <td>55</td>
+                                    <td>56.4 %</td>
+                                </tr>
+                                <tr>
+                                    <td><code>DEVICE_FARM</code></td>
+                                    <td>133</td>
+                                    <td>12.8 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="10-4-rule-effectiveness">10.4 Rule Effectiveness</h3>
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Rule-Effectiveness.png" alt="Rule effectiveness" loading="lazy"></p>
+
+                        <p>Whole period, 30,114 applications:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Rule</th>
+                                    <th>Alerts</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>Loss share</th>
+                                    <th>Unique catches</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>R10 income outlier</td>
+                                    <td>782</td>
+                                    <td>39.1 %</td>
+                                    <td>27.5 %</td>
+                                    <td>69.8 %</td>
+                                    <td>82</td>
+                                </tr>
+                                <tr>
+                                    <td>R01 document forgery high</td>
+                                    <td>545</td>
+                                    <td>55.8 %</td>
+                                    <td>27.3 %</td>
+                                    <td>18.5 %</td>
+                                    <td>106</td>
+                                </tr>
+                                <tr>
+                                    <td>R11 unexplained down payment</td>
+                                    <td>259</td>
+                                    <td>62.2 %</td>
+                                    <td>14.5 %</td>
+                                    <td>59.2 %</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>R07 shared phone</td>
+                                    <td>120</td>
+                                    <td>100 %</td>
+                                    <td>10.8 %</td>
+                                    <td>6.2 %</td>
+                                    <td>33</td>
+                                </tr>
+                                <tr>
+                                    <td>R15 night online</td>
+                                    <td>450</td>
+                                    <td>25.3 %</td>
+                                    <td>10.2 %</td>
+                                    <td>4.0 %</td>
+                                    <td>45</td>
+                                </tr>
+                                <tr>
+                                    <td>R05 invalid national ID number</td>
+                                    <td>160</td>
+                                    <td>68.8 %</td>
+                                    <td>9.9 %</td>
+                                    <td>7.2 %</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>R02 document forgery medium</td>
+                                    <td>854</td>
+                                    <td>4.6 %</td>
+                                    <td>3.5 %</td>
+                                    <td>2.9 %</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>R06 identity velocity</td>
+                                    <td>280</td>
+                                    <td>8.2 %</td>
+                                    <td>2.1 %</td>
+                                    <td>2.8 %</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>R03 MRZ inconsistent</td>
+                                    <td>200</td>
+                                    <td>2.0 %</td>
+                                    <td>0.4 %</td>
+                                    <td>0.1 %</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>R04 date logic</td>
+                                    <td>219</td>
+                                    <td>0.5 %</td>
+                                    <td>0.1 %</td>
+                                    <td>0.2 %</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>Adding rules greedily by extra fraud caught, R10 and R01 together reach 50.3 % recall and the first six rules 71.5 %. The last three (R03, R06, R04) add two frauds between them and 576 alerts. R06 fires mostly on genuine returning customers.</p>
+
+                        <h3 id="10-5-monitoring-a-new-fraud-type-slips-through">10.5 Monitoring: a New Fraud Type Slips Through</h3>
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Monitoring-Recall-Psi.png" alt="Monthly recall by scenario and score PSI" loading="lazy"></p>
+
+                        <p>From April 2026 a device farm sends 6–15 identities through one device and one IP network in ten days. Its monthly recall stays between 0 % and 26 %. Overall recall and PSI do not show it: the score PSI stays below 0.02 every month, and overall recall in the device-farm months (45–77 %) is close to the range of 2025 (48–90 %).</p>
+
+                        <p>The KRIs do:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>KRI (2026-09)</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Documents with forgery score ≥ 0.5</td>
+                                    <td>5.02 %</td>
+                                    <td>GREEN</td>
+                                </tr>
+                                <tr>
+                                    <td>Online applications from a device seen with 2+ identities</td>
+                                    <td>14</td>
+                                    <td>AMBER</td>
+                                </tr>
+                                <tr>
+                                    <td>Applications with a shared phone or IBAN</td>
+                                    <td>6</td>
+                                    <td>GREEN</td>
+                                </tr>
+                                <tr>
+                                    <td>Agents with early-cancellation rate ≥ 20 % and z &gt; 3</td>
+                                    <td>3</td>
+                                    <td>RED</td>
+                                </tr>
+                                <tr>
+                                    <td>Score PSI against the baseline</td>
+                                    <td>0.007</td>
+                                    <td>GREEN</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>Back-test of the candidate rules R16 (same device, 2+ identities in 7 days) and R17 (same /24 network, 3+ identities in 7 days) on applications since 2026-04-01:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Rule set</th>
+                                    <th>Alert rate</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>Device-farm recall</th>
+                                    <th>Loss recall</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Production rules</td>
+                                    <td>5.2 %</td>
+                                    <td>48.5 %</td>
+                                    <td>57.9 %</td>
+                                    <td>12.8 %</td>
+                                    <td>66.9 %</td>
+                                </tr>
+                                <tr>
+                                    <td>+ candidate rules</td>
+                                    <td>6.1 %</td>
+                                    <td>56.1 %</td>
+                                    <td><strong>78.6 %</strong></td>
+                                    <td><strong>82.0 %</strong></td>
+                                    <td>79.8 %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>Both candidate rules fired only on fraud in the back-test (107 and 92 alerts).</p>
+
+                        <h3 id="10-6-network-and-agent-analysis">10.6 Network and Agent Analysis</h3>
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Ring-Network.png" alt="Fraud ring RING-031" loading="lazy"></p>
+
+                        <p>The case study (<code>reports/case_study.html</code>) follows ring RING-031: 12 applications at one branch through one agent in 40 days, where 8 applications share a phone number, 8 an IBAN, 5 an address and 4 a device, with 2.4 M TRY lost. 8 of the 12 applications raised an alert. The first three did not, because the point-in-time link rules only fire once a phone or IBAN has been seen with another identity. The fourth application raised the first alert on 2026-01-10 through its forged document.</p>
+
+                        <p>The shared-attribute cluster query (<code>sql/analysis/04</code>) puts device clusters of 9–15 identities on top, all fraud. The agent anomaly query (<code>sql/analysis/05</code>) finds four agents with early-cancellation z-scores of 2.7 to 9.6; their applications hold 177 confirmed frauds. The top three branches by fraud rate (Izmir S015, Gaziantep S021, Samsun S008) run at 9.3–9.7 % against 3.7 % overall.</p>
+
+                        <p><img src="assets/projects/Document-and-Identity-Fraud-Detection-System/Document-and-Identity-Fraud-Detection-Fraud-Trend.png" alt="Monthly fraud trend" loading="lazy"></p>
+
+                        <h3 id="10-7-problems-found-along-the-way">10.7 Problems Found Along the Way</h3>
+                        <ol>
+                            <li><strong>pandas 3 labelled every application as fraud.</strong> pandas 3 stores missing strings as <code>NaN</code>, so the check <code>scenario is not None</code> was true on every row and the fraud rate came out at 100 %. pandas is held below 3.0 in <code>requirements.txt</code> and <code>pyproject.toml</code>.</li>
+                            <li><strong>ONNX export with recent PyTorch.</strong> <code>torch.onnx.export</code> now uses the dynamo exporter, which needs <code>onnxscript</code> and cannot convert this model down to opset 17. The export now uses opset 18 and writes a single <code>.onnx</code> file.</li>
+                            <li><strong>A coarse rule score ties at the capacity threshold.</strong> The rule score takes few distinct values, so at a 5 % alert rate the cut falls inside a block of applications with the same score, and the hybrid score inherits almost the same set of alerts. A small random tie-breaker keeps the capacity curves reproducible; the PR-AUC and the curve at other alert rates show the difference (Section 10.3).</li>
+                        </ol>
+
+                        <h3 id="10-8-limitations">10.8 Limitations</h3>
+                        <ul>
+                            <li>The applications are synthetic. SIDTD has no Turkish ID cards, so SIDTD images stand in for the applicant's ID image.</li>
+                            <li>The OCR checks add almost nothing (Section 10.2). An OCR-B / MRZ-specific model is the next step.</li>
+                            <li>The test split holds only 33 Crop_and_Replace forgeries, so their recall has a wide uncertainty.</li>
+                            <li>LightGBM learns from 182 confirmed frauds. Its score is low in absolute terms (the threshold sits at 0.001 on the model score), and the hybrid score relies mostly on the rules.</li>
+                            <li>The scenario mix and fraud rates are set by the generator. The results show how the controls behave, not how often each fraud type occurs in practice.</li>
+                        </ul>
+
+                        <h2 id="11-tech-stack">11. Tech Stack</h2>
+
+                        <h3 id="11-1-core-technologies">11.1 Core Technologies</h3>
+                        <ul>
+                            <li><strong>Programming Language:</strong> Python 3.10+</li>
+                            <li><strong>Deep Learning:</strong> PyTorch with <code>timm</code> (ResNet-18), ONNX and ONNX Runtime</li>
+                            <li><strong>OCR:</strong> Tesseract 5 via <code>pytesseract</code></li>
+                            <li><strong>Database and SQL:</strong> DuckDB (point-in-time features, rule engine, analytical SQL)</li>
+                            <li><strong>Machine Learning:</strong> LightGBM, scikit-learn</li>
+                            <li><strong>Serving:</strong> FastAPI + Uvicorn, Streamlit</li>
+                            <li><strong>Hardware:</strong> Apple M-series (MPS); CUDA used automatically when available, CPU otherwise</li>
+                            <li><strong>Tooling:</strong> pytest, ruff, GitHub Actions, Docker</li>
+                        </ul>
+
+                        <h3 id="11-2-libraries-dependencies">11.2 Libraries &amp; Dependencies</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Library</th>
+                                    <th>Version</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>torch / torchvision</td>
+                                    <td>2.2+ / 0.17+</td>
+                                    <td>CNN training and inference, MPS/CUDA acceleration</td>
+                                </tr>
+                                <tr>
+                                    <td>timm</td>
+                                    <td>1.0+</td>
+                                    <td>ResNet-18 backbone with ImageNet weights</td>
+                                </tr>
+                                <tr>
+                                    <td>onnx / onnxruntime / onnxscript</td>
+                                    <td>1.16+ / 1.18+ / 0.1+</td>
+                                    <td>Model export and CPU inference in the API</td>
+                                </tr>
+                                <tr>
+                                    <td>numpy / pandas / pyarrow</td>
+                                    <td>1.26+ / 2.2–2.x / 15+</td>
+                                    <td>Arrays, tables, Parquet</td>
+                                </tr>
+                                <tr>
+                                    <td>scikit-learn</td>
+                                    <td>1.4+</td>
+                                    <td>Platt calibration, metrics</td>
+                                </tr>
+                                <tr>
+                                    <td>lightgbm</td>
+                                    <td>4.3+</td>
+                                    <td>Application fraud model</td>
+                                </tr>
+                                <tr>
+                                    <td>duckdb</td>
+                                    <td>1.0+</td>
+                                    <td>Database, features, rules, SQL analyses</td>
+                                </tr>
+                                <tr>
+                                    <td>Faker</td>
+                                    <td>24+</td>
+                                    <td>Synthetic names for applicants and agents</td>
+                                </tr>
+                                <tr>
+                                    <td>PyYAML</td>
+                                    <td>6+</td>
+                                    <td>Config and rule files</td>
+                                </tr>
+                                <tr>
+                                    <td>pillow</td>
+                                    <td>10+</td>
+                                    <td>Image I/O, field cropping</td>
+                                </tr>
+                                <tr>
+                                    <td>pytesseract</td>
+                                    <td>0.3.10+</td>
+                                    <td>Tesseract OCR wrapper</td>
+                                </tr>
+                                <tr>
+                                    <td>networkx</td>
+                                    <td>3.2+</td>
+                                    <td>Fraud ring graph</td>
+                                </tr>
+                                <tr>
+                                    <td>matplotlib</td>
+                                    <td>3.8+</td>
+                                    <td>Figures</td>
+                                </tr>
+                                <tr>
+                                    <td>markdown / tabulate</td>
+                                    <td>3.5+ / 0.9+</td>
+                                    <td>HTML reports, Markdown tables</td>
+                                </tr>
+                                <tr>
+                                    <td>fastapi / uvicorn / python-multipart</td>
+                                    <td>0.110+ / 0.29+ / 0.0.9+</td>
+                                    <td>Scoring API</td>
+                                </tr>
+                                <tr>
+                                    <td>streamlit</td>
+                                    <td>1.50+</td>
+                                    <td>Analyst dashboard</td>
+                                </tr>
+                                <tr>
+                                    <td>pytest / httpx</td>
+                                    <td>8+ / 0.27+</td>
+                                    <td>Tests</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="11-3-algorithm-components">11.3 Algorithm Components</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>Method</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Image preprocessing</td>
+                                    <td>Template-guided field crops, 64 px aspect-preserving resize, 256 px sliding windows</td>
+                                    <td>Keep single-field edits at full resolution</td>
+                                </tr>
+                                <tr>
+                                    <td>OCR preprocessing</td>
+                                    <td>Grayscale, bicubic upscaling, auto-contrast</td>
+                                    <td>Readable input for Tesseract</td>
+                                </tr>
+                                <tr>
+                                    <td>Forgery detection</td>
+                                    <td>ResNet-18 on field windows, max pooling over windows and fields</td>
+                                    <td>Find small single-field edits and name the field</td>
+                                </tr>
+                                <tr>
+                                    <td>Calibration</td>
+                                    <td>Platt scaling on the validation split</td>
+                                    <td>Turn logits into probabilities; fix the operating point</td>
+                                </tr>
+                                <tr>
+                                    <td>Document checks</td>
+                                    <td>ICAO 9303 check digits, MRZ ↔ visual zone, date logic</td>
+                                    <td>Rule-based document consistency</td>
+                                </tr>
+                                <tr>
+                                    <td>Identity check</td>
+                                    <td>National ID (TCKN) check-digit algorithm</td>
+                                    <td>Catch invalid or made-up numbers</td>
+                                </tr>
+                                <tr>
+                                    <td>Features</td>
+                                    <td>Point-in-time self-joins in SQL</td>
+                                    <td>Velocity and shared-attribute links without leakage</td>
+                                </tr>
+                                <tr>
+                                    <td>Rules</td>
+                                    <td>Weighted SQL conditions, decision bands</td>
+                                    <td>Explainable alerts with an owner</td>
+                                </tr>
+                                <tr>
+                                    <td>Model</td>
+                                    <td>LightGBM with label maturity</td>
+                                    <td>Combinations the rules miss</td>
+                                </tr>
+                                <tr>
+                                    <td>Thresholding</td>
+                                    <td>Capacity curve</td>
+                                    <td>Compare methods at the same alert volume</td>
+                                </tr>
+                                <tr>
+                                    <td>Monitoring</td>
+                                    <td>PSI, recall by scenario, KRIs</td>
+                                    <td>Detect drift and new fraud types</td>
+                                </tr>
+                                <tr>
+                                    <td>Rule pruning</td>
+                                    <td>Greedy added recall, unique catches</td>
+                                    <td>Find rules that only add noise</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 id="11-4-module-overview">11.4 Module Overview</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Lines</th>
+                                    <th>Responsibility</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>src/docfraud/data/synthetic.py</code></td>
+                                    <td>~464</td>
+                                    <td>Synthetic applications, payments, contracts and the seven fraud scenarios</td>
+                                </tr>
+                                <tr>
+                                    <td><code>scripts/12_build_reports.py</code></td>
+                                    <td>~261</td>
+                                    <td>Management report, case study, figures</td>
+                                </tr>
+                                <tr>
+                                    <td><code>scripts/13_image_figures.py</code></td>
+                                    <td>~199</td>
+                                    <td>Image-processing figures from the test split</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/dashboard.py</code></td>
+                                    <td>~152</td>
+                                    <td>Streamlit analyst dashboard</td>
+                                </tr>
+                                <tr>
+                                    <td><code>scripts/09_run_rules_and_scoring.py</code></td>
+                                    <td>~138</td>
+                                    <td>Rules, LightGBM, hybrid score, capacity threshold, rule effectiveness</td>
+                                </tr>
+                                <tr>
+                                    <td><code>scripts/11_monitoring.py</code></td>
+                                    <td>~123</td>
+                                    <td>Monthly metrics, PSI, KRIs, candidate-rule back-test</td>
+                                </tr>
+                                <tr>
+                                    <td><code>scripts/05_evaluate_doc_classifier.py</code></td>
+                                    <td>~120</td>
+                                    <td>Document scores, calibration, metrics, ONNX export</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/api.py</code></td>
+                                    <td>~116</td>
+                                    <td>FastAPI scoring API</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/ocr/engine.py</code></td>
+                                    <td>~112</td>
+                                    <td>Tesseract reading and document checks</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/data/sidtd.py</code></td>
+                                    <td>~112</td>
+                                    <td>SIDTD manifest, field boxes, grouped split</td>
+                                </tr>
+                                <tr>
+                                    <td><code>sql/01_features.sql</code></td>
+                                    <td>~106</td>
+                                    <td>Point-in-time application features</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/classifier/model.py</code></td>
+                                    <td>~83</td>
+                                    <td>Model factory, patch dataset, window scoring</td>
+                                </tr>
+                                <tr>
+                                    <td><code>scripts/04_train_doc_classifier.py</code></td>
+                                    <td>~75</td>
+                                    <td>CNN training loop</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/scoring/metrics.py</code></td>
+                                    <td>~72</td>
+                                    <td>Capacity curve, rule effectiveness, greedy order, PSI</td>
+                                </tr>
+                                <tr>
+                                    <td><code>scripts/06_run_ocr_checks.py</code></td>
+                                    <td>~71</td>
+                                    <td>OCR checks on the test split</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/validators/mrz.py</code></td>
+                                    <td>~66</td>
+                                    <td>ICAO 9303 TD3 parsing and check digits</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/validators/dates.py</code></td>
+                                    <td>~55</td>
+                                    <td>SIDTD date parsing and date logic</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/data/patches.py</code></td>
+                                    <td>~44</td>
+                                    <td>Field cropping and sliding windows</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/rules/engine.py</code></td>
+                                    <td>~42</td>
+                                    <td>YAML rules on DuckDB</td>
+                                </tr>
+                                <tr>
+                                    <td><code>src/docfraud/validators/tckn.py</code></td>
+                                    <td>~37</td>
+                                    <td>National ID (TCKN) check digits</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h2 id="12-license">12. License</h2>
+                        <p>The code, documentation, configuration, SQL, synthetic data generator and generated reports of this project are licensed under the <a href="https://github.com/kemalkilicaslan/Document-and-Identity-Fraud-Detection-System/blob/main/LICENSE" target="_blank">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)</a>.</p>
+
+                        <p>This license does not cover the datasets or the figures that contain dataset images. They stay under the terms of their owners:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Dataset</th>
+                                    <th>Terms</th>
+                                    <th>Used here for</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="https://github.com/Oriolrt/SIDTD_Dataset" target="_blank">SIDTD</a> [1]</td>
+                                    <td><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>. Attribution required; results must cite [1]</td>
+                                    <td>Forgery CNN training and evaluation, OCR checks, ID images of the synthetic applications, figures in Section 2.2, Section 10.1 and Section 10.2</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="https://l3i-share.univ-lr.fr/MIDV2020/midv2020.html" target="_blank">MIDV-2020</a> [10]</td>
+                                    <td>Terms set by its authors on the dataset page; cite [10]. Mock documents with artificially generated faces and text</td>
+                                    <td>Source of the genuine documents inside SIDTD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>Figures.</strong> The figures in Section 2.2, Section 10.1 and Section 10.2 contain SIDTD images (Boned et al., 2024), licensed under CC BY 4.0. Changes: images cropped and resized; field boxes, scores and OCR output added. Reuse of these figures must follow the CC BY 4.0 terms of SIDTD.</p>
+
+                        <p><strong>Data and models.</strong> The SIDTD images are not redistributed in this repository; download them from the official source (Section 7.3). Trained models are produced by the pipeline and are not tracked.</p>
+
+                        <p><strong>Synthetic data.</strong> The application data is synthetic and contains no real person's data. Its national ID numbers, phone numbers and IBANs are random and can coincide with real ones, so the tables in <code>reports/tables/</code> show them only in masked form (<code>648******62</code>). Masked values are not unique, so each of these rows also carries a sequence key (<code>identity_id</code>, <code>link_id</code>) that says nothing about the number itself.</p>
+
+                        <h2 id="13-references">13. References</h2>
+                        <ol>
+                            <li>Boned, C., et al. (2024). <a href="https://doi.org/10.1038/s41597-024-04160-9" target="_blank">Synthetic dataset of ID and Travel Documents</a>. <em>Scientific Data</em>.</li>
+                            <li>International Civil Aviation Organization. <a href="https://www.icao.int/publications/pages/publication.aspx?docnum=9303" target="_blank">Doc 9303: Machine Readable Travel Documents</a>, Part 3 and Part 4.</li>
+                            <li>He, K., et al. (2016). <a href="https://arxiv.org/abs/1512.03385" target="_blank">Deep Residual Learning for Image Recognition</a>. <em>CVPR 2016</em>.</li>
+                            <li>Platt, J. (1999). Probabilistic Outputs for Support Vector Machines and Comparisons to Regularized Likelihood Methods. <em>Advances in Large Margin Classifiers</em>.</li>
+                            <li>Ke, G., et al. (2017). <a href="https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree" target="_blank">LightGBM: A Highly Efficient Gradient Boosting Decision Tree</a>. <em>NeurIPS 2017</em>.</li>
+                            <li>Smith, R. (2007). <a href="https://doi.org/10.1109/ICDAR.2007.4376991" target="_blank">An Overview of the Tesseract OCR Engine</a>. <em>ICDAR 2007</em>.</li>
+                            <li>Wightman, R. <a href="https://github.com/huggingface/pytorch-image-models" target="_blank">PyTorch Image Models (timm)</a>.</li>
+                            <li><a href="https://duckdb.org/docs/" target="_blank">DuckDB</a> Documentation.</li>
+                            <li><a href="https://onnxruntime.ai/docs/" target="_blank">ONNX Runtime</a> Documentation.</li>
+                            <li>Bulatov, K., et al. (2022). <a href="https://arxiv.org/abs/2107.00396" target="_blank">MIDV-2020: A Comprehensive Benchmark Dataset for Identity Document Analysis</a>. <em>Computer Optics</em>.</li>
+                        </ol>
+
+                        <hr>
+
+                        <h3 id="acknowledgments">Acknowledgments</h3>
+                        <p>Thanks to the Computer Vision Center (Universitat Autònoma de Barcelona) for the SIDTD dataset, to the MIDV-2020 authors for the mock documents it builds on, and to the PyTorch, timm, Tesseract, DuckDB, LightGBM, FastAPI and Streamlit communities for the tools this pipeline is built on.</p>
+
+                        <hr>
+
+                        <p><strong>Note:</strong> This system is designed for research and educational purposes. The application data is synthetic and SIDTD contains no Turkish ID cards, so the results show how the controls behave, not how they would perform on a real portfolio. Validate the forgery model on real Turkish ID images and the rules on confirmed fraud cases before using any of it in a credit or onboarding decision.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="about-section">
+                    <div class="about-header">
+                        <h3>About</h3>
+                    </div>
+                    <p class="about-description">
+                        This project implements document and identity fraud detection for savings-finance applications. A field-level ResNet-18 finds forged ID fields (ROC-AUC 0.983), and rules plus LightGBM fill the analysts' review queue. Monthly monitoring flags a new device-farm fraud the rules miss, and two candidate rules raise its recall from 12.8% to 82.0%.
+                    </p>
+
+                    <div class="about-links">
+                        <a href="https://github.com/kemalkilicaslan/Document-and-Identity-Fraud-Detection-System/blob/main/LICENSE" target="_blank">CC BY-NC-ND 4.0</a>
+                    </div>
+                </div>
+
+                <div class="techskills">
+                    <h3>Tech Stack</h3>
+                    <img src="assets/icons/tech/programming-languages/Python-icon.webp" alt="Python">
+                    <img src="assets/icons/tech/libraries/PyTorch-icon.webp" alt="PyTorch">
+                    <img src="assets/icons/tech/libraries/NumPy-icon.webp" alt="NumPy">
+                    <img src="assets/icons/tech/libraries/pandas-icon.webp" alt="pandas">
+                    <img src="assets/icons/tech/libraries/scikit-learn-icon.webp" alt="scikit-learn">
+                    <img src="assets/icons/tech/libraries/pillow-icon.webp" alt="Pillow">
+                    <img src="assets/icons/tech/libraries/matplotlib-icon.webp" alt="Matplotlib">
+                    <img src="assets/icons/tech/tools/docker-icon.webp" alt="Docker">
+                </div>
+
+                <div class="packages-section">
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>python>=3.10</li>
+                        <li>torch>=2.2</li>
+                        <li>torchvision>=0.17</li>
+                        <li>timm>=1.0</li>
+                        <li>onnx>=1.16</li>
+                        <li>onnxruntime>=1.18</li>
+                        <li>onnxscript>=0.1</li>
+                        <li>numpy>=1.26</li>
+                        <li>pandas>=2.2,<3</li>
+                        <li>pyarrow>=15</li>
+                        <li>scikit-learn>=1.4</li>
+                        <li>lightgbm>=4.3</li>
+                        <li>duckdb>=1.0</li>
+                        <li>Faker>=24</li>
+                        <li>PyYAML>=6</li>
+                        <li>pillow>=10</li>
+                        <li>pytesseract>=0.3.10</li>
+                        <li>networkx>=3.2</li>
+                        <li>matplotlib>=3.8</li>
+                        <li>markdown>=3.5</li>
+                        <li>tabulate>=0.9</li>
+                        <li>fastapi>=0.110</li>
+                        <li>uvicorn>=0.29</li>
+                        <li>python-multipart>=0.0.9</li>
+                        <li>streamlit>=1.50</li>
+                        <li>pytest>=8</li>
+                        <li>httpx>=0.27</li>
+                    </ul>
+                </div>
+
+                <div class="languages-section">
+                    <h3>Languages</h3>
+                    <div class="language-bar">
+                        <div class="language-segment python" style="width: 87.2%"></div>
+                        <div class="language-segment sql" style="width: 10.7%"></div>
+                        <div class="language-segment shell" style="width: 2.1%"></div>
+                    </div>
+                    <div class="language-item">
+                        <span class="color-dot python-dot"></span>
+                        <span>Python 87.2%</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="color-dot sql-dot"></span>
+                        <span>SQL 10.7%</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="color-dot shell-dot"></span>
+                        <span>Shell 2.1%</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+
+    <footer class="bottom">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-3 text-left">
+                    <p>© 2026 Kemal Kılıçaslan</p>
+                </div>
+                <div class="col-6 text-center">
+                    <a href="mailto:kemalkilicaslan@outlook.com" data-key="contact"><strong>Contact</strong></a>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="https://www.linkedin.com/in/kemalkilicaslan" rel="noopener noreferrer" aria-label="LinkedIn" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 999.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1085 9983 c-414 -54 -767 -301 -950 -663 -53 -107 -88 -201 -111-310 -18 -82 -19 -217 -19 -4015 0 -3798 1 -3933 19 -4015 106 -484 472 -850 956 -956 82 -18 217 -19 4015 -19 3798 0 3933 1 4015 19 484 106 850 472 956 956 18 82 19 217 19 4015 0 3798 -1 3933 -19 4015 -104 477 -453 832 -936 953 l-85 21 -3915 2 c-2153 1 -3928 -1 -3945 -3z m1114 -1154 c313 -50 584 -275 700 -581 40 -105 54 -183 54 -313 0 -134 -13 -208 -59 -328 -134 -350 -466 -577 -847 -577 -419 0 -773 276 -878 685 -35 137 -33 315 4 449 49 177 127 307 259 432 122 115 287 201 443 229 87 16 239 18 324 4z m1024 -1456 c-29 -2 -78 -2 -110 0 -32 2 -8 3 52 3 61 0 87 -1 58 -3z m-270 -10 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m450 0 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m3574 -130 c-20 -2 -52 -2 -70 0 -17 2 0 4 38 4 39 0 53 -2 32 -4z m-507 -187 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m971 -13 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m1269 -56 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m151 -14 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-2511 -37 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m1211 -13 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-2830 -130 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-3131 -7 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-160 -159 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m3501 -44 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m2294 -142 c434 -67 738 -209 969 -452 238 -250 375 -563 456 -1044 57 -335 60 -443 60 -2130 l0 -1530 -780 3 -780 2 0 1328 c0 790 -4 1396 -10 1497 -34 552 -203 836 -560 941 -88 27 -107 28 -265 28 -150 -1 -181 -4 -269 -27 -102 -27 -204 -70 -257 -107 -24 -18 -29 -29 -31 -68 l-1 -47 -6 45 -6 45 -61 -60 c-34 -33 -78 -87 -99 -119 -44 -70 -104 -196 -117 -246 -5 -19 -11 -44 -14 -55 -3 -11 -7 -31 -10 -45 -3 -14 -12 -47 -19 -75 -37 -127 -38 -197 -42 -1627 l-4 -1408 -779 -2 -780 -3 0 2528 0 2527 750 0 750 0 0 -192 c1 -106 1 -262 0 -345 -1 -119 2 -153 12 -152 7 0 42 46 78 101 110 169 279 334 460 446 41 25 78 51 82 57 4 5 8 7 8 2 0 -4 32 9 71 28 145 73 345 134 529 160 111 16 551 13 665 -4z m-4405 -2626 l0 -2525 -780 0 -780 0 0 2525 0 2525 780 0 780 0 0 -2525z m5597 2263 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m700 -10 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-730 -250 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m760 -35 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m10 -125 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m10 -150 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m10 -250 c-2 -13 -4 -3 -4 22 0 25 2 35 4 23 2 -13 2 -33 0 -45z m-8380 -130 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m0 -270 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m8380 -150 c-2 -13 -4 -3 -4 22 0 25 2 35 4 23 2 -13 2 -33 0 -45z m-3410 -30 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m3400 -190 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-3370 -80 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m3360 -80 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -125 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m-30 -275 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-2786 -845 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m2529 -37 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-2409 -83 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m467 -200 c-10 -2 -26 -2 -35 0 -10 3 -2 5 17 5 19 0 27 -2 18 -5z m70 0 c-10 -2 -26 -2 -35 0 -10 3 -2 5 17 5 19 0 27 -2 18 -5z m-4045 -130 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m450 0 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m-180 -10 c-29 -2 -78 -2 -110 0 -32 2 -8 3 52 3 61 0 87 -1 58 -3z"/> </g> </svg>
+                    </a>
+                    <a href="https://github.com/kemalkilicaslan" rel="noopener noreferrer" aria-label="GitHub" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1080 9993 c-66 -8 -209 -43 -272 -67 -399 -150 -678 -468 -781 -889 l-22 -92 0 -3945 0 -3945 22 -92 c117 -478 458 -819 936 -936 l92 -22 3945 0 3945 0 92 22 c478 117 819 458 936 936 l22 92 0 3945 0 3945 -22 92 c-116 476 -455 816 -933 936 l-85 21 -3920 2 c-2156 0 -3936 -1 -3955 -3z m4195 -864 c259 -19 320 -25 333 -32 6 -5 42 -12 80 -17 119 -16 179 -28 200 -39 11 -6 31 -11 45 -11 13 0 43 -6 68 -14 24 -8 71 -21 104 -31 33 -9 68 -20 77 -26 10 -5 29 -9 42 -9 13 0 37 -7 52 -15 16 -8 39 -15 52 -15 12 0 22 -4 22 -10 0 -5 13 -10 29 -10 16 0 34 -7 41 -15 7 -8 21 -15 30 -15 10 0 33 -8 52 -17 54 -27 62 -30 96 -38 18 -3 32 -11 32 -16 0 -5 11 -9 24 -9 13 0 26 -4 28 -8 4 -10 130 -72 146 -72 7 0 12 -4 12 -8 0 -4 26 -20 58 -35 31 -15 75 -38 97 -51 22 -14 57 -34 77 -45 64 -35 83 -46 88 -51 3 -3 32 -23 65 -45 33 -22 62 -43 63 -47 2 -5 10 -8 18 -8 8 0 14 -4 14 -8 0 -5 18 -17 40 -28 22 -10 40 -22 40 -25 0 -3 25 -23 55 -44 30 -20 55 -41 55 -46 0 -5 7 -9 16 -9 8 0 12 -4 9 -10 -3 -5 0 -10 7 -10 7 0 34 -19 59 -42 48 -45 130 -115 158 -134 34 -25 331 -335 331 -346 0 -4 15 -22 33 -40 18 -18 48 -54 67 -80 18 -27 37 -48 42 -48 4 0 8 -5 8 -11 0 -7 10 -21 23 -33 13 -12 26 -29 30 -39 3 -9 11 -17 17 -17 5 0 10 -5 10 -10 0 -10 8 -22 38 -55 6 -7 12 -16 12 -20 0 -7 51 -87 64 -100 15 -15 36 -47 42 -67 4 -10 10 -18 14 -18 4 0 15 -18 26 -40 10 -22 22 -40 25 -40 4 0 10 -11 13 -25 4 -14 11 -25 16 -25 6 0 10 -9 10 -19 0 -11 4 -22 10 -26 12 -7 150 -286 150 -302 0 -7 4 -13 9 -13 5 0 12 -13 16 -30 4 -16 11 -30 16 -30 5 0 9 -11 9 -25 0 -14 4 -25 9 -25 5 0 13 -14 16 -32 8 -34 11 -42 38 -96 9 -19 17 -42 17 -52 0 -9 7 -23 15 -30 8 -7 15 -23 15 -36 0 -14 4 -32 9 -42 15 -31 41 -119 41 -140 0 -12 4 -23 9 -26 5 -4 12 -25 16 -48 4 -23 11 -49 15 -58 11 -21 30 -97 39 -150 4 -25 10 -51 14 -57 7 -12 17 -70 37 -215 5 -38 12 -74 17 -80 9 -15 18 -125 34 -414 9 -158 9 -261 0 -415 -15 -272 -26 -397 -40 -439 -6 -19 -11 -56 -11 -82 0 -26 -4 -50 -10 -53 -5 -3 -10 -26 -10 -51 0 -25 -7 -61 -15 -81 -8 -19 -15 -50 -15 -67 -1 -17 -7 -42 -15 -56 -8 -14 -14 -37 -15 -53 0 -15 -4 -35 -9 -45 -10 -19 -29 -90 -38 -137 -3 -16 -9 -34 -13 -40 -5 -5 -11 -27 -15 -48 -4 -20 -11 -40 -16 -43 -5 -3 -9 -18 -9 -33 0 -16 -7 -34 -15 -41 -8 -7 -15 -24 -15 -39 0 -14 -7 -35 -15 -45 -8 -11 -15 -28 -15 -38 0 -10 -4 -18 -9 -18 -5 0 -12 -16 -15 -35 -4 -19 -11 -35 -16 -35 -6 0 -10 -11 -10 -25 0 -14 -4 -25 -10 -25 -5 0 -10 -6 -10 -13 0 -6 -20 -53 -45 -102 -25 -50 -45 -95 -45 -102 0 -6 -3 -13 -7 -15 -5 -1 -21 -32 -38 -68 -16 -36 -36 -71 -42 -78 -7 -7 -13 -20 -13 -28 0 -8 -3 -14 -8 -14 -4 0 -16 -17 -27 -37 -10 -21 -36 -64 -57 -95 -21 -32 -38 -60 -38 -63 0 -3 -18 -30 -40 -59 -22 -29 -40 -56 -40 -60 0 -4 -5 -12 -10 -19 -6 -7 -24 -28 -40 -47 -16 -19 -32 -43 -36 -52 -3 -10 -10 -18 -15 -18 -5 0 -9 -6 -9 -14 0 -8 -3 -16 -7 -18 -9 -3 -61 -62 -111 -125 -19 -23 -42 -52 -52 -65 -36 -43 -305 -326 -312 -327 -4 -1 -22 -15 -40 -31 -18 -17 -45 -42 -60 -55 -15 -14 -30 -25 -34 -25 -4 0 -16 -10 -28 -22 -12 -13 -38 -35 -58 -50 -20 -15 -42 -34 -50 -41 -22 -22 -190 -142 -245 -177 -29 -17 -53 -36 -53 -41 0 -5 -6 -9 -14 -9 -8 0 -21 -6 -28 -13 -7 -6 -30 -21 -50 -32 -21 -11 -38 -23 -38 -27 0 -5 -9 -8 -19 -8 -11 0 -22 -4 -26 -9 -3 -6 -26 -20 -50 -32 -25 -12 -45 -26 -45 -31 0 -4 -8 -8 -19 -8 -10 0 -24 -7 -31 -15 -7 -8 -21 -15 -31 -15 -11 0 -19 -4 -19 -10 0 -5 -4 -10 -9 -10 -5 0 -45 -16 -88 -36 -111 -50 -152 -69 -198 -88 -22 -9 -48 -21 -57 -26 -10 -6 -26 -10 -35 -10 -10 0 -27 -7 -37 -15 -11 -8 -29 -15 -41 -15 -12 0 -27 -6 -34 -13 -8 -8 -43 -12 -99 -12 l-88 0 -46 43 c-26 24 -50 57 -54 75 -5 18 -7 307 -5 642 3 589 -5 845 -29 900 -5 11 -11 36 -13 55 -5 41 -24 97 -63 185 -25 55 -98 174 -129 209 -14 16 -22 33 -18 37 5 4 40 10 78 13 130 11 210 23 238 34 16 7 43 12 62 12 19 0 36 4 39 9 4 5 29 12 56 16 28 4 50 11 50 16 0 5 17 9 38 9 20 0 46 7 56 15 11 8 30 15 43 15 13 0 23 5 23 10 0 6 10 10 23 10 13 0 32 7 43 15 10 8 29 15 40 15 12 0 27 7 34 15 7 8 23 15 35 15 13 0 25 3 27 8 3 8 69 44 147 83 25 11 51 27 59 35 7 8 23 19 35 26 77 41 327 277 327 308 0 5 3 10 8 10 4 0 23 24 42 53 19 28 38 54 41 57 3 3 8 12 12 20 9 21 30 51 45 68 6 7 12 20 12 28 0 8 5 14 10 14 6 0 10 11 10 24 0 13 7 26 15 30 8 3 15 17 15 31 0 14 4 25 9 25 5 0 12 13 16 30 4 16 11 32 16 35 5 4 9 16 9 29 0 12 7 31 15 42 8 10 15 28 15 38 0 20 6 42 34 131 9 28 16 64 16 80 0 17 4 35 9 40 11 12 30 132 41 260 32 385 33 402 20 496 -7 52 -16 126 -20 164 -11 94 -26 169 -39 194 -6 11 -11 29 -11 41 0 12 -6 34 -14 48 -8 15 -22 53 -31 84 -9 32 -21 60 -26 64 -5 3 -9 14 -9 25 0 10 -4 19 -10 19 -5 0 -10 8 -10 19 0 10 -7 24 -15 31 -8 7 -15 21 -15 32 0 10 -7 21 -15 24 -8 4 -15 15 -15 25 0 10 -4 19 -10 19 -5 0 -10 7 -10 15 0 9 -7 18 -15 21 -8 4 -15 10 -15 16 0 11 -44 72 -77 107 -12 12 -25 32 -28 42 -4 10 -11 19 -17 19 -15 0 8 159 28 190 21 34 43 445 25 463 -6 6 -11 43 -11 82 -1 42 -6 80 -15 95 -8 14 -14 44 -15 67 0 23 -4 44 -9 47 -5 3 -11 23 -14 43 -5 43 -21 92 -48 143 l-18 35 -105 3 c-77 2 -115 -1 -142 -13 -20 -8 -54 -15 -75 -15 -22 0 -39 -4 -39 -10 0 -5 -17 -12 -37 -16 -21 -4 -42 -10 -48 -14 -5 -4 -25 -11 -42 -15 -18 -3 -33 -11 -33 -16 0 -5 -11 -9 -24 -9 -13 0 -29 -7 -36 -15 -7 -8 -19 -15 -27 -15 -17 0 -118 -48 -188 -89 -27 -16 -67 -39 -89 -51 -58 -32 -210 -132 -218 -144 -9 -14 -105 -11 -143 5 -17 6 -50 16 -75 20 -25 4 -79 15 -120 24 -41 9 -109 20 -150 24 -42 4 -82 11 -89 15 -58 37 -943 37 -1002 1 -7 -5 -46 -12 -88 -16 -42 -5 -110 -15 -151 -24 -41 -9 -95 -20 -120 -25 -25 -4 -58 -13 -75 -20 -39 -15 -134 -18 -143 -5 -8 12 -163 115 -218 145 -22 12 -61 35 -89 51 -70 41 -171 89 -188 89 -8 0 -20 7 -27 15 -7 8 -23 15 -36 15 -13 0 -24 4 -24 10 0 5 -16 12 -35 16 -19 3 -38 10 -41 15 -3 5 -15 9 -27 9 -12 0 -35 7 -51 15 -15 8 -41 15 -56 15 -15 0 -44 7 -64 15 -27 12 -65 15 -142 13 l-105 -3 -18 -35 c-33 -64 -58 -148 -68 -225 -2 -22 -11 -54 -19 -72 -8 -17 -14 -62 -14 -100 0 -38 -5 -74 -11 -80 -18 -18 4 -429 25 -463 20 -31 43 -190 28 -190 -6 0 -13 -9 -17 -19 -3 -10 -16 -30 -28 -42 -33 -35 -77 -96 -77 -107 0 -6 -7 -12 -15 -16 -8 -3 -15 -12 -15 -21 0 -8 -4 -15 -10 -15 -5 0 -10 -9 -10 -19 0 -10 -7 -21 -15 -25 -8 -3 -15 -14 -15 -24 0 -11 -7 -25 -15 -32 -8 -7 -15 -21 -15 -31 0 -11 -4 -19 -10 -19 -5 0 -10 -9 -10 -19 0 -11 -4 -22 -9 -25 -5 -4 -17 -32 -26 -64 -9 -31 -23 -69 -31 -84 -8 -14 -14 -35 -14 -46 0 -11 -7 -36 -15 -55 -8 -20 -15 -50 -15 -66 0 -16 -4 -32 -9 -35 -4 -3 -11 -41 -15 -83 -3 -43 -10 -103 -15 -133 -12 -71 -12 -232 0 -340 5 -47 14 -132 19 -190 11 -122 25 -218 40 -275 28 -101 42 -152 51 -181 5 -17 9 -38 9 -47 0 -9 6 -31 14 -49 8 -18 21 -49 30 -70 9 -20 16 -41 16 -47 0 -6 5 -11 10 -11 6 0 10 -11 10 -25 0 -14 7 -28 15 -31 8 -4 15 -17 15 -30 0 -13 5 -24 10 -24 6 0 10 -9 10 -20 0 -10 6 -23 13 -27 14 -9 35 -41 43 -65 4 -10 10 -18 15 -18 5 0 9 -5 9 -10 0 -18 112 -162 171 -221 62 -62 196 -174 244 -205 17 -10 36 -24 43 -31 7 -7 20 -13 28 -13 8 0 14 -4 14 -10 0 -5 9 -10 19 -10 11 0 22 -4 26 -9 3 -6 27 -20 53 -33 26 -13 49 -26 50 -30 2 -5 11 -8 20 -8 10 0 26 -7 36 -15 11 -8 28 -15 39 -15 10 0 25 -7 33 -15 9 -8 26 -15 40 -15 13 0 24 -4 24 -10 0 -5 13 -10 29 -10 16 0 36 -7 45 -15 8 -8 31 -15 50 -15 20 0 36 -4 36 -8 0 -9 70 -27 158 -42 29 -4 58 -13 65 -18 7 -5 41 -12 77 -16 58 -5 221 -23 228 -25 6 -2 1 -31 -5 -31 -5 0 -24 -24 -43 -53 -19 -28 -38 -54 -41 -57 -12 -10 -84 -166 -97 -210 -14 -50 -30 -117 -39 -168 -4 -25 -14 -37 -44 -52 -21 -11 -45 -20 -54 -20 -8 0 -15 -4 -15 -10 0 -5 -12 -10 -26 -10 -14 0 -40 -6 -57 -14 -18 -8 -52 -17 -77 -20 -25 -3 -79 -10 -120 -15 -71 -10 -104 -8 -265 16 -22 3 -49 12 -60 19 -11 8 -27 14 -36 14 -16 0 -76 27 -89 40 -3 3 -22 13 -42 24 -56 29 -248 220 -248 248 0 6 -11 21 -25 34 -14 13 -25 28 -25 34 0 6 -8 23 -18 38 -10 15 -29 43 -43 63 -96 143 -262 271 -439 340 -20 7 -87 15 -157 17 -127 3 -155 -4 -190 -47 -18 -20 -16 -66 2 -85 8 -8 15 -17 15 -21 0 -14 77 -77 161 -131 60 -38 134 -106 187 -173 20 -25 40 -48 43 -51 25 -20 139 -223 139 -247 0 -7 5 -13 10 -13 6 0 10 -8 10 -19 0 -10 7 -24 15 -31 8 -7 15 -22 15 -34 0 -12 7 -31 15 -42 8 -10 15 -29 15 -41 0 -13 5 -23 10 -23 6 0 10 -8 10 -19 0 -10 7 -24 15 -31 8 -7 15 -18 15 -24 0 -6 11 -23 25 -38 14 -15 25 -31 25 -35 0 -5 13 -23 30 -41 17 -18 30 -35 30 -38 0 -8 91 -94 100 -94 4 0 10 -4 12 -9 5 -14 117 -84 193 -121 39 -18 78 -37 87 -42 10 -4 28 -8 41 -8 13 0 28 -5 34 -11 10 -10 47 -17 198 -40 77 -12 358 -5 396 10 14 5 53 10 89 12 l65 4 9 -359 c6 -264 6 -364 -3 -378 -6 -10 -11 -29 -11 -42 0 -38 -79 -102 -136 -111 -52 -7 -141 2 -150 16 -3 5 -15 9 -27 9 -12 0 -31 7 -41 15 -11 8 -28 15 -38 15 -10 0 -26 4 -36 10 -9 5 -35 17 -57 26 -46 19 -87 38 -198 88 -43 20 -83 36 -88 36 -5 0 -9 5 -9 10 0 6 -8 10 -19 10 -10 0 -24 7 -31 15 -7 8 -21 15 -31 15 -11 0 -19 4 -19 8 0 5 -20 19 -45 31 -24 12 -47 26 -50 32 -4 5 -15 9 -26 9 -10 0 -19 3 -19 8 0 4 -17 16 -37 27 -21 11 -44 26 -51 32 -7 7 -20 13 -28 13 -8 0 -14 4 -14 9 0 5 -24 24 -52 41 -56 35 -224 155 -246 177 -8 7 -30 26 -50 40 -21 15 -47 38 -59 50 -12 13 -25 23 -28 23 -4 0 -18 11 -33 25 -15 13 -42 38 -60 55 -18 16 -34 30 -36 30 -1 0 -57 55 -123 122 -120 123 -177 185 -243 268 -19 24 -44 54 -55 66 -49 54 -65 75 -65 84 0 6 -4 10 -9 10 -5 0 -12 8 -15 18 -4 9 -20 33 -36 52 -16 19 -34 40 -40 47 -5 7 -10 15 -10 19 0 4 -18 31 -40 60 -22 29 -40 56 -40 59 0 3 -17 31 -38 63 -21 31 -47 74 -57 95 -11 20 -23 37 -27 37 -5 0 -8 6 -8 14 0 8 -6 21 -13 28 -6 7 -25 42 -42 78 -16 36 -33 67 -37 68 -5 2 -8 9 -8 16 0 6 -20 51 -45 99 -25 48 -45 94 -45 102 0 8 -4 15 -10 15 -5 0 -10 11 -10 25 0 14 -4 25 -10 25 -5 0 -12 16 -16 35 -3 19 -10 35 -15 35 -5 0 -9 8 -9 18 0 10 -7 27 -15 38 -8 10 -15 31 -15 45 0 15 -7 32 -15 39 -8 7 -15 25 -15 41 0 15 -4 30 -9 33 -5 4 -12 24 -16 46 -4 22 -11 42 -16 46 -5 3 -9 18 -9 34 0 16 -4 31 -9 35 -6 3 -13 26 -17 50 -3 25 -10 48 -15 51 -5 3 -9 20 -9 37 0 18 -7 45 -15 61 -8 15 -15 41 -15 56 0 16 -5 41 -11 57 -11 28 -21 84 -39 217 -5 38 -12 76 -16 85 -10 21 -20 145 -35 414 -10 171 -10 265 -1 430 17 292 26 400 35 415 10 16 28 141 30 209 1 28 4 49 6 47 8 -8 31 57 31 86 0 15 7 44 15 63 8 20 15 50 15 66 0 16 4 32 9 36 6 3 13 26 17 50 3 25 10 48 15 51 5 3 9 18 9 34 0 16 4 31 9 35 6 3 13 26 17 50 3 25 10 45 15 45 5 0 9 13 9 29 0 16 7 34 15 41 8 7 15 23 15 37 0 13 7 31 15 39 8 9 15 26 15 40 0 13 4 24 9 24 5 0 12 16 15 35 4 19 11 35 16 35 6 0 10 11 10 25 0 14 5 25 10 25 6 0 10 5 10 12 0 11 52 127 71 158 12 20 43 87 59 128 7 17 15 32 19 32 3 0 15 19 26 43 11 23 26 48 32 55 7 7 13 20 13 28 0 8 3 14 8 14 4 0 13 14 20 30 8 17 19 36 25 43 7 7 21 28 31 47 11 19 25 39 33 43 7 4 13 13 13 18 0 6 11 25 25 43 14 18 25 38 25 44 0 6 4 12 8 14 4 2 18 20 31 41 12 20 27 37 32 37 5 0 9 7 9 15 0 9 7 18 15 21 8 4 15 10 15 16 0 5 10 19 23 32 31 33 57 65 57 72 0 3 14 19 30 36 17 17 43 47 57 67 24 32 271 290 316 330 46 40 67 58 98 81 18 14 47 39 65 55 53 49 82 74 147 122 34 25 64 48 67 52 3 3 22 15 43 26 20 11 37 23 37 27 0 5 7 8 15 8 8 0 15 4 15 9 0 5 8 12 18 15 9 3 29 17 43 30 14 13 35 27 47 30 12 4 22 12 22 17 0 5 4 9 9 9 5 0 53 26 108 58 54 32 122 69 151 82 28 14 52 28 52 32 0 5 5 8 12 8 16 0 142 62 146 72 2 4 15 8 28 8 13 0 24 4 24 9 0 5 14 13 32 16 34 8 42 11 96 38 19 9 42 17 52 17 9 0 23 7 30 15 7 8 25 15 41 15 16 0 29 5 29 10 0 6 10 10 23 10 12 0 35 7 51 15 15 8 41 15 57 15 15 0 30 4 33 9 3 5 22 12 42 16 20 3 44 10 53 15 22 11 97 30 151 39 25 4 51 10 58 15 14 8 81 21 194 36 38 5 74 12 80 17 12 7 87 14 318 32 147 11 423 11 565 0z m-2288 -1755 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-100 -10 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m3593 -308 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m2230 -80 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-2350 -40 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-1639 -133 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m115 -105 l29 -33 -32 29 c-31 28 -38 36 -30 36 2 0 16 -15 33 -32z m119 -128 c10 -11 16 -20 13 -20 -3 0 -13 9 -23 20 -10 11 -16 20 -13 20 3 0 13 -9 23 -20z m4172 -442 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m40 -355 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m10 -135 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m10 -150 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-3390 -30 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-300 -20 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-4660 -50 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m4950 -30 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m3410 -150 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-3670 20 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m250 -25 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m-4970 -100 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m4730 -170 c-2 -38 -3 -7 -3 67 0 74 1 105 3 68 2 -38 2 -98 0 -135z m-4730 -70 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m8390 -125 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-3420 25 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m-250 -5 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m260 -130 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-4950 -30 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m4660 -50 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m300 -30 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m3390 -20 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-10 -160 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -135 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m-40 -345 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-4157 -411 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m-110 -120 c0 -2 -15 -16 -32 -33 l-33 -29 29 33 c28 30 36 37 36 29z m-130 -121 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z"/> </g> </svg>
+                    </a>
+                    <a href="https://medium.com/@kemalkilicaslan" rel="noopener noreferrer" aria-label="Medium" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1080 9993 c-66 -8 -209 -43 -272 -67 -399 -150 -678 -468 -781 -889 l-22 -92 0 -3945 0 -3945 22 -92 c117 -478 458 -819 936 -936 l92 -22 3945 0 3945 0 92 22 c478 117 819 458 936 936 l22 92 0 3945 0 3945 -22 92 c-116 476 -455 816 -933 936 l-85 21 -3920 2 c-2156 0 -3936 -1 -3955 -3z m2490 -2641 c661 -124 1201 -479 1575 -1037 81 -121 211 -383 259 -522 92 -266 130 -501 130 -793 0 -394 -71 -704 -244 -1055 -340 -695 -963 -1160 -1745 -1301 -144 -27 -606 -27 -750 0 -514 93 -942 313 -1294 665 -374 375 -608 850 -682 1391 -18 123 -18 477 0 600 52 380 190 745 392 1040 403 589 1004 950 1719 1034 19 2 148 3 285 1 195 -3 273 -8 355 -23z m3525 -124 c339 -74 656 -448 845 -995 47 -134 101 -337 125 -463 108 -577 89 -1221 -50 -1755 -177 -679 -513 -1138 -907 -1240 -80 -21 -233 -21 -313 0 -514 133 -925 886 -1010 1855 -100 1126 267 2221 847 2529 154 82 303 104 463 69z m1764 -253 c121 -110 224 -466 286 -995 38 -325 50 -556 50 -980 0 -424 -12 -655 -50 -980 -62 -529 -165 -885 -286 -995 -127 -115 -261 67 -354 481 -92 409 -135 887 -135 1494 0 179 5 408 10 510 57 1019 265 1658 479 1465z"/> </g> </svg>
+                    </a>
+                    <a href="https://www.kaggle.com/kemalkilicaslan" rel="noopener noreferrer" aria-label="Kaggle" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M110 0H890A110 110 0 0 1 1000 110V890A110 110 0 0 1 890 1000H110A110 110 0 0 1 0 890V110A110 110 0 0 1 110 0Z M310 133H400Q405 133 405 138V418C405 445 420 462 440 462C457 462 472 455 485 444L655 296Q659 293 664 293H797Q805 293 800 298L578 490C548 518 548 565 578 592L800 792Q805 797 797 797H660Q656 797 653 794L485 648C472 636 456 628 440 628C420 628 405 645 405 672V792Q405 797 400 797H310Q305 797 305 792V138Q305 133 310 133Z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@kemal_kilicaslan" rel="noopener noreferrer" aria-label="YouTube" class="text-xl text-slate-500 dark:text-slate-300 transition-colors hover:text-slate-600 dark:hover:text-slate-100" target="_blank">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1080 9993 c-66 -8 -209 -43 -272 -67 -399 -150 -678 -468 -781 -889 l-22 -92 0 -3945 0 -3945 22 -92 c117 -478 458 -819 936 -936 l92 -22 3945 0 3945 0 92 22 c478 117 819 458 936 936 l22 92 0 3945 0 3945 -22 92 c-116 476 -455 816 -933 936 l-85 21 -3920 2 c-2156 0 -3936 -1 -3955 -3z m1907 -2619 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m390 0 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-490 -10 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m590 0 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m3003 -308 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m1030 -71 c13 -14 21 -25 18 -25 -2 0 -15 11 -28 25 -13 14 -21 25 -18 25 2 0 15 -11 28 -25z m1200 -9 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-2350 -40 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-4710 -110 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m3071 -23 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-3161 -56 c0 -1 -26 -27 -57 -57 l-58 -55 55 58 c50 53 60 62 60 54z m3276 -49 l29 -33 -32 29 c-31 28 -38 36 -30 36 2 0 16 -15 33 -32z m2249 -98 c698 -15 1062 -35 1180 -65 156 -40 293 -149 358 -285 101 -211 137 -527 137 -1205 0 -639 -31 -945 -119 -1164 -65 -162 -212 -286 -383 -326 -74 -16 -264 -35 -361 -35 -38 0 -66 -3 -64 -7 13 -21 -2032 -25 -2468 -5 -265 12 -475 32 -564 53 -86 21 -208 87 -264 142 -112 112 -179 301 -206 582 -44 446 -42 1138 4 1555 27 247 78 399 172 517 43 54 142 125 213 153 48 19 178 49 219 50 11 0 11 3 0 18 -13 16 -12 16 7 -1 19 -16 33 -16 155 -8 136 10 728 30 1009 34 414 7 548 6 975 -3z m-5685 -24 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m7727 -448 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-7448 -415 c57 -214 106 -392 109 -397 4 -8 68 223 192 697 l23 87 155 0 c119 0 153 -3 150 -12 -7 -19 -81 -254 -232 -738 l-136 -436 0 -417 0 -417 -150 0 -150 0 0 416 0 416 -54 176 c-30 98 -87 281 -126 407 -39 127 -89 286 -110 355 -22 69 -48 152 -60 184 -11 33 -20 61 -20 63 0 1 69 3 153 3 l153 0 103 -387z m7488 60 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m10 -135 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-6450 -48 c165 -27 263 -119 311 -293 15 -54 17 -115 17 -477 0 -444 -2 -467 -55 -570 -28 -56 -99 -120 -170 -154 -61 -29 -72 -31 -175 -31 -101 0 -115 2 -168 28 -111 55 -181 147 -212 280 -21 89 -21 801 0 900 38 182 140 290 298 316 73 12 84 12 154 1z m823 -614 c0 -371 4 -625 10 -640 10 -29 46 -42 86 -32 15 4 51 32 80 62 l54 55 2 582 3 582 138 3 137 3 0 -756 0 -755 -140 0 -140 0 0 81 0 81 -75 -70 c-116 -108 -220 -138 -315 -89 -37 18 -51 33 -75 82 l-30 60 -3 683 -3 682 136 0 135 0 0 -614z m5637 512 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-8350 -100 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m8360 -180 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-8390 -105 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m0 -240 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m8390 -125 c-2 -18 -4 -6 -4 27 0 33 2 48 4 33 2 -15 2 -42 0 -60z m-8360 -140 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m8350 -100 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-10 -160 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -135 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m-40 -345 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-7736 -425 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m3579 14 c0 -2 -10 -12 -22 -23 l-23 -19 19 23 c18 21 26 27 26 19z m-3465 -137 c27 -27 47 -50 44 -50 -3 0 -27 23 -54 50 -27 28 -47 50 -44 50 3 0 27 -22 54 -50z m3355 17 c0 -2 -15 -16 -32 -33 l-33 -29 29 33 c28 30 36 37 36 29z m-130 -121 c0 -2 -8 -10 -17 -17 -16 -13 -17 -12 -4 4 13 16 21 21 21 13z m-3089 -23 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m4710 -110 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m2350 -40 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m-1171 4 c0 -2 -12 -14 -27 -28 l-28 -24 24 28 c23 25 31 32 31 24z m-1059 -84 c13 -16 12 -17 -3 -4 -10 7 -18 15 -18 17 0 8 8 3 21 -13z m496 -199 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-4080 -120 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m586 -1 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z m-486 -9 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z m390 0 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13 -5z"/> <path d="M5138 6083 l-468 -3 0 -140 0 -139 153 -3 152 -3 3 -862 2 -863 148 0 147 0 -3 865 -2 865 164 0 165 0 3 145 c2 80 3 144 3 143 0 -2 -210 -4 -467 -5z"/> <path d="M6580 5075 l0 -1005 135 0 135 0 0 70 c0 39 3 70 8 70 4 0 21 -16 37 -35 17 -19 36 -35 43 -35 7 0 15 -7 18 -15 4 -8 12 -15 20 -15 8 0 14 -5 14 -11 0 -5 5 -7 10 -4 6 3 10 1 10 -4 0 -6 3 -10 8 -9 4 1 28 -3 53 -11 46 -13 124 -12 147 3 6 4 12 5 12 2 0 -12 72 53 100 90 17 23 17 24 38 119 13 58 16 151 15 530 0 471 -3 528 -32 598 -6 16 -11 32 -11 36 0 4 -14 28 -31 54 -43 66 -96 89 -194 86 -41 -2 -75 -6 -75 -10 0 -4 -13 -10 -30 -14 -16 -4 -30 -11 -30 -16 0 -5 -5 -9 -10 -9 -6 0 -35 -25 -65 -56 l-55 -56 0 326 0 326 -135 0 -135 0 0 -1005z m460 263 c0 -5 4 -7 9 -4 5 3 14 -1 21 -9 7 -8 9 -15 4 -15 -5 0 -3 -4 4 -8 22 -15 26 -70 29 -450 4 -371 -3 -477 -30 -494 -6 -4 -8 -8 -3 -8 5 0 1 -9 -9 -20 -10 -11 -21 -17 -26 -15 -4 3 -10 1 -14 -5 -3 -5 -17 -10 -30 -10 -29 0 -105 29 -105 40 0 4 -9 10 -20 13 -20 5 -20 14 -20 470 l0 466 30 21 c17 12 37 23 45 24 8 1 18 5 21 9 10 10 94 5 94 -5z"/> <path d="M7903 5589 c-10 -4 -36 -12 -58 -19 -63 -19 -147 -80 -182 -131 -18 -26 -42 -78 -54 -116 -12 -37 -25 -75 -30 -84 -4 -9 -7 -194 -7 -411 l-1 -396 28 -81 c15 -45 26 -81 24 -81 -3 0 2 -7 9 -14 7 -8 33 -39 58 -69 80 -95 228 -143 370 -119 92 16 94 16 100 22 6 6 45 29 80 46 14 7 32 23 40 35 8 12 23 31 33 41 9 10 15 18 12 18 -3 0 6 18 19 39 14 21 23 41 21 43 -3 2 0 20 6 39 5 19 13 82 16 142 l5 107 -136 0 c-75 0 -136 -1 -137 -2 -1 -2 -4 -52 -8 -112 -4 -68 -11 -111 -18 -113 -7 -3 -10 -10 -8 -16 10 -28 -90 -69 -130 -54 -8 4 -18 6 -21 6 -15 -2 -64 57 -70 85 -5 17 -8 111 -8 208 l-1 178 274 0 273 0 -6 188 c-8 224 -10 250 -31 326 -30 112 -91 199 -169 241 -20 11 -36 23 -36 28 0 4 -3 6 -7 4 -5 -3 -19 0 -33 6 -14 5 -34 11 -45 13 -41 7 -155 9 -172 3z m214 -191 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-47 -73 c27 -28 33 -62 37 -202 l4 -123 -128 0 -128 0 0 140 c0 114 3 143 15 150 8 5 11 10 6 10 -14 0 16 31 39 40 39 16 133 6 155 -15z m57 -57 c-2 -13 -4 -5 -4 17 -1 22 1 32 4 23 2 -10 2 -28 0 -40z m10 -310 c-2 -24 -4 -5 -4 42 0 47 2 66 4 43 2 -24 2 -62 0 -85z"/> <path d="M6213 5573 l-143 -4 0 -574 0 -574 -55 -56 c-30 -31 -59 -54 -65 -50 -5 3 -10 1 -10 -4 0 -12 -49 -15 -66 -3 -32 21 -34 50 -34 656 l0 606 -135 0 -135 0 -1 -642 c-1 -354 0 -647 1 -653 2 -5 4 -19 5 -30 5 -49 54 -147 76 -152 10 -3 19 -10 19 -16 0 -6 3 -8 6 -4 4 3 21 1 38 -6 29 -11 61 -13 111 -4 12 1 43 15 69 30 27 15 50 27 51 27 2 0 30 28 64 63 l61 62 0 -87 0 -88 140 0 140 0 2 755 c2 415 3 754 3 753 0 -1 -64 -4 -142 -5z m-416 -115 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z m-10 -100 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-10 -155 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m0 -440 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2 -26 0 -35z m10 -135 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m10 -110 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z"/> <path d="M2603 5335 c-17 -7 -40 -28 -50 -47 -17 -30 -18 -67 -18 -463 0 -392 2 -433 18 -462 33 -61 120 -82 171 -42 56 44 56 41 56 507 l0 429 -23 34 c-38 57 -90 72 -154 44z"/> </g> </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
