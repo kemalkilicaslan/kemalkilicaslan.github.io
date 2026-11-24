@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-jp" viewBox="0 0 640 480">
+  <defs>
+    <clipPath id="wave-jp"><path d="M0 66Q0 40 26 36C210 -26 420 106 614 42Q640 44 640 70C626 192.0 626 288.0 640 418Q640 444 614 442C420 506 210 374 26 436Q0 440 0 414Z"/></clipPath>
+    <linearGradient id="fold-jp" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".18"/>
+      <stop offset=".18" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".38" stop-color="#fff" stop-opacity=".05"/>
+      <stop offset=".58" stop-color="#000" stop-opacity=".2"/>
+      <stop offset=".8" stop-color="#fff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#wave-jp)">
+    <g transform="translate(0 10) scale(1 0.9583)">
+<defs>
+    <clipPath id="jp-a">
+      <path fill-opacity=".7" d="M-88 32h640v480H-88z"/>
+    </clipPath>
+  </defs>
+  <g fill-rule="evenodd" stroke-width="1pt" clip-path="url(#jp-a)" transform="translate(88 -32)">
+    <path fill="#fff" d="M-128 32h720v480h-720z"/>
+    <circle cx="523.1" cy="344.1" r="194.9" fill="#bc002d" transform="translate(-168.4 8.6)scale(.76554)"/>
+  </g>
+    </g>
+    <rect width="640" height="480" fill="url(#fold-jp)"/>
+  </g>
+  <path d="M0 66Q0 40 26 36C210 -26 420 106 614 42Q640 44 640 70C626 192.0 626 288.0 640 418Q640 444 614 442C420 506 210 374 26 436Q0 440 0 414Z" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="10" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-fr" viewBox="0 0 640 480">
+  <defs>
+    <clipPath id="wave-fr"><path d="M0 66Q0 40 26 36C210 -26 420 106 614 42Q640 44 640 70C626 192.0 626 288.0 640 418Q640 444 614 442C420 506 210 374 26 436Q0 440 0 414Z"/></clipPath>
+    <linearGradient id="fold-fr" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".18"/>
+      <stop offset=".18" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".38" stop-color="#fff" stop-opacity=".05"/>
+      <stop offset=".58" stop-color="#000" stop-opacity=".2"/>
+      <stop offset=".8" stop-color="#fff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#wave-fr)">
+    <g transform="translate(0 10) scale(1 0.9583)">
+<path fill="#000091" d="M0 0h213.3v480H0z"/>
+  <path fill="#fff" d="M213.3 0h213.4v480H213.3z"/>
+  <path fill="#e1000f" d="M426.7 0H640v480H426.7z"/>
+    </g>
+    <rect width="640" height="480" fill="url(#fold-fr)"/>
+  </g>
+  <path d="M0 66Q0 40 26 36C210 -26 420 106 614 42Q640 44 640 70C626 192.0 626 288.0 640 418Q640 444 614 442C420 506 210 374 26 436Q0 440 0 414Z" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="10" stroke-linejoin="round"/>
+</svg>
